@@ -11,7 +11,5 @@
 
   <ItemGroup>
     <Folder Include="Model\" />
-    <Folder Include="Helpers\" />
-    <Folder Include="Worker\" />
   </ItemGroup>
 </Project>

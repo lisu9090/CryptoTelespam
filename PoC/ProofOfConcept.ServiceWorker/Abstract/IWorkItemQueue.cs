@@ -8,7 +8,7 @@ namespace ProofOfConcept.ServiceWorker.Abstract
 {
     interface IWorkItemQueue<T> // where T : base for work items
     {
-        void Push(T workItem);
-        T Pop();
+        void EnqueueWorkItem(T workItem);
+        T DequeueWorkItem();
     }
 }

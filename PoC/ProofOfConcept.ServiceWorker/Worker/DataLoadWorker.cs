@@ -6,13 +6,13 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker
+namespace ProofOfConcept.ServiceWorker.Worker
 {
-    public class Worker : BackgroundService
+    public class DataLoadWorker : BackgroundService
     {
-        private readonly ILogger<Worker> _logger;
+        private readonly ILogger<DataLoadWorker> _logger;
 
-        public Worker(ILogger<Worker> logger)
+        public DataLoadWorker(ILogger<DataLoadWorker> logger)
         {
             _logger = logger;
         }
