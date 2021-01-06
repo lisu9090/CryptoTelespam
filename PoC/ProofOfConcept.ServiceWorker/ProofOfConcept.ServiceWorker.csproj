@@ -10,6 +10,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Domain\DataProcess\" />
+    <Folder Include="Domain\MessageSend\" />
     <Folder Include="Model\" />
+    <Folder Include="DependencyAdapter\" />
   </ItemGroup>
 </Project>
