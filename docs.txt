@@ -1,0 +1,14 @@
+(NUPL) -> dla BTC i ETH
+Stock-to-Flow Deflection -> BTC 
+LTH-NUPL Long Term Holder NUPL -> BTC
+Market Cap to Thermocap Ratio -> dla BTC i ETH
+New Addresses (H1) -> dla wszystkich
+Total Addresses (H1) -> dla wszystkich
+Active Addreses (H1) -> dla wszystkich
+
+nupl
+<0
+0.25
+0.5
+>0.75 ->  euphoria
+euphoria => event
