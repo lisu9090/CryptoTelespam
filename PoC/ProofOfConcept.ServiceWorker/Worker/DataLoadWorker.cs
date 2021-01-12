@@ -14,14 +14,13 @@ namespace ProofOfConcept.ServiceWorker.Worker
     {
         private const int REQUEST_OFFSET = 500; //TODO take from config
         private readonly ILogger<DataLoadWorker> _logger;
-        private IWorkItemQueue<object> _workItemQueue;
-        private ICollection<IApiQueryService> _services;
+        private IWorkItemEnqueuer<object> _workItemQueue;
+        private ICollection<IRestApiAdapter> _services;
 
-        public DataLoadWorker(ILogger<DataLoadWorker> logger, IWorkItemQueue<object> workItemQueue)
+        public DataLoadWorker(ILogger<DataLoadWorker> logger, IWorkItemEnqueuer<object> workItemQueue)
         {
             _logger = logger;
             _workItemQueue = workItemQueue;
-            AddService();
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -35,22 +34,16 @@ namespace ProofOfConcept.ServiceWorker.Worker
                         break;
                     }
 
-                    var data = await service.QueryAsync();
+                    //var data = await service.QueryAsync();
 
-                    if(data != null)
-                    {
-                        _workItemQueue.EnqueueWorkItem(data);
-                    }
+                    //if(data != null)
+                    //{
+                    //    _workItemQueue.EnqueueWorkItem(data);
+                    //}
 
                     await Task.Delay(REQUEST_OFFSET, stoppingToken);
                 }
             }
-        }
-
-        private void AddService()
-        {
-            _services = new List<IApiQueryService>();
-            _services.Add(new TestApiQueryService());
         }
     }
 }

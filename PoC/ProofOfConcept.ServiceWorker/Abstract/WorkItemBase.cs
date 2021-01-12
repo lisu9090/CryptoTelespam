@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Abstract
 {
-    interface IApiQueryService
+    abstract class WorkItemBase
     {
-        Task<object> QueryAsync();
+        public string Key { get; set; }
     }
 }
