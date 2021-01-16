@@ -27,7 +27,7 @@ namespace ProofOfConcept.ServiceWorker.Worker
             {
                 if (_actionQueue.HasAction())
                 {
-                    var work = _actionQueue.DequeueWorkItem();
+                    var work = _actionQueue.DequeueAction();
 
                     try
                     {

@@ -19,7 +19,7 @@ namespace ProofOfConcept.ServiceWorker
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<MainWorker>();
-                    services.AddHttpClient<IRestApiAdapter, JsonApiAdapter>();
+                    services.AddHttpClient<IRestApiAdapter, GnApiAdapter>();
 
                     RegisterDataLoadDomain(services);
                     RegisterDataProcessDomain(services);

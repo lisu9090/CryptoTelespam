@@ -19,10 +19,14 @@ namespace ProofOfConcept.ServiceWorker.Action
             _messageSenderService = messageSenderService;
         }
 
-        public virtual Task ExecuteAsync()
+        public virtual async Task ExecuteAsync()
         {
-            //var data = _dataLoaderService.
-            throw new NotImplementedException();
+            var data = await _dataLoaderService.LoadDataAsync();
+
+            if(await _dataProcessorService.DetectEventAsync(data))
+            {
+               await _messageSenderService.SendEventMessageAsync(data);
+            }
         }
     }
 }

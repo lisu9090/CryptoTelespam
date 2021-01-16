@@ -1,15 +1,16 @@
 ﻿using ProofOfConcept.ServiceWorker.Abstract;
+using ProofOfConcept.ServiceWorker.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Action
+namespace ProofOfConcept.ServiceWorker.Domain.MessageSend
 {
-    class NuplAction : IAction
+    class NuplMessageService : IMessageSenderService<NuplEntity>
     {
-        public Task ExecuteAsync()
+        public Task SendEventMessageAsync(NuplEntity data)
         {
             throw new NotImplementedException();
         }

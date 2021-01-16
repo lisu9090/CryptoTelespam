@@ -6,7 +6,7 @@ namespace ProofOfConcept.ServiceWorker.Helpers
 {
     class ActionQueue<T> : IActionEnqueuer<T>, IActionDequeuer<T> where T : IAction
     {
-        public T DequeueWorkItem()
+        public T DequeueAction()
         {
             throw new NotImplementedException();
         }

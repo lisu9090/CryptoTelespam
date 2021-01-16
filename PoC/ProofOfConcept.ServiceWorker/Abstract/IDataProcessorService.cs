@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Abstract
 {
     interface IDataProcessorService<T>
     {
-        bool DetectEvent(T data);
+        Task<bool> DetectEventAsync(T data);
     }
 }
