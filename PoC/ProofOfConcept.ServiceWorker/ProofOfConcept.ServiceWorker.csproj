@@ -14,5 +14,6 @@
     <Folder Include="Domain\DataProcess\" />
     <Folder Include="Domain\MessageSend\" />
     <Folder Include="Model\" />
+    <Folder Include="Security\" />
   </ItemGroup>
 </Project>

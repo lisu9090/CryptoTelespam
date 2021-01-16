@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Domain.DataLoad
 {
-    class TestApiQueryService : INuplProviderService
+    class NuplLoaderService : IDataLoaderService
     {
         public Task<object> QueryAsync()
         {

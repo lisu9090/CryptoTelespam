@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Abstract
 {
-    abstract class WorkItemBase
+    class WorkItemBase<T> where T : class
     {
         public string Key { get; set; }
+        public DateTimeOffset Offset { get; set; }
+        public T Payload { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace ProofOfConcept.ServiceWorker
 
         private static void RegisterDataLoadDomain(IServiceCollection services)
         {
-            services.AddScoped<INuplProviderService, TestApiQueryService>();
+            services.AddScoped<IDataLoaderService, NuplLoaderService>();
         }
 
         private static void RegisterDataProcessDomain(IServiceCollection services)
