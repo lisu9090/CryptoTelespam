@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Abstract
 {
-    class WorkItemBase<T> where T : class
+    interface IMessageSenderService<T>
     {
-        public string Key { get; set; }
-        public DateTimeOffset Offset { get; set; }
-        public T Payload { get; set; }
+        void SendEventMessage(T data);
     }
 }

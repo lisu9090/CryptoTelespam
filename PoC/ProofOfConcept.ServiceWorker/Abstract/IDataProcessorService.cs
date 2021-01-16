@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Abstract
 {
-    interface IActionDequeuer<out T> where T : IAction
+    interface IDataProcessorService<T>
     {
-        T DequeueAction();
-        bool HasAction();
+        bool DetectEvent(T data);
     }
 }

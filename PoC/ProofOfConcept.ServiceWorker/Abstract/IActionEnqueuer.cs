@@ -8,6 +8,6 @@ namespace ProofOfConcept.ServiceWorker.Abstract
 {
     interface IActionEnqueuer<in T> where T : IAction
     {
-        void EnqueueWorkItem(T workItem);
+        void EnqueueAction(T workItem);
     }
 }

@@ -12,36 +12,31 @@ namespace ProofOfConcept.ServiceWorker.Worker
 {
     class MainWorker : BackgroundService
     {
-        private const int REQUEST_OFFSET = 500; //TODO take from config
         private readonly ILogger<MainWorker> _logger;
-        private IActionEnqueuer<object> _workItemQueue;
-        private ICollection<IRestApiAdapter> _services;
+        private IActionDequeuer<IAction> _actionQueue;
 
-        public MainWorker(ILogger<MainWorker> logger, IActionEnqueuer<object> workItemQueue)
+        public MainWorker(ILogger<MainWorker> logger, IActionDequeuer<IAction> actionQueue)
         {
             _logger = logger;
-            _workItemQueue = workItemQueue;
+            _actionQueue = actionQueue;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                foreach(var service in _services)
+                if (_actionQueue.HasAction())
                 {
-                    if (stoppingToken.IsCancellationRequested)
+                    var work = _actionQueue.DequeueWorkItem();
+
+                    try
                     {
-                        break;
+                        await work.ExecuteAsync();
                     }
-
-                    //var data = await service.QueryAsync();
-
-                    //if(data != null)
-                    //{
-                    //    _workItemQueue.EnqueueWorkItem(data);
-                    //}
-
-                    await Task.Delay(REQUEST_OFFSET, stoppingToken);
+                    catch(Exception e)
+                    {
+                        _logger.LogError($"{e.GetType().Name} - {e.Message} - {e.StackTrace}");
+                    }
                 }
             }
         }

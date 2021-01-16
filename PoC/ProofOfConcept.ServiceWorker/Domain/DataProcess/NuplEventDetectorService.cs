@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Abstract
+namespace ProofOfConcept.ServiceWorker.Domain.DataProcess
 {
-    interface IDataLoaderService<T>
+    class NuplEventDetectorService
     {
-        Task<T> LoadDataAsync();
     }
 }
