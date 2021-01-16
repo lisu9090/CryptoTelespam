@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Abstract
 {
-    interface IWorkItemDequeuer<out T> // where T : base for work items
+    interface IActionEnqueuer<in T> where T : IAction
     {
-        T DequeueWorkItem();
+        void EnqueueWorkItem(T workItem);
     }
 }

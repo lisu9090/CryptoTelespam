@@ -4,16 +4,14 @@ using System.Collections.Generic;
 
 namespace ProofOfConcept.ServiceWorker.Helpers
 {
-    class DataAnalysisWorkItemQueue : IWorkItemEnqueuer<object>, IWorkItemDequeuer<object>
+    class ActionQueue : IActionEnqueuer<IAction>, IActionDequeuer<IAction>
     {
-        //private List<WorkItemBase<object>> test = new List<WorkItemBase<object>>();
-
-        public object DequeueWorkItem()
+        public IAction DequeueWorkItem()
         {
             throw new NotImplementedException();
         }
 
-        public void EnqueueWorkItem(object workItem)
+        public void EnqueueWorkItem(IAction workItem)
         {
             throw new NotImplementedException();
         }

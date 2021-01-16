@@ -18,10 +18,12 @@ namespace ProofOfConcept.ServiceWorker
             Host.CreateDefaultBuilder(args)
                 .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHostedService<DataLoadWorker>();
+                    services.AddHostedService<MainWorker>();
                     services.AddHttpClient<IRestApiAdapter, JsonApiAdapter>();
 
                     RegisterDataLoadDomain(services);
+                    RegisterDataProcessDomain(services);
+                    RegisterMessageSendDomain(services);
                 });
 
         private static void RegisterDataLoadDomain(IServiceCollection services)

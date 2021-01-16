@@ -10,14 +10,14 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Worker
 {
-    class DataLoadWorker : BackgroundService
+    class MainWorker : BackgroundService
     {
         private const int REQUEST_OFFSET = 500; //TODO take from config
-        private readonly ILogger<DataLoadWorker> _logger;
-        private IWorkItemEnqueuer<object> _workItemQueue;
+        private readonly ILogger<MainWorker> _logger;
+        private IActionEnqueuer<object> _workItemQueue;
         private ICollection<IRestApiAdapter> _services;
 
-        public DataLoadWorker(ILogger<DataLoadWorker> logger, IWorkItemEnqueuer<object> workItemQueue)
+        public MainWorker(ILogger<MainWorker> logger, IActionEnqueuer<object> workItemQueue)
         {
             _logger = logger;
             _workItemQueue = workItemQueue;
