@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Abstract
+namespace ProofOfConcept.AbstractDomain
 {
-    interface IDataProcessorService<T>
+    public interface IDataProcessorService<T>
     {
         Task<bool> DetectEventAsync(T data);
     }

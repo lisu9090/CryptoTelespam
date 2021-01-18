@@ -1,8 +1,10 @@
+using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProofOfConcept.ServiceWorker.Abstract;
 using ProofOfConcept.ServiceWorker.Domain.DataLoad;
 using ProofOfConcept.ServiceWorker.Helpers;
+using ProofOfConcept.ServiceWorker.Model;
 using ProofOfConcept.ServiceWorker.Worker;
 
 namespace ProofOfConcept.ServiceWorker
@@ -20,6 +22,7 @@ namespace ProofOfConcept.ServiceWorker
                 {
                     services.AddHostedService<MainWorker>();
                     services.AddHttpClient<IRestApiAdapter, GnApiAdapter>();
+                    //services.AddAutoMapper()
 
                     RegisterDataLoadDomain(services);
                     RegisterDataProcessDomain(services);
@@ -28,7 +31,7 @@ namespace ProofOfConcept.ServiceWorker
 
         private static void RegisterDataLoadDomain(IServiceCollection services)
         {
-            services.AddScoped<IDataLoaderService, NuplLoaderService>();
+            services.AddScoped<IDataLoaderService<NuplEntity>, NuplLoaderService>();
         }
 
         private static void RegisterDataProcessDomain(IServiceCollection services)

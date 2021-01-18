@@ -1,8 +1,8 @@
 ﻿using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Abstract
+namespace ProofOfConcept.AbstractDomain
 {
-    interface IMessageSenderService<T>
+    public interface IMessageSenderService<T>
     {
         Task SendEventMessageAsync(T data);
     }
