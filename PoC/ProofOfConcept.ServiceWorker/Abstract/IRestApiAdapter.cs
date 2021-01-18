@@ -1,10 +1,12 @@
-﻿using System.Net.Http;
+﻿using ProofOfConcept.ServiceWorker.Dto;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Abstract
 {
     interface IRestApiAdapter
     {
-        Task<string> GetNuplAsync(string asset, int sinceTimeStamp = int.MinValue, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON");
+        Task<IEnumerable<NuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = int.MinValue, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON");
     }
 }

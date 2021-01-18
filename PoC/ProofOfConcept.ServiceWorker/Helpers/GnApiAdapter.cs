@@ -1,45 +1,54 @@
-﻿using ProofOfConcept.ServiceWorker.Abstract;
+﻿using Microsoft.Extensions.Configuration;
+using ProofOfConcept.ServiceWorker.Abstract;
+using ProofOfConcept.ServiceWorker.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ProofOfConcept.ServiceWorker.Helpers
 {
     class GnApiAdapter : IRestApiAdapter
     {
-
-        private const int TIMEOUT = 30; //TODO move to config
+        private readonly int _timeout;
+        private readonly string _apiBase;
+        private readonly string _apiKeyParamName;
+        private readonly string _key;
         private HttpClient _httpClient;
 
-        public GnApiAdapter(HttpClient httpClient)
+        public GnApiAdapter(HttpClient httpClient, IConfiguration configuration)
         {
             _httpClient = httpClient;
+            _timeout = int.Parse(configuration["Api:Timeout"]);
+            _apiBase = configuration["Api:BaseUrl"];
+            _apiKeyParamName = configuration["Api:ApiKeyParamName"];
+            _key = configuration["Api:Key"];
+
+            _httpClient.DefaultRequestHeaders.Accept.Clear();
+            _httpClient.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public Task<string> GetNuplAsync(string asset, int sinceTimeStamp = int.MinValue, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<NuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
         {
+            var uri = new UriBuilder(_apiBase, _apiKeyParamName, _key)
+                .SetEndpoint("/v1/metrics/indicators/net_unrealized_profit_loss")
+                .AddParameter("a", asset)
+                .AddParameter("s", sinceTimeStamp)
+                .AddParameter("u", untilTimeStamp)
+                .AddParameter("i", interval)
+                .AddParameter("f", format)
+                .Biuld();
 
-            throw new NotImplementedException();
+            var responseString = await _httpClient.GetStringAsync(uri);
+
+            return JsonSerializer.Deserialize<IEnumerable<NuplDto>>(responseString);
         }
-
-        //public async Task<string> QueryAsync(HttpMethod method, string url, params object[] paramters)
-        //{
-
-        //    var uri = "https://api.glassnode.com/v1/metrics/indicators/net_unrealized_profit_loss";
-
-        //    var response = await _httpClient.SendAsync(new HttpRequestMessage(method, url));
-        //    var responseString = "";
-
-        //    if(response.StatusCode == HttpStatusCode.OK)
-        //    {
-        //        responseString = await response.Content.ReadAsStringAsync();
-        //    }
-
-        //    return responseString;
-        //}
     }
 }

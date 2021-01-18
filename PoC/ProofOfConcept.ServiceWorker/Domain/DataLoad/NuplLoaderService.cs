@@ -21,9 +21,9 @@ namespace ProofOfConcept.ServiceWorker.Domain.DataLoad
 
         public async Task<NuplEntity> LoadDataAsync()
         {
-            var dataString = await _apiAdapter.GetNuplAsync(AssetSymbol.BTC);
+            var dto = await _apiAdapter.GetNuplAsync(AssetSymbol.BTC);
 
-            //todo import mapper, create dto
+            //todo import mapper, map to entity
 
             return new NuplEntity();
         }

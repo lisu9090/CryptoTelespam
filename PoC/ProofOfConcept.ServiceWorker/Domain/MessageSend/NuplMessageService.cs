@@ -10,9 +10,16 @@ namespace ProofOfConcept.ServiceWorker.Domain.MessageSend
 {
     class NuplMessageService : IMessageSenderService<NuplEntity>
     {
-        public Task SendEventMessageAsync(NuplEntity data)
+        private IMessageApiAdapter _messageApiAdapter;
+
+        public NuplMessageService(IMessageApiAdapter messageApiAdapter)
         {
-            throw new NotImplementedException();
+            _messageApiAdapter = messageApiAdapter;
+        }
+
+        public async Task SendEventMessageAsync(NuplEntity data)
+        {
+            await _messageApiAdapter.SendAsync($"Nupl event detected: Euphoria; Nupl value {data.Value}.");
         }
     }
 }

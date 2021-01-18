@@ -8,6 +8,7 @@ namespace ProofOfConcept.ServiceWorker.Model
 {
     class NuplEntity : Entity
     {
+        public DateTimeOffset Date { get; set; }
         public float Value { get; set; }
     }
 }

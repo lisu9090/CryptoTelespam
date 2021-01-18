@@ -12,7 +12,7 @@ namespace ProofOfConcept.ServiceWorker.Domain.DataProcess
     {
         public Task<bool> DetectEventAsync(NuplEntity data)
         {
-            throw new NotImplementedException();
+            return Task.Run(() => data.Value >= 0.75);
         }
     }
 }
