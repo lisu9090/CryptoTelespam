@@ -3,9 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.ServiceWorker", "PoC\ProofOfConcept.ServiceWorker\ProofOfConcept.ServiceWorker.csproj", "{80C984C7-5709-4216-A3FB-FACE4C11F7ED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.ServiceWorker", "PoC\ProofOfConcept.ServiceWorker\ProofOfConcept.ServiceWorker.csproj", "{80C984C7-5709-4216-A3FB-FACE4C11F7ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.Test", "PoC\ProofOfConcept.Test\ProofOfConcept.Test.csproj", "{EA7AAB27-A020-40EC-9705-362C8F5803EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.Test", "PoC\ProofOfConcept.Test\ProofOfConcept.Test.csproj", "{EA7AAB27-A020-40EC-9705-362C8F5803EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.Domain", "PoC\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj", "{7EBD7E0F-D624-4644-9B3F-330DA66E4390}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.AbstractDomain", "PoC\ProofOfConcept.AbstractDomain\ProofOfConcept.AbstractDomain.csproj", "{14C50B1C-CBD3-4713-B67F-2D36AFF829E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.DomainWorker", "PoC\ProofOfConcept.DomainWorker\ProofOfConcept.DomainWorker.csproj", "{0DBFF651-E3DA-4C82-9230-B656A2625912}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{EA7AAB27-A020-40EC-9705-362C8F5803EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA7AAB27-A020-40EC-9705-362C8F5803EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EA7AAB27-A020-40EC-9705-362C8F5803EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EBD7E0F-D624-4644-9B3F-330DA66E4390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EBD7E0F-D624-4644-9B3F-330DA66E4390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EBD7E0F-D624-4644-9B3F-330DA66E4390}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EBD7E0F-D624-4644-9B3F-330DA66E4390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14C50B1C-CBD3-4713-B67F-2D36AFF829E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C50B1C-CBD3-4713-B67F-2D36AFF829E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C50B1C-CBD3-4713-B67F-2D36AFF829E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C50B1C-CBD3-4713-B67F-2D36AFF829E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DBFF651-E3DA-4C82-9230-B656A2625912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DBFF651-E3DA-4C82-9230-B656A2625912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DBFF651-E3DA-4C82-9230-B656A2625912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DBFF651-E3DA-4C82-9230-B656A2625912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
