@@ -1,16 +1,12 @@
-﻿using ProofOfConcept.ServiceWorker.Abstract;
-using ProofOfConcept.ServiceWorker.Const;
-using ProofOfConcept.ServiceWorker.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
+﻿using ProofOfConcept.AbstractDomain;
+using ProofOfConcept.Domain.Abstract;
+using ProofOfConcept.Domain.Const;
+using ProofOfConcept.Domain.Model;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Domain.DataLoad
+namespace ProofOfConcept.Domain.Domain.DataLoad
 {
-    class NuplLoaderService : IDataLoaderService<NuplEntity>
+    public class NuplLoaderService : IDataLoaderService<NuplEntity>
     {
         private IRestApiAdapter _apiAdapter;
 

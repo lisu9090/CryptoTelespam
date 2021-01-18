@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Domain.Abstract
+namespace ProofOfConcept.Domain.Dto
 {
-    public interface IMessageApiAdapter
+    public class NuplDto
     {
-        Task SendAsync(string msg);
+        public long T { get; set; }
+        public float V { get; set; }
     }
 }

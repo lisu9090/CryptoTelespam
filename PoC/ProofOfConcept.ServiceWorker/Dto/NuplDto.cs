@@ -8,7 +8,7 @@ namespace ProofOfConcept.ServiceWorker.Dto
 {
     class NuplDto
     {
-        public long t { get; set; }
-        public float v { get; set; }
+        public long T { get; set; }
+        public float V { get; set; }
     }
 }

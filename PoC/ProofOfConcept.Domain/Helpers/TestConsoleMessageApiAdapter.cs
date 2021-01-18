@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Helpers
+namespace ProofOfConcept.Domain.Helpers
 {
     class TestConsoleMessageApiAdapter : IMessageApiAdapter
     {

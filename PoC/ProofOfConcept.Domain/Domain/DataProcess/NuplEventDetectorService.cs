@@ -1,12 +1,8 @@
-﻿using ProofOfConcept.ServiceWorker.Abstract;
-using ProofOfConcept.ServiceWorker.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using ProofOfConcept.AbstractDomain;
+using ProofOfConcept.Domain.Model;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Domain.DataProcess
+namespace ProofOfConcept.Domain.Domain.DataProcess
 {
     class NuplEventDetectorService : IDataProcessorService<NuplEntity>
     {

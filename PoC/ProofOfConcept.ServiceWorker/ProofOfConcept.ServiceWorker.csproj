@@ -16,4 +16,9 @@
   <ItemGroup>
     <Folder Include="Security\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProofOfConcept.AbstractDomain\ProofOfConcept.AbstractDomain.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.DomainWorker\ProofOfConcept.DomainWorker.csproj" />
+  </ItemGroup>
 </Project>

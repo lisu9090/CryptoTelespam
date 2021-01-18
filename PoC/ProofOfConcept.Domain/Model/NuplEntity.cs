@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Model
+namespace ProofOfConcept.Domain.Model
 {
-    class NuplEntity : Entity
+    public class NuplEntity : Entity
     {
         public DateTimeOffset Date { get; set; }
         public float Value { get; set; }

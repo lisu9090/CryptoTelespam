@@ -1,18 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
-using ProofOfConcept.ServiceWorker.Abstract;
-using ProofOfConcept.ServiceWorker.Dto;
-using System;
+﻿using Newtonsoft.Json;
+using ProofOfConcept.Domain.Abstract;
+using ProofOfConcept.Domain.Dto;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
-using System.Text.Json;
 using System.Threading.Tasks;
-using System.Web;
 
-namespace ProofOfConcept.ServiceWorker.Helpers
+namespace ProofOfConcept.Domain.Helpers
 {
     class GnApiAdapter : IRestApiAdapter
     {

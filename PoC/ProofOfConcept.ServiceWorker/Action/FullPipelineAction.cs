@@ -1,4 +1,5 @@
-﻿using ProofOfConcept.ServiceWorker.Abstract;
+﻿using ProofOfConcept.AbstractDomain;
+using ProofOfConcept.ServiceWorker.Abstract;
 using System;
 using System.Threading.Tasks;
 

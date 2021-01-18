@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Model
+namespace ProofOfConcept.Domain.Model
 {
-    class Entity
+    public class Entity
     {
         public DateTimeOffset CreatedOn { get; set; }
     }

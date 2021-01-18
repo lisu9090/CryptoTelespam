@@ -21,28 +21,13 @@ namespace ProofOfConcept.ServiceWorker
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<MainWorker>();
-                    services.AddHttpClient<IRestApiAdapter, GnApiAdapter>();
+                    //services.AddHttpClient<IRestApiAdapter, GnApiAdapter>();
                     //services.AddAutoMapper()
 
                     RegisterDataLoadDomain(services);
                     RegisterDataProcessDomain(services);
                     RegisterMessageSendDomain(services);
                 });
-
-        private static void RegisterDataLoadDomain(IServiceCollection services)
-        {
-            services.AddScoped<IDataLoaderService<NuplEntity>, NuplLoaderService>();
-        }
-
-        private static void RegisterDataProcessDomain(IServiceCollection services)
-        {
-
-        }
-
-        private static void RegisterMessageSendDomain(IServiceCollection services)
-        {
-
-        }
     }
 
 }

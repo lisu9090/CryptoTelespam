@@ -5,7 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Config\" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProofOfConcept.AbstractDomain\ProofOfConcept.AbstractDomain.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj" />
   </ItemGroup>
 
 </Project>

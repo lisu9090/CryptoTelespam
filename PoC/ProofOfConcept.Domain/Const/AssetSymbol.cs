@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Const
+namespace ProofOfConcept.Domain.Const
 {
     class AssetSymbol
     {

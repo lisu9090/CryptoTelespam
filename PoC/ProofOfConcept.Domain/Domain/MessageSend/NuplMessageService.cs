@@ -1,12 +1,9 @@
-﻿using ProofOfConcept.ServiceWorker.Abstract;
-using ProofOfConcept.ServiceWorker.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using ProofOfConcept.AbstractDomain;
+using ProofOfConcept.Domain.Abstract;
+using ProofOfConcept.Domain.Model;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Domain.MessageSend
+namespace ProofOfConcept.Domain.Domain.MessageSend
 {
     class NuplMessageService : IMessageSenderService<NuplEntity>
     {
