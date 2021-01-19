@@ -19,7 +19,7 @@ namespace ProofOfConcept.ServiceWorker
                 {
                     services.AddHostedService<MainWorker>();
                     services.RegisterDomain();
-                    services.RegisterApiClients();
+                    services.RegisterApiClients(hostContext.Configuration);
                 });
     }
 

@@ -1,11 +1,12 @@
 ﻿using ProofOfConcept.AbstractDomain;
+using ProofOfConcept.AbstractDomain.Model;
 using ProofOfConcept.ServiceWorker.Abstract;
 using System;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class FullPipelineAction<T> : IAction
+    class FullPipelineAction<T> : IAction where T : Entity
     {
         protected IDataLoaderService<T> _dataLoaderService;
         protected IDataProcessorService<T> _dataProcessorService;

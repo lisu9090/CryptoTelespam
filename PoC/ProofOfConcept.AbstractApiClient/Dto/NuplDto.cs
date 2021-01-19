@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ProofOfConcept.AbstractApiClient.Dto
+﻿namespace ProofOfConcept.AbstractApiClient.Dto
 {
     public class NuplDto
     {

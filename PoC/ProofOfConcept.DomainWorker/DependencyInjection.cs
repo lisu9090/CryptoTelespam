@@ -6,7 +6,6 @@ using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.Domain.Domain.DataLoad;
 using ProofOfConcept.Domain.Domain.DataProcess;
 using ProofOfConcept.Domain.Domain.MessageSend;
-using ProofOfConcept.Domain.Model;
 
 namespace ProofOfConcept.DomainWorker
 {
