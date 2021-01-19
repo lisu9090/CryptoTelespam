@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.AbstractApiClient.Dto
 {
-    public abstract class NuplDto
+    public class NuplDto
     {
         public long T { get; set; }
         public float V { get; set; }

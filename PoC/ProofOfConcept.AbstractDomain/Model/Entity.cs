@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.AbstractDomain.Model
 {
-    public abstract class Entity
+    public class Entity
     {
         public DateTimeOffset CreatedOn { get; set; }
     }

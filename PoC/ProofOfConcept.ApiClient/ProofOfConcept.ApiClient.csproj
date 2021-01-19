@@ -12,4 +12,8 @@
     <ProjectReference Include="..\ProofOfConcept.AbstractApiClient\ProofOfConcept.AbstractApiClient.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+  </ItemGroup>
+
 </Project>

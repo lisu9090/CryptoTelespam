@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using ProofOfConcept.AbstractDomain;
+using ProofOfConcept.AbstractDomain.Model;
 using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.Domain.Domain.DataLoad;
 using ProofOfConcept.Domain.Domain.DataProcess;
