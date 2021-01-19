@@ -6,19 +6,19 @@ using System;
 
 namespace ProofOfConcept.DomainWorker
 {
-    public class DependencyInjection
+    public static class DependencyInjection
     {
-        public static void RegisterDataLoadDomain(IServiceCollection services)
+        public static void RegisterDataLoadDomain(this IServiceCollection services)
         {
             services.AddScoped<IDataLoaderService<NuplEntity>, NuplLoaderService>();
         }
 
-        public static void RegisterDataProcessDomain(IServiceCollection services)
+        public static void RegisterDataProcessDomain(this IServiceCollection services)
         {
 
         }
 
-        public static void RegisterMessageSendDomain(IServiceCollection services)
+        public static void RegisterMessageSendDomain(this IServiceCollection services)
         {
 
         }

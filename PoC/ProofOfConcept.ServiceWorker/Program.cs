@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProofOfConcept.DomainWorker;
 using ProofOfConcept.ServiceWorker.Abstract;
 using ProofOfConcept.ServiceWorker.Domain.DataLoad;
 using ProofOfConcept.ServiceWorker.Helpers;
@@ -24,9 +25,9 @@ namespace ProofOfConcept.ServiceWorker
                     //services.AddHttpClient<IRestApiAdapter, GnApiAdapter>();
                     //services.AddAutoMapper()
 
-                    RegisterDataLoadDomain(services);
-                    RegisterDataProcessDomain(services);
-                    RegisterMessageSendDomain(services);
+                    services.RegisterDataLoadDomain();
+                    services.RegisterDataProcessDomain();
+                    services.RegisterMessageSendDomain();
                 });
     }
 

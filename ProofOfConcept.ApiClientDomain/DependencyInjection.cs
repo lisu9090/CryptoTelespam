@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProofOfConcept.Domain
+namespace ProofOfConcept.ApiClientDomain
 {
     public class Class1
     {

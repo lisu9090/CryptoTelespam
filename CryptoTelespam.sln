@@ -7,11 +7,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.ServiceWorke
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.Test", "PoC\ProofOfConcept.Test\ProofOfConcept.Test.csproj", "{EA7AAB27-A020-40EC-9705-362C8F5803EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.Domain", "PoC\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj", "{7EBD7E0F-D624-4644-9B3F-330DA66E4390}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.Domain", "PoC\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj", "{7EBD7E0F-D624-4644-9B3F-330DA66E4390}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.AbstractDomain", "PoC\ProofOfConcept.AbstractDomain\ProofOfConcept.AbstractDomain.csproj", "{14C50B1C-CBD3-4713-B67F-2D36AFF829E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.AbstractDomain", "PoC\ProofOfConcept.AbstractDomain\ProofOfConcept.AbstractDomain.csproj", "{14C50B1C-CBD3-4713-B67F-2D36AFF829E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.DomainWorker", "PoC\ProofOfConcept.DomainWorker\ProofOfConcept.DomainWorker.csproj", "{0DBFF651-E3DA-4C82-9230-B656A2625912}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.DomainWorker", "PoC\ProofOfConcept.DomainWorker\ProofOfConcept.DomainWorker.csproj", "{0DBFF651-E3DA-4C82-9230-B656A2625912}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.ApiClient", "PoC\ProofOfConcept.ApiClient\ProofOfConcept.ApiClient.csproj", "{872B472C-84BB-4F30-9449-45F4D3075804}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.AbstractApiClient", "PoC\ProofOfConcept.AbstractApiClient\ProofOfConcept.AbstractApiClient.csproj", "{6A2EF7DA-89E3-400D-A40A-951DC7F9A537}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.ApiClientDomain", "ProofOfConcept.ApiClientDomain\ProofOfConcept.ApiClientDomain.csproj", "{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{0DBFF651-E3DA-4C82-9230-B656A2625912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DBFF651-E3DA-4C82-9230-B656A2625912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DBFF651-E3DA-4C82-9230-B656A2625912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{872B472C-84BB-4F30-9449-45F4D3075804}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{872B472C-84BB-4F30-9449-45F4D3075804}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{872B472C-84BB-4F30-9449-45F4D3075804}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{872B472C-84BB-4F30-9449-45F4D3075804}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A2EF7DA-89E3-400D-A40A-951DC7F9A537}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A2EF7DA-89E3-400D-A40A-951DC7F9A537}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A2EF7DA-89E3-400D-A40A-951DC7F9A537}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A2EF7DA-89E3-400D-A40A-951DC7F9A537}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
