@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.DataProcess
 {
-    class NuplEventDetectorService : IDataProcessorService<NuplEntity>
+    public class NuplEventDetectorService : IDataProcessorService<NuplEntity>
     {
         public Task<bool> DetectEventAsync(NuplEntity data)
         {

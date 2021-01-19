@@ -1,26 +1,38 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutoMapper;
+using Microsoft.Extensions.DependencyInjection;
 using ProofOfConcept.AbstractDomain;
+using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.Domain.Domain.DataLoad;
+using ProofOfConcept.Domain.Domain.DataProcess;
+using ProofOfConcept.Domain.Domain.MessageSend;
 using ProofOfConcept.Domain.Model;
-using System;
 
 namespace ProofOfConcept.DomainWorker
 {
     public static class DependencyInjection
     {
-        public static void RegisterDataLoadDomain(this IServiceCollection services)
+        public static void RegisterDomain(this IServiceCollection services)
+        {
+            services.RegisterDataLoadServices();
+            services.RegisterDataProcessServices();
+            services.RegisterMessageSendServices();
+
+            services.AddAutoMapper(typeof(ApiClientToDomainProfile));
+        }
+
+        private static void RegisterDataLoadServices(this IServiceCollection services)
         {
             services.AddScoped<IDataLoaderService<NuplEntity>, NuplLoaderService>();
         }
 
-        public static void RegisterDataProcessDomain(this IServiceCollection services)
+        private static void RegisterDataProcessServices(this IServiceCollection services)
         {
-
+            services.AddScoped<IDataProcessorService<NuplEntity>, NuplEventDetectorService>();
         }
 
-        public static void RegisterMessageSendDomain(this IServiceCollection services)
+        private static void RegisterMessageSendServices(this IServiceCollection services)
         {
-
+            services.AddScoped<IMessageSenderService<NuplEntity>, NuplMessageService>();
         }
     }
 }

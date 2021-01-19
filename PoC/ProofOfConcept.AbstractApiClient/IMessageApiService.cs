@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Domain.Abstract
+namespace ProofOfConcept.AbstractApiClient
 {
-    public interface IMessageApiAdapter
+    public interface IMessageApiService
     {
         Task SendAsync(string msg);
     }

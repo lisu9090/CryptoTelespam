@@ -2,9 +2,9 @@
 using System;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ApiClient.Helpers
+namespace ProofOfConcept.ApiClient.Service
 {
-    class TestConsoleMessageApiAdapter : IMessageApiAdapter
+    public class TestConsoleMessageApiService : IMessageApiService
     {
         public async Task SendAsync(string msg)
         {

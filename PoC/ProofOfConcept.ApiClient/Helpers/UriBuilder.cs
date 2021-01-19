@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ApiClient.Helpers
 {
-    class UriBuilder
+    internal class UriBuilder
     {
         private string _uriBase;
         private string _endpoint;

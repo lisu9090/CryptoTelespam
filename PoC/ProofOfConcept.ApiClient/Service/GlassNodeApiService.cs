@@ -1,14 +1,15 @@
-﻿using Newtonsoft.Json;
-using ProofOfConcept.Domain.Abstract;
-using ProofOfConcept.Domain.Dto;
+﻿using ProofOfConcept.AbstractApiClient;
+using ProofOfConcept.AbstractApiClient.Dto;
+using ProofOfConcept.ApiClient.Helpers;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text.Json;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Domain.Helpers
+namespace ProofOfConcept.ApiClient.Service
 {
-    class GnApiAdapter : IRestApiAdapter
+    public class GlassNodeApiService : IRestApiService
     {
         private readonly int _timeout;
         private readonly string _apiBase;
@@ -16,18 +17,31 @@ namespace ProofOfConcept.Domain.Helpers
         private readonly string _key;
         private HttpClient _httpClient;
 
-        public GnApiAdapter(HttpClient httpClient, IConfiguration configuration)
+        public GlassNodeApiService(int timeout, string apiBase, string apiKeyParamName, string key, HttpClient httpClient)
         {
+            _timeout = timeout;
+            _apiBase = apiBase;
+            _apiKeyParamName = apiKeyParamName;
+            _key = key;
             _httpClient = httpClient;
-            _timeout = int.Parse(configuration["Api:Timeout"]);
-            _apiBase = configuration["Api:BaseUrl"];
-            _apiKeyParamName = configuration["Api:ApiKeyParamName"];
-            _key = configuration["Api:Key"];
 
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
+
+        //public GnApiAdapter(HttpClient httpClient, IConfiguration configuration)
+        //{
+        //    _httpClient = httpClient;
+        //    _timeout = int.Parse(configuration["Api:Timeout"]);
+        //    _apiBase = configuration["Api:BaseUrl"];
+        //    _apiKeyParamName = configuration["Api:ApiKeyParamName"];
+        //    _key = configuration["Api:Key"];
+
+        //    _httpClient.DefaultRequestHeaders.Accept.Clear();
+        //    _httpClient.DefaultRequestHeaders.Accept.Add(
+        //        new MediaTypeWithQualityHeaderValue("application/json"));
+        //}
 
         public async Task<IEnumerable<NuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
         {

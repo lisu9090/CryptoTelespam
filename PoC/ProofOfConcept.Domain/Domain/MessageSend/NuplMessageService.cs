@@ -1,15 +1,15 @@
-﻿using ProofOfConcept.AbstractDomain;
-using ProofOfConcept.Domain.Abstract;
+﻿using ProofOfConcept.AbstractApiClient;
+using ProofOfConcept.AbstractDomain;
 using ProofOfConcept.Domain.Model;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.MessageSend
 {
-    class NuplMessageService : IMessageSenderService<NuplEntity>
+    public class NuplMessageService : IMessageSenderService<NuplEntity>
     {
-        private IMessageApiAdapter _messageApiAdapter;
+        private IMessageApiService _messageApiAdapter;
 
-        public NuplMessageService(IMessageApiAdapter messageApiAdapter)
+        public NuplMessageService(IMessageApiService messageApiAdapter)
         {
             _messageApiAdapter = messageApiAdapter;
         }
