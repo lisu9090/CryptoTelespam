@@ -22,17 +22,17 @@ namespace ProofOfConcept.DomainWorker
 
         private static void RegisterDataLoadServices(this IServiceCollection services)
         {
-            services.AddScoped<IDataLoaderService<NuplEntity>, NuplLoaderService>();
+            services.AddScoped<IDataLoaderService<INupl>, NuplLoaderService>();
         }
 
         private static void RegisterDataProcessServices(this IServiceCollection services)
         {
-            services.AddScoped<IDataProcessorService<NuplEntity>, NuplEventDetectorService>();
+            services.AddScoped<IDataProcessorService<INupl>, NuplEventDetectorService>();
         }
 
         private static void RegisterMessageSendServices(this IServiceCollection services)
         {
-            services.AddScoped<IMessageSenderService<NuplEntity>, NuplMessageService>();
+            services.AddScoped<IMessageSenderService<INupl>, NuplMessageService>();
         }
     }
 }

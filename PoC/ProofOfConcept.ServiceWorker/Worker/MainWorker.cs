@@ -1,6 +1,10 @@
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using ProofOfConcept.AbstractDomain;
+using ProofOfConcept.AbstractDomain.Model;
 using ProofOfConcept.ServiceWorker.Abstract;
+using ProofOfConcept.ServiceWorker.Action;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,21 +14,30 @@ namespace ProofOfConcept.ServiceWorker.Worker
     class MainWorker : BackgroundService
     {
         private readonly ILogger<MainWorker> _logger;
-        private IActionDequeuer<IAction> _actionQueue;
+        private readonly IActionDequeuer<IAction> _actionDequeuer;
+        private readonly IActionEnqueuer<IAction> _actionEnqueuer;
+        private readonly IServiceProvider _serviceProvider;
 
-        public MainWorker(ILogger<MainWorker> logger, IActionDequeuer<IAction> actionQueue)
+        public MainWorker(ILogger<MainWorker> logger, 
+            IActionDequeuer<IAction> actionDequeuer, 
+            IActionEnqueuer<IAction> actionEnqueuer,
+            IServiceProvider serviceProvider)
         {
             _logger = logger;
-            _actionQueue = actionQueue;
+            _actionDequeuer = actionDequeuer;
+            _actionEnqueuer = actionEnqueuer;
+            _serviceProvider = serviceProvider;
+
+            Test();
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                if (_actionQueue.HasAction())
+                if (_actionDequeuer.HasAction())
                 {
-                    var work = _actionQueue.DequeueAction();
+                    var work = _actionDequeuer.DequeueAction();
 
                     try
                     {
@@ -36,6 +49,14 @@ namespace ProofOfConcept.ServiceWorker.Worker
                     }
                 }
             }
+        }
+
+        private void Test()
+        {
+            _actionEnqueuer.EnqueueAction(new FullPipelineAction<INupl>(
+                _serviceProvider.GetRequiredService<IDataLoaderService<INupl>>(),
+                _serviceProvider.GetRequiredService<IDataProcessorService<INupl>>(),
+                _serviceProvider.GetRequiredService<IMessageSenderService<INupl>>()));
         }
     }
 }

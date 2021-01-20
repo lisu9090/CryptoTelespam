@@ -3,11 +3,12 @@ using ProofOfConcept.AbstractApiClient;
 using ProofOfConcept.AbstractDomain;
 using ProofOfConcept.AbstractDomain.Model;
 using ProofOfConcept.Domain.Const;
+using ProofOfConcept.Domain.Model;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
 {
-    public class NuplLoaderService : IDataLoaderService<NuplEntity>
+    public class NuplLoaderService : IDataLoaderService<INupl>
     {
         private IRestApiService _apiAdapter;
         private IMapper _mapper;
@@ -18,14 +19,12 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
             _mapper = mapper;
         }
 
-        public async Task<NuplEntity> LoadDataAsync()
+        public async Task<INupl> LoadDataAsync()
         {
             var dto = await _apiAdapter.GetNuplAsync(AssetSymbol.BTC);
+            var nupl = _mapper.Map<INupl>(dto);
 
-
-            //todo import mapper, map to entity
-
-            return new NuplEntity();
+            return nupl;
         }
     }
 }

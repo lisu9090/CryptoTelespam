@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProofOfConcept.AbstractDomain.Model
+namespace ProofOfConcept.Domain.Model
 {
     public class Entity
     {

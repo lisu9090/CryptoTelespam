@@ -9,7 +9,7 @@ namespace ProofOfConcept.ApiClientDomain
     {
         public ApiClientToDomainProfile()
         {
-            CreateMap<NuplDto, NuplEntity>(MemberList.Source)
+            CreateMap<INuplDto, INupl>(MemberList.Source)
                 .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V))
                 .ForMember(n => n.Date, opt => opt.MapFrom(d => DateTimeOffset.FromUnixTimeMilliseconds(d.T)));
 

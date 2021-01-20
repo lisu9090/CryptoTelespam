@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.MessageSend
 {
-    public class NuplMessageService : IMessageSenderService<NuplEntity>
+    public class NuplMessageService : IMessageSenderService<INupl>
     {
         private IMessageApiService _messageApiAdapter;
 
@@ -14,7 +14,7 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
             _messageApiAdapter = messageApiAdapter;
         }
 
-        public async Task SendEventMessageAsync(NuplEntity data)
+        public async Task SendEventMessageAsync(INupl data)
         {
             await _messageApiAdapter.SendAsync($"Nupl event detected: Euphoria; Nupl value {data.Value}.");
         }

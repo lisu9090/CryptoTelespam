@@ -30,20 +30,7 @@ namespace ProofOfConcept.ApiClient.Service
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        //public GnApiAdapter(HttpClient httpClient, IConfiguration configuration)
-        //{
-        //    _httpClient = httpClient;
-        //    _timeout = int.Parse(configuration["Api:Timeout"]);
-        //    _apiBase = configuration["Api:BaseUrl"];
-        //    _apiKeyParamName = configuration["Api:ApiKeyParamName"];
-        //    _key = configuration["Api:Key"];
-
-        //    _httpClient.DefaultRequestHeaders.Accept.Clear();
-        //    _httpClient.DefaultRequestHeaders.Accept.Add(
-        //        new MediaTypeWithQualityHeaderValue("application/json"));
-        //}
-
-        public async Task<IEnumerable<NuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<INuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
         {
             var uri = new UriBuilder(_apiBase, _apiKeyParamName, _key)
                 .SetEndpoint("/v1/metrics/indicators/net_unrealized_profit_loss")
@@ -56,7 +43,7 @@ namespace ProofOfConcept.ApiClient.Service
 
             var responseString = await _httpClient.GetStringAsync(uri);
 
-            return JsonSerializer.Deserialize<IEnumerable<NuplDto>>(responseString);
+            return JsonSerializer.Deserialize<IEnumerable<INuplDto>>(responseString);
         }
     }
 }

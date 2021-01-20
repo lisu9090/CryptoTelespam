@@ -6,6 +6,6 @@ namespace ProofOfConcept.AbstractApiClient
 {
     public interface IRestApiService
     {
-        Task<IEnumerable<NuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = int.MinValue, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON");
+        Task<IEnumerable<INuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = int.MinValue, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON");
     }
 }

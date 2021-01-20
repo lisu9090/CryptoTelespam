@@ -1,24 +1,37 @@
 ﻿using ProofOfConcept.ServiceWorker.Abstract;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ProofOfConcept.ServiceWorker.Helpers
 {
-    class ActionQueue<T> : IActionEnqueuer<T>, IActionDequeuer<T> where T : IAction
+    class ActionQueue : IActionEnqueuer<IAction>, IActionDequeuer<IAction>
     {
-        public T DequeueAction()
+        private static Queue<IAction> _queue = new Queue<IAction>();
+        private static object _locker = new object();
+
+        public IAction DequeueAction()
         {
-            throw new NotImplementedException();
+            lock (_locker)
+            {
+                return _queue.Dequeue();
+            }
         }
 
-        public void EnqueueAction(T workItem)
+        public void EnqueueAction(IAction workItem)
         {
-            throw new NotImplementedException();
+            lock (_locker)
+            {
+                _queue.Enqueue(workItem);
+            }
         }
 
         public bool HasAction()
         {
-            throw new NotImplementedException();
+            lock (_locker)
+            {
+                return _queue.Any();
+            }
         }
     }
 }

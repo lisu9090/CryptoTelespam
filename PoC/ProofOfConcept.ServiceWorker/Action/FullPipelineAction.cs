@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class FullPipelineAction<T> : IAction where T : Entity
+    class FullPipelineAction<T> : IAction
     {
         protected IDataLoaderService<T> _dataLoaderService;
         protected IDataProcessorService<T> _dataProcessorService;

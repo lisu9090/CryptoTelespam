@@ -2,6 +2,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.DomainWorker;
+using ProofOfConcept.ServiceWorker.Abstract;
+using ProofOfConcept.ServiceWorker.Helpers;
 using ProofOfConcept.ServiceWorker.Worker;
 
 namespace ProofOfConcept.ServiceWorker
@@ -18,9 +20,17 @@ namespace ProofOfConcept.ServiceWorker
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<MainWorker>();
+
+                    RegisterServiceWorker(services);
+
                     services.RegisterDomain();
                     services.RegisterApiClients(hostContext.Configuration);
                 });
-    }
 
+        private static void RegisterServiceWorker(IServiceCollection services)
+        {
+            services.AddSingleton<IActionEnqueuer<IAction>, ActionQueue>();
+            services.AddSingleton<IActionDequeuer<IAction>, ActionQueue>();
+        }
+    }
 }

@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.AbstractDomain
 {
-    public interface IMessageSenderService<T> where T : Entity
+    public interface IMessageSenderService<T>
     {
         Task SendEventMessageAsync(T data);
     }
