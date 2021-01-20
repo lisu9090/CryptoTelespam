@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using ProofOfConcept.AbstractApiClient;
 using ProofOfConcept.ApiClient.Service;
+using System.Net.Http;
 
 namespace ProofOfConcept.ApiClientDomain
 {
@@ -9,7 +10,13 @@ namespace ProofOfConcept.ApiClientDomain
     {
         public static void RegisterApiClients(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<IRestApiService, GlassNodeApiService>(); //todo add params
+            services.AddScoped<IRestApiService, GlassNodeApiService>(serviceProvider => 
+                new GlassNodeApiService(int.Parse(configuration["Api:Timeout"]),
+                    configuration["Api:BaseUrl"],
+                    configuration["Api:ApiKeyParamName"],
+                    configuration["Api:Key"],
+                    serviceProvider.GetRequiredService<HttpClient>()));
+
             services.AddScoped<IMessageApiService, TestConsoleMessageApiService>();
         }
     }
