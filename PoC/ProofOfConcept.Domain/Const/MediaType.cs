@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProofOfConcept.Domain.Const
 {
-    class MediaType
+    internal class MediaType
     {
         public const string CSV = "CSV";
         public const string JSON = "JSON";

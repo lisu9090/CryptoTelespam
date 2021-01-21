@@ -3,6 +3,7 @@ using ProofOfConcept.AbstractApiClient;
 using ProofOfConcept.AbstractDomain;
 using ProofOfConcept.AbstractDomain.Model;
 using ProofOfConcept.Domain.Const;
+using ProofOfConcept.Domain.Helper;
 using ProofOfConcept.Domain.Model;
 using System;
 using System.Collections.Generic;
@@ -24,14 +25,10 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 
         public async Task<INupl> LoadDataAsync()
         {
-            //todo move to some helper
-            var since = DateTimeOffset.UtcNow;
-
-            since = since.AddMilliseconds(-since.Millisecond);
-            since = since.AddSeconds(-since.Second);
-            since = since.AddMinutes(-since.Minute);
-            since = since.AddHours(-since.Hour);
-            since = since.AddDays(-1);
+            var since = DateTimeBuilder.UtcNow()
+                .AddDays(-1)
+                .Truncate()
+                .Build();
 
             var dtos = await _apiAdapter.GetNuplAsync(AssetSymbol.BTC, Convert.ToInt32(since.ToUnixTimeSeconds()));
             var dto = dtos.OrderBy(item => item.T).LastOrDefault();

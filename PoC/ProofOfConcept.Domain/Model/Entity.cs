@@ -2,7 +2,7 @@
 
 namespace ProofOfConcept.Domain.Model
 {
-    public class Entity
+    internal class Entity
     {
         public DateTimeOffset CreatedOn { get; set; }
     }
