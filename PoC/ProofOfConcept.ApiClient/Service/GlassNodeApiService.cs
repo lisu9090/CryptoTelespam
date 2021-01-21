@@ -1,5 +1,6 @@
 ﻿using ProofOfConcept.AbstractApiClient;
 using ProofOfConcept.AbstractApiClient.Dto;
+using ProofOfConcept.ApiClient.Dto;
 using ProofOfConcept.ApiClient.Helpers;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -15,6 +16,7 @@ namespace ProofOfConcept.ApiClient.Service
         private readonly string _apiBase;
         private readonly string _apiKeyParamName;
         private readonly string _key;
+        private readonly JsonSerializerOptions _jsonDefaults;
         private HttpClient _httpClient;
 
         public GlassNodeApiService(int timeout, string apiBase, string apiKeyParamName, string key, HttpClient httpClient)
@@ -24,6 +26,11 @@ namespace ProofOfConcept.ApiClient.Service
             _apiKeyParamName = apiKeyParamName;
             _key = key;
             _httpClient = httpClient;
+
+            _jsonDefaults = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
 
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
@@ -43,7 +50,7 @@ namespace ProofOfConcept.ApiClient.Service
 
             var responseString = await _httpClient.GetStringAsync(uri);
 
-            return JsonSerializer.Deserialize<IEnumerable<INuplDto>>(responseString);
+            return JsonSerializer.Deserialize<IEnumerable<NuplDto>>(responseString, _jsonDefaults);
         }
     }
 }

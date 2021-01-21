@@ -4,6 +4,9 @@ using ProofOfConcept.AbstractDomain;
 using ProofOfConcept.AbstractDomain.Model;
 using ProofOfConcept.Domain.Const;
 using ProofOfConcept.Domain.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
@@ -21,10 +24,19 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 
         public async Task<INupl> LoadDataAsync()
         {
-            var dto = await _apiAdapter.GetNuplAsync(AssetSymbol.BTC);
-            var nupl = _mapper.Map<INupl>(dto);
+            //todo move to some helper
+            var since = DateTimeOffset.UtcNow;
 
-            return nupl;
+            since = since.AddMilliseconds(-since.Millisecond);
+            since = since.AddSeconds(-since.Second);
+            since = since.AddMinutes(-since.Minute);
+            since = since.AddHours(-since.Hour);
+            since = since.AddDays(-1);
+
+            var dtos = await _apiAdapter.GetNuplAsync(AssetSymbol.BTC, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            var dto = dtos.OrderBy(item => item.T).LastOrDefault();
+
+            return _mapper.Map<NuplEntity>(dto);
         }
     }
 }

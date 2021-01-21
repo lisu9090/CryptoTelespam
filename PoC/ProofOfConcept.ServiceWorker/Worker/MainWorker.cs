@@ -27,8 +27,13 @@ namespace ProofOfConcept.ServiceWorker.Worker
             _actionDequeuer = actionDequeuer;
             _actionEnqueuer = actionEnqueuer;
             _serviceProvider = serviceProvider;
+        }
 
+        public override Task StartAsync(CancellationToken cancellationToken)
+        {
             Test();
+
+            return base.StartAsync(cancellationToken);
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

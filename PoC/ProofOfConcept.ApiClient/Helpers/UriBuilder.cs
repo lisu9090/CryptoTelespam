@@ -18,7 +18,7 @@ namespace ProofOfConcept.ApiClient.Helpers
             _uriBase = uriBase;
         }
 
-        public UriBuilder(string uriBase, string apiKeyParamName, string apiKey) : this(uriBase)
+        public UriBuilder(string uriBase, string apiKeyParamName = "", string apiKey = "") : this(uriBase)
         {
             _apiKeyParamName = apiKeyParamName;
             _apiKey = apiKey;
@@ -54,18 +54,18 @@ namespace ProofOfConcept.ApiClient.Helpers
 
             sb.Append(_endpoint);
 
-            if(_parameters.Count() > 0)
+            if (!string.IsNullOrEmpty(_apiKeyParamName))
+            {
+                _parameters.Add(_apiKeyParamName, _apiKey);
+            }
+
+            if (_parameters.Count() > 0)
             {
                 sb.Append("?");
 
                 var paramString = string.Join("&", _parameters.Select(keyValue => $"{keyValue.Key}={keyValue.Value}"));
 
                 sb.Append(paramString);
-            }
-
-            if (!string.IsNullOrEmpty(_apiKeyParamName))
-            {
-                sb.Append($"{_apiKeyParamName}={_apiKey}");
             }
 
             return sb.ToString();
