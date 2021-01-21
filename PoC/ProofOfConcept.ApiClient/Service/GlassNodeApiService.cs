@@ -39,6 +39,8 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task<IEnumerable<INuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
         {
+            //todo add error handling + retry;
+
             var uri = new UriBuilder(_apiBase, _apiKeyParamName, _key)
                 .SetEndpoint("/v1/metrics/indicators/net_unrealized_profit_loss")
                 .AddParameter("a", asset)
