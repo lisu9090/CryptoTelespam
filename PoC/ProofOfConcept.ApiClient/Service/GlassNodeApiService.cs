@@ -2,6 +2,7 @@
 using ProofOfConcept.AbstractApiClient.Dto;
 using ProofOfConcept.ApiClient.Dto;
 using ProofOfConcept.ApiClient.Helpers;
+using ProofOfConcept.Common.Const;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -37,7 +38,7 @@ namespace ProofOfConcept.ApiClient.Service
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<IEnumerable<INuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<INuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             //todo add error handling + retry;
 

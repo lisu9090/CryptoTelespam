@@ -14,7 +14,8 @@ namespace ProofOfConcept.ServiceWorker.Action
 
         public FullPipelineAction(IDataLoaderService<T> dataLoaderService, 
             IDataProcessorService<T> dataProcessorService, 
-            IMessageSenderService<T> messageSenderService)
+            IMessageSenderService<T> messageSenderService,
+            string cryptocurrency)
         {
             _dataLoaderService = dataLoaderService;
             _dataProcessorService = dataProcessorService;

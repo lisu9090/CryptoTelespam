@@ -1,6 +1,6 @@
-﻿namespace ProofOfConcept.Domain.Const
+﻿namespace ProofOfConcept.Common.Const
 {
-    internal class AssetSymbol
+    public class AssetSymbol
     {
         public const string BTC = "BTC";
         public const string ETH = "ETH";

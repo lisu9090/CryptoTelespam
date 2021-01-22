@@ -2,11 +2,10 @@
 using ProofOfConcept.AbstractApiClient;
 using ProofOfConcept.AbstractDomain;
 using ProofOfConcept.AbstractDomain.Model;
-using ProofOfConcept.Domain.Const;
+using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain.Helper;
 using ProofOfConcept.Domain.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 

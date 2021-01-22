@@ -13,11 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.AbstractDoma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.DomainWorker", "PoC\ProofOfConcept.DomainWorker\ProofOfConcept.DomainWorker.csproj", "{0DBFF651-E3DA-4C82-9230-B656A2625912}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.ApiClient", "PoC\ProofOfConcept.ApiClient\ProofOfConcept.ApiClient.csproj", "{872B472C-84BB-4F30-9449-45F4D3075804}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.ApiClient", "PoC\ProofOfConcept.ApiClient\ProofOfConcept.ApiClient.csproj", "{872B472C-84BB-4F30-9449-45F4D3075804}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.AbstractApiClient", "PoC\ProofOfConcept.AbstractApiClient\ProofOfConcept.AbstractApiClient.csproj", "{6A2EF7DA-89E3-400D-A40A-951DC7F9A537}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.AbstractApiClient", "PoC\ProofOfConcept.AbstractApiClient\ProofOfConcept.AbstractApiClient.csproj", "{6A2EF7DA-89E3-400D-A40A-951DC7F9A537}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.ApiClientDomain", "ProofOfConcept.ApiClientDomain\ProofOfConcept.ApiClientDomain.csproj", "{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.ApiClientDomain", "ProofOfConcept.ApiClientDomain\ProofOfConcept.ApiClientDomain.csproj", "{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.Common", "ProofOfConcept.Common\ProofOfConcept.Common.csproj", "{DD6E730B-3DDE-4991-8421-D9D590C4DF91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD6E730B-3DDE-4991-8421-D9D590C4DF91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD6E730B-3DDE-4991-8421-D9D590C4DF91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD6E730B-3DDE-4991-8421-D9D590C4DF91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD6E730B-3DDE-4991-8421-D9D590C4DF91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
