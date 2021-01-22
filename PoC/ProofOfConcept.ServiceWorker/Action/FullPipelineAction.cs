@@ -1,30 +1,31 @@
 ﻿using ProofOfConcept.AbstractDomain;
 using ProofOfConcept.AbstractDomain.Model;
 using ProofOfConcept.ServiceWorker.Abstract;
-using System;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class FullPipelineAction<T> : IAction
+    class FullPipelineAction<T> : IAction where T : ICryptocurrencyIndicator
     {
-        protected IDataLoaderService<T> _dataLoaderService;
-        protected IDataProcessorService<T> _dataProcessorService;
-        protected IMessageSenderService<T> _messageSenderService;
+        protected readonly IDataLoaderService<T> _dataLoaderService;
+        protected readonly IDataProcessorService<T> _dataProcessorService;
+        protected readonly IMessageSenderService<T> _messageSenderService;
+        private readonly string _cryptocurrencySymbol;
 
         public FullPipelineAction(IDataLoaderService<T> dataLoaderService, 
             IDataProcessorService<T> dataProcessorService, 
             IMessageSenderService<T> messageSenderService,
-            string cryptocurrency)
+            string cryptocurrencySymbol)
         {
             _dataLoaderService = dataLoaderService;
             _dataProcessorService = dataProcessorService;
             _messageSenderService = messageSenderService;
+            _cryptocurrencySymbol = cryptocurrencySymbol;
         }
 
         public virtual async Task ExecuteAsync()
         {
-            var data = await _dataLoaderService.LoadDataAsync();
+            var data = await _dataLoaderService.LoadDataAsync(_cryptocurrencySymbol);
 
             if(await _dataProcessorService.DetectEventAsync(data))
             {

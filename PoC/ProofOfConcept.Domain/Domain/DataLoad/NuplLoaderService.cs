@@ -22,17 +22,25 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
             _mapper = mapper;
         }
 
-        public async Task<INupl> LoadDataAsync()
+        public async Task<INupl> LoadDataAsync(string cryptocurrencySymbol)
         {
+            if(!(cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC) || cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC)))
+            {
+                cryptocurrencySymbol = CryptocurrencySymbol.BTC;
+            }
+
             var since = DateTimeBuilder.UtcNow()
                 .AddDays(-1)
                 .Truncate()
                 .Build();
 
-            var dtos = await _apiAdapter.GetNuplAsync(AssetSymbol.BTC, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            var dtos = await _apiAdapter.GetNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
             var dto = dtos.OrderBy(item => item.T).LastOrDefault();
+            var entity = _mapper.Map<NuplEntity>(dto);
 
-            return _mapper.Map<NuplEntity>(dto);
+            entity.CryptocurrencySymbol = cryptocurrencySymbol;
+
+            return entity;
         }
     }
 }

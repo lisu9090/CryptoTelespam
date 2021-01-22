@@ -1,9 +1,25 @@
-﻿using System;
+﻿using ProofOfConcept.AbstractDomain.Model;
+using System;
 
 namespace ProofOfConcept.Domain.Model
 {
-    internal class Entity
+    internal class Entity : ICryptocurrencyIndicator
     {
-        public string Cryptocurrency { get; set; }
+        private string _cryptocurrencySymbol = "";
+        
+        public string CryptocurrencySymbol {
+            get
+            {
+                return _cryptocurrencySymbol;
+            }
+
+            set 
+            {
+                if (string.IsNullOrEmpty(_cryptocurrencySymbol))
+                {
+                    _cryptocurrencySymbol = value;
+                }
+            }
+        }
     }
 }

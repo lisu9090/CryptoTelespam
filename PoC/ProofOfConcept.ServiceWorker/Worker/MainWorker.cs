@@ -63,7 +63,7 @@ namespace ProofOfConcept.ServiceWorker.Worker
                 _serviceProvider.GetRequiredService<IDataLoaderService<INupl>>(),
                 _serviceProvider.GetRequiredService<IDataProcessorService<INupl>>(),
                 _serviceProvider.GetRequiredService<IMessageSenderService<INupl>>(),
-                AssetSymbol.BTC));
+                CryptocurrencySymbol.BTC));
         }
     }
 }
