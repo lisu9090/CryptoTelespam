@@ -3,6 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using ProofOfConcept.AbstractDomain;
 using ProofOfConcept.AbstractDomain.Model;
+using ProofOfConcept.Common.Const;
 using ProofOfConcept.ServiceWorker.Abstract;
 using ProofOfConcept.ServiceWorker.Action;
 using System;
@@ -61,7 +62,8 @@ namespace ProofOfConcept.ServiceWorker.Worker
             _actionEnqueuer.EnqueueAction(new FullPipelineAction<INupl>(
                 _serviceProvider.GetRequiredService<IDataLoaderService<INupl>>(),
                 _serviceProvider.GetRequiredService<IDataProcessorService<INupl>>(),
-                _serviceProvider.GetRequiredService<IMessageSenderService<INupl>>()));
+                _serviceProvider.GetRequiredService<IMessageSenderService<INupl>>(),
+                AssetSymbol.BTC));
         }
     }
 }

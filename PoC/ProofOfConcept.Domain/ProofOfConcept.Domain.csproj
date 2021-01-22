@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
     <ProjectReference Include="..\ProofOfConcept.AbstractApiClient\ProofOfConcept.AbstractApiClient.csproj" />
     <ProjectReference Include="..\ProofOfConcept.AbstractDomain\ProofOfConcept.AbstractDomain.csproj" />
   </ItemGroup>

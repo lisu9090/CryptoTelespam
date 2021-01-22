@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.ApiClient", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.AbstractApiClient", "PoC\ProofOfConcept.AbstractApiClient\ProofOfConcept.AbstractApiClient.csproj", "{6A2EF7DA-89E3-400D-A40A-951DC7F9A537}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.ApiClientDomain", "ProofOfConcept.ApiClientDomain\ProofOfConcept.ApiClientDomain.csproj", "{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.ApiClientDomain", "PoC\ProofOfConcept.ApiClientDomain\ProofOfConcept.ApiClientDomain.csproj", "{E8ADDA49-46BA-4F61-A1BC-4D1E2631607B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.Common", "ProofOfConcept.Common\ProofOfConcept.Common.csproj", "{DD6E730B-3DDE-4991-8421-D9D590C4DF91}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.Common", "PoC\ProofOfConcept.Common\ProofOfConcept.Common.csproj", "{DD6E730B-3DDE-4991-8421-D9D590C4DF91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
