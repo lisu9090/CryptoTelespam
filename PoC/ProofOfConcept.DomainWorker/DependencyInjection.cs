@@ -24,12 +24,16 @@ namespace ProofOfConcept.DomainWorker
         {
             services.AddTransient<IDataLoaderService<INupl>, NuplLoaderService>();
             services.AddTransient<IDataLoaderService<INewAddresses>, NewAddressesLoaderService>();
+            services.AddTransient<IDataLoaderService<ITotalAddresses>, TotalAddressesLoaderService>();
+            services.AddTransient<IDataLoaderService<IActiveAddresses>, ActiveAddressesLoaderService>();
         }
 
         private static void RegisterDataProcessServices(this IServiceCollection services)
         {
             services.AddTransient<IDataProcessorService<INupl>, NuplEventDetectorService>();
             services.AddTransient<IDataProcessorService<INewAddresses>, NewAddressesEventDetectorService>();
+            services.AddTransient<IDataProcessorService<ITotalAddresses>, TotalAddressesEventDetectorService>();
+            services.AddTransient<IDataProcessorService<IActiveAddresses>, ActiveAddressesEventDetectorService>();
         }
 
         private static void RegisterMessageSendServices(this IServiceCollection services)
