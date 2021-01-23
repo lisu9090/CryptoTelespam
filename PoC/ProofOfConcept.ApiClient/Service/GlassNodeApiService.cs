@@ -41,19 +41,48 @@ namespace ProofOfConcept.ApiClient.Service
         public async Task<IEnumerable<INuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             //todo add error handling + retry;
+            return await GetIndicatorAsync<IEnumerable<NuplDto>>("/v1/metrics/indicators/net_unrealized_profit_loss",
+                asset,
+                sinceTimeStamp,
+                untilTimeStamp,
+                interval,
+                format);
+        }
 
+        public async Task<IEnumerable<INewAddressesDto>> GetNewAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        {
+            return await GetIndicatorAsync<IEnumerable<NewAddressesDto>>("/v1/metrics/addresses/sending_to_exchanges_count",
+                asset,
+                sinceTimeStamp,
+                untilTimeStamp,
+                interval,
+                format);
+        }
+
+        public async Task<IEnumerable<ITotalAddressesDto>> GetTotalAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        {
+            return await GetIndicatorAsync<IEnumerable<TotalAddressesDto>>("/v1/metrics/addresses/count",
+                asset,
+                sinceTimeStamp,
+                untilTimeStamp,
+                interval,
+                format);
+        }
+
+        private async Task<TResult> GetIndicatorAsync<TResult>(string endpoint, string asset, int sinceTimeStamp, int untilTimeStamp, string interval, string format)
+        {
             var uri = new UriBuilder(_apiBase, _apiKeyParamName, _key)
-                .SetEndpoint("/v1/metrics/indicators/net_unrealized_profit_loss")
-                .AddParameter("a", asset)
-                .AddParameter("s", sinceTimeStamp)
-                .AddParameter("u", untilTimeStamp)
-                .AddParameter("i", interval)
-                .AddParameter("f", format)
-                .Biuld();
+                 .SetEndpoint(endpoint)
+                 .AddParameter("a", asset)
+                 .AddParameter("s", sinceTimeStamp)
+                 .AddParameter("u", untilTimeStamp)
+                 .AddParameter("i", interval)
+                 .AddParameter("f", format)
+                 .Biuld();
 
             var responseString = await _httpClient.GetStringAsync(uri);
 
-            return JsonSerializer.Deserialize<IEnumerable<NuplDto>>(responseString, _jsonDefaults);
+            return JsonSerializer.Deserialize<TResult>(responseString, _jsonDefaults);
         }
     }
 }

@@ -23,11 +23,13 @@ namespace ProofOfConcept.DomainWorker
         private static void RegisterDataLoadServices(this IServiceCollection services)
         {
             services.AddTransient<IDataLoaderService<INupl>, NuplLoaderService>();
+            services.AddTransient<IDataLoaderService<INewAddresses>, NewAddressesLoaderService>();
         }
 
         private static void RegisterDataProcessServices(this IServiceCollection services)
         {
             services.AddTransient<IDataProcessorService<INupl>, NuplEventDetectorService>();
+            services.AddTransient<IDataProcessorService<INewAddresses>, NewAddressesEventDetectorService>();
         }
 
         private static void RegisterMessageSendServices(this IServiceCollection services)
