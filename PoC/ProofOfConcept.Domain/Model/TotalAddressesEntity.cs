@@ -3,9 +3,8 @@ using System;
 
 namespace ProofOfConcept.Domain.Model
 {
-    class TotalAddressesEntity : Entity, ITotalAddresses
+    class TotalAddressesEntity : DateEntity, ITotalAddresses
     {
-        public DateTimeOffset Date { get; set; }
         public int Value { get; set; }
     }
 }

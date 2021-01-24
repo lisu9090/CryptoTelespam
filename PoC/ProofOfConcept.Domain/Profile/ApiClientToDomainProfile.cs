@@ -9,21 +9,24 @@ namespace ProofOfConcept.ApiClientDomain
     {
         public ApiClientToDomainProfile()
         {
-            CreateMap<INuplDto, NuplEntity>(MemberList.Source)
-                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V))
-                .ForMember(n => n.Date, opt => opt.MapFrom(d => DateTimeOffset.FromUnixTimeSeconds(d.T)));
+            CreateMap<ITimestampDto, DateEntity>(MemberList.Source)
+                 .ForMember(n => n.Date, opt => opt.MapFrom(d => DateTimeOffset.FromUnixTimeSeconds(d.T)));
 
-            CreateMap<INewAddressesDto, NewAddressesEntity>(MemberList.Source)
-                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V))
-                .ForMember(n => n.Date, opt => opt.MapFrom(d => DateTimeOffset.FromUnixTimeSeconds(d.T)));
+            CreateMap<IFloatValueTimestampDto, NuplEntity>(MemberList.Source)
+                .IncludeBase<ITimestampDto, DateEntity>()
+                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
 
-            CreateMap<ITotalAddressesDto, TotalAddressesEntity>(MemberList.Source)
-                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V))
-                .ForMember(n => n.Date, opt => opt.MapFrom(d => DateTimeOffset.FromUnixTimeSeconds(d.T)));
+            CreateMap<IIntValueTimestampDto, NewAddressesEntity>(MemberList.Source)
+                .IncludeBase<ITimestampDto, DateEntity>()
+                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
 
-            CreateMap<IActiveAddressesDto, ActiveAddressesEntity>(MemberList.Source)
-                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V))
-                .ForMember(n => n.Date, opt => opt.MapFrom(d => DateTimeOffset.FromUnixTimeSeconds(d.T)));
+            CreateMap<IIntValueTimestampDto, TotalAddressesEntity>(MemberList.Source)
+                .IncludeBase<ITimestampDto, DateEntity>()
+                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+
+            CreateMap<IIntValueTimestampDto, ActiveAddressesEntity>(MemberList.Source)
+                .IncludeBase<ITimestampDto, DateEntity>()
+                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
 
         }
     }

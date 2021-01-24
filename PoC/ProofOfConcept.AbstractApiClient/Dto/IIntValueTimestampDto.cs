@@ -4,9 +4,8 @@ using System.Text;
 
 namespace ProofOfConcept.AbstractApiClient.Dto
 {
-    public interface INewAddressesDto
+    public interface IIntValueTimestampDto : ITimestampDto
     {
-        long T { get; set; }
         int V { get; set; }
     }
 }

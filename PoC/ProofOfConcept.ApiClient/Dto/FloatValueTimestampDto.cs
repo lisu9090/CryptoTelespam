@@ -2,9 +2,8 @@
 
 namespace ProofOfConcept.ApiClient.Dto
 {
-    class NuplDto : INuplDto
+    class FloatValueTimestampDto : TimestampDto, IFloatValueTimestampDto
     {
-        public long T { get; set; }
         public float V { get; set; }
     }
 }

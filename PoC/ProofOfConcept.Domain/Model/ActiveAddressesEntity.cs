@@ -5,9 +5,8 @@ using System.Text;
 
 namespace ProofOfConcept.Domain.Model
 {
-    class ActiveAddressesEntity : Entity, IActiveAddresses
+    class ActiveAddressesEntity : DateEntity, IActiveAddresses
     {
-        public DateTimeOffset Date { get; set; }
         public int Value { get; set; }
     }
 }

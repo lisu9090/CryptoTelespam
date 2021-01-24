@@ -38,10 +38,10 @@ namespace ProofOfConcept.ApiClient.Service
                 new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<IEnumerable<INuplDto>> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
+        public async Task<IEnumerable<IFloatValueTimestampDto>> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             //todo add error handling + retry;
-            return await GetIndicatorAsync<IEnumerable<NuplDto>>("/v1/metrics/indicators/net_unrealized_profit_loss",
+            return await GetIndicatorAsync<IEnumerable<FloatValueTimestampDto>>("/v1/metrics/indicators/net_unrealized_profit_loss",
                 asset,
                 sinceTimeStamp,
                 untilTimeStamp,
@@ -49,9 +49,9 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<IEnumerable<INewAddressesDto>> GetNewAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IIntValueTimestampDto>> GetNewAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
         {
-            return await GetIndicatorAsync<IEnumerable<NewAddressesDto>>("/v1/metrics/addresses/sending_to_exchanges_count",
+            return await GetIndicatorAsync<IEnumerable<IntValueTimestampDto>>("/v1/metrics/addresses/sending_to_exchanges_count",
                 asset,
                 sinceTimeStamp,
                 untilTimeStamp,
@@ -59,9 +59,9 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<IEnumerable<ITotalAddressesDto>> GetTotalAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IIntValueTimestampDto>> GetTotalAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
         {
-            return await GetIndicatorAsync<IEnumerable<TotalAddressesDto>>("/v1/metrics/addresses/count",
+            return await GetIndicatorAsync<IEnumerable<IntValueTimestampDto>>("/v1/metrics/addresses/count",
                 asset,
                 sinceTimeStamp,
                 untilTimeStamp,
@@ -69,9 +69,9 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<IEnumerable<IActiveAddressesDto>> GetActiveAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IIntValueTimestampDto>> GetActiveAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
         {
-            return await GetIndicatorAsync<IEnumerable<ActiveAddressesDto>>("/v1/metrics/addresses/active_count",
+            return await GetIndicatorAsync<IEnumerable<IntValueTimestampDto>>("/v1/metrics/addresses/active_count",
                 asset,
                 sinceTimeStamp,
                 untilTimeStamp,

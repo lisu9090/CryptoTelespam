@@ -5,9 +5,8 @@ using System.Text;
 
 namespace ProofOfConcept.ApiClient.Dto
 {
-    class NewAddressesDto : INewAddressesDto
+    class IntValueTimestampDto : TimestampDto, IIntValueTimestampDto
     {
-        public long T { get; set; }
         public int V { get; set; }
     }
 }
