@@ -72,20 +72,15 @@ namespace ProofOfConcept.Domain.Helper
 
         public DateTimeBuilder TruncateToHour()
         {
-            _dateTimeOffset = _dateTimeOffset.AddMilliseconds(-_dateTimeOffset.Millisecond);
-            _dateTimeOffset = _dateTimeOffset.AddSeconds(-_dateTimeOffset.Second);
-            _dateTimeOffset = _dateTimeOffset.AddMinutes(-_dateTimeOffset.Minute);
-
-            return this;
+            AddMinutes(-_dateTimeOffset.Minute);
+            AddSeconds(-_dateTimeOffset.Second);
+            return AddMilliseconds(-_dateTimeOffset.Millisecond);
         }
 
         public DateTimeBuilder Truncate()
         {
-            TruncateToHour();
-
-            _dateTimeOffset = _dateTimeOffset.AddHours(-_dateTimeOffset.Hour);
-
-            return this;
+            AddHours(-_dateTimeOffset.Hour);
+            return TruncateToHour();
         }
 
         public DateTimeOffset Build()
