@@ -13,10 +13,10 @@ namespace ProofOfConcept.ApiClientDomain
             services.AddHttpClient();
 
             services.AddTransient<IRestApiService, GlassNodeApiService>(serviceProvider => 
-                new GlassNodeApiService(int.Parse(configuration["Api:Timeout"]),
-                    configuration["Api:BaseUrl"],
-                    configuration["Api:ApiKeyParamName"],
-                    configuration["Api:Key"],
+                new GlassNodeApiService(int.Parse(configuration["Api:GlassNode:Timeout"]),
+                    configuration["Api:GlassNode:BaseUrl"],
+                    configuration["Api:GlassNode:ApiKeyParamName"],
+                    configuration["Api:GlassNode:Key"],
                     serviceProvider.GetRequiredService<HttpClient>()));
 
             services.AddTransient<IMessageApiService, TestConsoleMessageApiService>();

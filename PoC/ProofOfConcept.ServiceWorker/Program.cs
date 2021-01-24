@@ -41,7 +41,10 @@ namespace ProofOfConcept.ServiceWorker
 
             services.AddQuartz(q =>
             {
-                 
+                q.UseMicrosoftDependencyInjectionJobFactory(options =>
+                {
+                    options.AllowDefaultConstructor = true;
+                });
             });
         }
     }

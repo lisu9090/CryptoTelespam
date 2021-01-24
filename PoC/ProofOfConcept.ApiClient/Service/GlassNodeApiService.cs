@@ -49,7 +49,7 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<IEnumerable<IIntValueTimestampDto>> GetNewAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IIntValueTimestampDto>> GetNewAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             return await GetIndicatorAsync<IEnumerable<IntValueTimestampDto>>("/v1/metrics/addresses/sending_to_exchanges_count",
                 asset,
@@ -59,7 +59,7 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<IEnumerable<IIntValueTimestampDto>> GetTotalAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IIntValueTimestampDto>> GetTotalAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             return await GetIndicatorAsync<IEnumerable<IntValueTimestampDto>>("/v1/metrics/addresses/count",
                 asset,
@@ -69,7 +69,7 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<IEnumerable<IIntValueTimestampDto>> GetActiveAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IIntValueTimestampDto>> GetActiveAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             return await GetIndicatorAsync<IEnumerable<IntValueTimestampDto>>("/v1/metrics/addresses/active_count",
                 asset,
@@ -79,7 +79,7 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<IEnumerable<IFloatValueTimestampDto>> GetStfDefectionAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IFloatValueTimestampDto>> GetStfDefectionAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             return await GetIndicatorAsync<IEnumerable<FloatValueTimestampDto>>("/v1/metrics/indicators/stock_to_flow_deflection",
                 asset,
@@ -89,7 +89,7 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<IEnumerable<IFloatValueTimestampDto>> GetLthNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IFloatValueTimestampDto>> GetLthNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             return await GetIndicatorAsync<IEnumerable<FloatValueTimestampDto>>("/v1/metrics/indicators/nupl_more_155",
                 asset,
@@ -99,7 +99,7 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<IEnumerable<IFloatValueTimestampDto>> GetMarketCapThermocapRatioAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IFloatValueTimestampDto>> GetMarketCapThermocapRatioAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             return await GetIndicatorAsync<IEnumerable<FloatValueTimestampDto>>("/v1/metrics/mining/marketcap_thermocap_ratio",
                 asset,
