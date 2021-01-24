@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ProofOfConcept.Abstract.ApiClient\ProofOfConcept.Abstract.ApiClient.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Abstract.Domain\ProofOfConcept.Abstract.Domain.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
-    <ProjectReference Include="..\ProofOfConcept.AbstractApiClient\ProofOfConcept.AbstractApiClient.csproj" />
-    <ProjectReference Include="..\ProofOfConcept.AbstractDomain\ProofOfConcept.AbstractDomain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

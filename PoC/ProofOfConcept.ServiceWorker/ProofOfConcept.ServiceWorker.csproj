@@ -13,9 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProofOfConcept.AbstractDomain\ProofOfConcept.AbstractDomain.csproj" />
-    <ProjectReference Include="..\ProofOfConcept.ApiClientDomain\ProofOfConcept.ApiClientDomain.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.ApiClient.DI\ProofOfConcept.ApiClient.DI.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
-    <ProjectReference Include="..\ProofOfConcept.DomainWorker\ProofOfConcept.DomainWorker.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Domain.DI\ProofOfConcept.Domain.DI.csproj" />
   </ItemGroup>
 </Project>

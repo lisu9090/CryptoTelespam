@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProofOfConcept.AbstractApiClient\ProofOfConcept.AbstractApiClient.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Abstract.ApiClient\ProofOfConcept.Abstract.ApiClient.csproj" />
     <ProjectReference Include="..\ProofOfConcept.ApiClient\ProofOfConcept.ApiClient.csproj" />
   </ItemGroup>
 
