@@ -26,6 +26,9 @@ namespace ProofOfConcept.DomainWorker
             services.AddTransient<IDataLoaderService<INewAddresses>, NewAddressesLoaderService>();
             services.AddTransient<IDataLoaderService<ITotalAddresses>, TotalAddressesLoaderService>();
             services.AddTransient<IDataLoaderService<IActiveAddresses>, ActiveAddressesLoaderService>();
+            services.AddTransient<IDataLoaderService<ILthNupl>, LthNuplLoaderService>();
+            services.AddTransient<IDataLoaderService<IMarketCapThermocapRatio>, MarketCapThermocapRatioLoaderService>();
+            services.AddTransient<IDataLoaderService<IStfDeflection>, StfDeflectionLoaderService>();
         }
 
         private static void RegisterDataProcessServices(this IServiceCollection services)
@@ -34,6 +37,9 @@ namespace ProofOfConcept.DomainWorker
             services.AddTransient<IDataProcessorService<INewAddresses>, NewAddressesEventDetectorService>();
             services.AddTransient<IDataProcessorService<ITotalAddresses>, TotalAddressesEventDetectorService>();
             services.AddTransient<IDataProcessorService<IActiveAddresses>, ActiveAddressesEventDetectorService>();
+            services.AddTransient<IDataProcessorService<ILthNupl>, LthNuplEventDetectorService>();
+            services.AddTransient<IDataProcessorService<IMarketCapThermocapRatio>, MarketCapThermocapRatioEventDetectorService>();
+            services.AddTransient<IDataProcessorService<IStfDeflection>, StfDeflectionEventDetectorService>();
         }
 
         private static void RegisterMessageSendServices(this IServiceCollection services)

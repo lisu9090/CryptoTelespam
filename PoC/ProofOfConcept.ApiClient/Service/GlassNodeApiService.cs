@@ -79,6 +79,36 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
+        public async Task<IEnumerable<IFloatValueTimestampDto>> GetStfDefectionAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        {
+            return await GetIndicatorAsync<IEnumerable<FloatValueTimestampDto>>("/v1/metrics/indicators/stock_to_flow_deflection",
+                asset,
+                sinceTimeStamp,
+                untilTimeStamp,
+                interval,
+                format);
+        }
+
+        public async Task<IEnumerable<IFloatValueTimestampDto>> GetLthNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        {
+            return await GetIndicatorAsync<IEnumerable<FloatValueTimestampDto>>("/v1/metrics/indicators/nupl_more_155",
+                asset,
+                sinceTimeStamp,
+                untilTimeStamp,
+                interval,
+                format);
+        }
+
+        public async Task<IEnumerable<IFloatValueTimestampDto>> GetMarketCapThermocapRatioAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        {
+            return await GetIndicatorAsync<IEnumerable<FloatValueTimestampDto>>("/v1/metrics/mining/marketcap_thermocap_ratio",
+                asset,
+                sinceTimeStamp,
+                untilTimeStamp,
+                interval,
+                format);
+        }
+
         private async Task<TResult> GetIndicatorAsync<TResult>(string endpoint, string asset, int sinceTimeStamp, int untilTimeStamp, string interval, string format)
         {
             var uri = new UriBuilder(_apiBase, _apiKeyParamName, _key)

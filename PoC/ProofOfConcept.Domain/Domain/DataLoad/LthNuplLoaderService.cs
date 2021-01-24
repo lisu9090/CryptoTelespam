@@ -11,20 +11,20 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
 {
-    public class NuplLoaderService : IDataLoaderService<INupl>
+    public class LthNuplLoaderService : IDataLoaderService<ILthNupl>
     {
         private IRestApiService _apiService;
         private IMapper _mapper;
 
-        public NuplLoaderService(IRestApiService apiService, IMapper mapper)
+        public LthNuplLoaderService(IRestApiService apiService, IMapper mapper)
         {
             _apiService = apiService;
             _mapper = mapper;
         }
 
-        public async Task<INupl> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<ILthNupl> LoadDataAsync(string cryptocurrencySymbol)
         {
-            if(!(cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC) || cryptocurrencySymbol.Equals(CryptocurrencySymbol.ETH)))
+            if(!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
             {
                 cryptocurrencySymbol = CryptocurrencySymbol.BTC;
             }
@@ -34,9 +34,9 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
                 .Truncate()
                 .Build();
 
-            var dtos = await _apiService.GetNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            var dtos = await _apiService.GetLthNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
             var dto = dtos.OrderBy(item => item.T).LastOrDefault();
-            var entity = _mapper.Map<NuplEntity>(dto);
+            var entity = _mapper.Map<LthNuplEntity>(dto);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

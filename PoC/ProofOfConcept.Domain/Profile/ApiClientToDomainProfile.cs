@@ -28,6 +28,18 @@ namespace ProofOfConcept.ApiClientDomain
                 .IncludeBase<ITimestampDto, DateEntity>()
                 .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
 
+            CreateMap<IFloatValueTimestampDto, LthNuplEntity>(MemberList.Source)
+                .IncludeBase<ITimestampDto, DateEntity>()
+                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+
+            CreateMap<IFloatValueTimestampDto, MarketCapThermocapRatioEntity>(MemberList.Source)
+                .IncludeBase<ITimestampDto, DateEntity>()
+                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+
+            CreateMap<IFloatValueTimestampDto, StfDeflectionEntity>(MemberList.Source)
+                .IncludeBase<ITimestampDto, DateEntity>()
+                .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+
         }
     }
 }
