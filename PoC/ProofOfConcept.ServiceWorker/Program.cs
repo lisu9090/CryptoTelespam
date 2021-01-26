@@ -6,6 +6,7 @@ using ProofOfConcept.ServiceWorker.Abstract;
 using ProofOfConcept.ServiceWorker.Helpers;
 using ProofOfConcept.ServiceWorker.Worker;
 using Quartz;
+using Serilog;
 
 namespace ProofOfConcept.ServiceWorker
 {
@@ -13,17 +14,16 @@ namespace ProofOfConcept.ServiceWorker
     {
         public static void Main(string[] args)
         {
-            //Log.Logger = new LoggerConfiguration()
-            //    .Enrich.FromLogContext()
-            //    .WriteTo.Console()
-            //    .CreateLogger();
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
+                .WriteTo.Console()
+                .CreateLogger();
 
             CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                //.UseSerilog()
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<MainWorker>();
@@ -32,7 +32,8 @@ namespace ProofOfConcept.ServiceWorker
 
                     services.RegisterDomain();
                     services.RegisterApiClients(hostContext.Configuration);
-                });
+                })
+                .UseSerilog();
 
         private static void RegisterServiceWorker(IServiceCollection services)
         {

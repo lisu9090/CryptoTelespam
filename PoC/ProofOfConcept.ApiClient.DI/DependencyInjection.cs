@@ -12,14 +12,21 @@ namespace ProofOfConcept.ApiClientDomain
         {
             services.AddHttpClient();
 
-            services.AddTransient<IRestApiService, GlassNodeApiService>(serviceProvider => 
+            services.AddTransient<IRestApiService, GlassNodeApiService>(sp => 
                 new GlassNodeApiService(int.Parse(configuration["Api:GlassNode:Timeout"]),
                     configuration["Api:GlassNode:BaseUrl"],
                     configuration["Api:GlassNode:ApiKeyParamName"],
                     configuration["Api:GlassNode:Key"],
-                    serviceProvider.GetRequiredService<HttpClient>()));
+                    sp.GetRequiredService<HttpClient>()));
 
-            services.AddTransient<IMessageApiService, TestConsoleMessageApiService>();
+            services.AddTransient<IMessageApiService, TelegramMessageApiService>(sp =>
+                new TelegramMessageApiService(int.Parse(configuration["Api:Telegram:Timeout"]),
+                    configuration["Api:Telegram:BaseUrl"],
+                    configuration["Api:Telegram:MessageTargetParamName"],
+                    configuration["Api:Telegram:MessageTarget"],
+                    sp.GetRequiredService<HttpClient>()));
+
+            //services.AddTransient<IMessageApiService, TestConsoleMessageApiService>();
         }
     }
 }
