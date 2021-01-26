@@ -1,4 +1,5 @@
-﻿using ProofOfConcept.AbstractApiClient;
+﻿using Microsoft.Extensions.Logging;
+using ProofOfConcept.AbstractApiClient;
 using ProofOfConcept.AbstractApiClient.Dto;
 using ProofOfConcept.ApiClient.Dto;
 using ProofOfConcept.ApiClient.Helpers;
@@ -18,15 +19,22 @@ namespace ProofOfConcept.ApiClient.Service
         private readonly string _apiKeyParamName;
         private readonly string _key;
         private readonly JsonSerializerOptions _jsonDefaults;
+        private readonly ILogger<GlassNodeApiService> _logger;
         private HttpClient _httpClient;
 
-        public GlassNodeApiService(int timeout, string apiBase, string apiKeyParamName, string key, HttpClient httpClient)
+        public GlassNodeApiService(int timeout, 
+            string apiBase, 
+            string apiKeyParamName,
+            string key,
+            HttpClient httpClient, 
+            ILogger<GlassNodeApiService> logger)
         {
             _timeout = timeout;
             _apiBase = apiBase;
             _apiKeyParamName = apiKeyParamName;
             _key = key;
             _httpClient = httpClient;
+            _logger = logger;
 
             _jsonDefaults = new JsonSerializerOptions
             {
@@ -119,6 +127,8 @@ namespace ProofOfConcept.ApiClient.Service
                  .AddParameter("i", interval)
                  .AddParameter("f", format)
                  .Biuld();
+
+            _logger.LogDebug(uri);
 
             var responseString = await _httpClient.GetStringAsync(uri);
 

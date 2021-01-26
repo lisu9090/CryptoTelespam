@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using ProofOfConcept.AbstractApiClient;
 using ProofOfConcept.ApiClient.Service;
 using System.Net.Http;
@@ -17,16 +18,16 @@ namespace ProofOfConcept.ApiClientDomain
                     configuration["Api:GlassNode:BaseUrl"],
                     configuration["Api:GlassNode:ApiKeyParamName"],
                     configuration["Api:GlassNode:Key"],
-                    sp.GetRequiredService<HttpClient>()));
+                    sp.GetRequiredService<HttpClient>(),
+                    sp.GetRequiredService<ILogger<GlassNodeApiService>>()));
 
             services.AddTransient<IMessageApiService, TelegramMessageApiService>(sp =>
                 new TelegramMessageApiService(int.Parse(configuration["Api:Telegram:Timeout"]),
                     configuration["Api:Telegram:BaseUrl"],
                     configuration["Api:Telegram:MessageTargetParamName"],
                     configuration["Api:Telegram:MessageTarget"],
-                    sp.GetRequiredService<HttpClient>()));
-
-            //services.AddTransient<IMessageApiService, TestConsoleMessageApiService>();
+                    sp.GetRequiredService<HttpClient>(),
+                    sp.GetRequiredService<ILogger<TelegramMessageApiService>>()));
         }
     }
 }
