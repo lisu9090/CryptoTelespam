@@ -1,4 +1,4 @@
-﻿using ProofOfConcept.AbstractApiClient;
+﻿using ProofOfConcept.Abstract.ApiClient;
 using System;
 using System.Threading.Tasks;
 

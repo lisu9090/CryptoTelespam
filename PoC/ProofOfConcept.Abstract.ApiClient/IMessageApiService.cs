@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace ProofOfConcept.AbstractApiClient
+namespace ProofOfConcept.Abstract.ApiClient
 {
     public interface IMessageApiService
     {

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using ProofOfConcept.AbstractApiClient;
+using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.ApiClient.Service;
 using System.Net.Http;
 

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.Domain.Model;
-using ProofOfConcept.AbstractApiClient;
-using ProofOfConcept.AbstractDomain;
+using ProofOfConcept.Abstract.Domain;
 using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain.Helper;
 using System;
@@ -29,13 +29,12 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
             }
 
             var since = DateTimeBuilder.UtcNow()
-                .AddDays(-1)
+                .AddDays(-2)
                 .Truncate()
                 .Build();
 
             var dtos = await _apiService.GetNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
-            var dto = dtos.OrderBy(item => item.T).LastOrDefault();
-            var entity = _mapper.Map<Nupl>(dto);
+            var entity = _mapper.Map<Nupl>(dtos);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

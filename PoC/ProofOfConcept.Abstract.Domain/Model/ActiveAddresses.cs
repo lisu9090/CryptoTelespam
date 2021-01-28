@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProofOfConcept.Abstract.Domain.Model
+﻿namespace ProofOfConcept.Abstract.Domain.Model
 {
     public class ActiveAddresses : ScopedIndicatorBase<int>
     {

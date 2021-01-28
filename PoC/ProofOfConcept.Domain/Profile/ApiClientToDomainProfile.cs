@@ -1,6 +1,9 @@
 ﻿using AutoMapper;
-using ProofOfConcept.AbstractApiClient.Dto;
+using ProofOfConcept.Abstract.ApiClient.Dto;
+using ProofOfConcept.Abstract.Domain.Model;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ProofOfConcept.ApiClientDomain
 {
@@ -8,37 +11,62 @@ namespace ProofOfConcept.ApiClientDomain
     {
         public ApiClientToDomainProfile()
         {
-            //CreateMap<ITimestampDto, DateEntity>(MemberList.Source)
-            //     .ForMember(n => n.Date, opt => opt.MapFrom(d => DateTimeOffset.FromUnixTimeSeconds(d.T)));
+            CreateMap<IEnumerable<IntValueTimestampDto>, ScopedIndicatorBase<int>>()
+                .ConvertUsing((s, d) => 
+                {
+                    if(s.Count() < 2)
+                    {
+                        throw new Exception("Mapping error, collection must contain 2 or more items.");
+                    }
 
-            //CreateMap<IFloatValueTimestampDto, NuplEntity>(MemberList.Source)
-            //    .IncludeBase<ITimestampDto, DateEntity>()
-            //    .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+                    s = s.OrderByDescending(item => item.T);
 
-            //CreateMap<IIntValueTimestampDto, NewAddressesEntity>(MemberList.Source)
-            //    .IncludeBase<ITimestampDto, DateEntity>()
-            //    .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+                    d.Time = DateTimeOffset.FromUnixTimeSeconds(s.First().T);
+                    d.Value = s.First().V;
+                    d.PreviousTime = DateTimeOffset.FromUnixTimeSeconds(s.ElementAt(1).T);
+                    d.PreviousValue = s.ElementAt(1).V;
 
-            //CreateMap<IIntValueTimestampDto, TotalAddressesEntity>(MemberList.Source)
-            //    .IncludeBase<ITimestampDto, DateEntity>()
-            //    .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+                    return d;
+                });
 
-            //CreateMap<IIntValueTimestampDto, ActiveAddressesEntity>(MemberList.Source)
-            //    .IncludeBase<ITimestampDto, DateEntity>()
-            //    .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+            CreateMap<IEnumerable<FloatValueTimestampDto>, ScopedIndicatorBase<float>>()
+                .ConvertUsing((s, d) =>
+                {
+                    if (s.Count() < 2)
+                    {
+                        throw new Exception("Mapping error, collection must contain 2 or more items.");
+                    }
 
-            //CreateMap<IFloatValueTimestampDto, LthNuplEntity>(MemberList.Source)
-            //    .IncludeBase<ITimestampDto, DateEntity>()
-            //    .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+                    s = s.OrderByDescending(item => item.T);
 
-            //CreateMap<IFloatValueTimestampDto, MarketCapThermocapRatioEntity>(MemberList.Source)
-            //    .IncludeBase<ITimestampDto, DateEntity>()
-            //    .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+                    d.Time = DateTimeOffset.FromUnixTimeSeconds(s.First().T);
+                    d.Value = s.First().V;
+                    d.PreviousTime = DateTimeOffset.FromUnixTimeSeconds(s.ElementAt(1).T);
+                    d.PreviousValue = s.ElementAt(1).V;
 
-            //CreateMap<IFloatValueTimestampDto, StfDeflectionEntity>(MemberList.Source)
-            //    .IncludeBase<ITimestampDto, DateEntity>()
-            //    .ForMember(n => n.Value, opt => opt.MapFrom(d => d.V));
+                    return d;
+                });
 
+            CreateMap<IEnumerable<FloatValueTimestampDto>, Nupl>()
+                .IncludeBase<IEnumerable<FloatValueTimestampDto>, ScopedIndicatorBase<float>>();
+
+            CreateMap<IEnumerable<IntValueTimestampDto>, NewAddresses>()
+                .IncludeBase<IEnumerable<IntValueTimestampDto>, ScopedIndicatorBase<int>>();
+
+            CreateMap<IEnumerable<IntValueTimestampDto>, TotalAddresses>()
+                .IncludeBase<IEnumerable<IntValueTimestampDto>, ScopedIndicatorBase<int>>();
+
+            CreateMap<IEnumerable<IntValueTimestampDto>, ActiveAddresses>()
+                .IncludeBase<IEnumerable<IntValueTimestampDto>, ScopedIndicatorBase<int>>();
+
+            CreateMap<IEnumerable<FloatValueTimestampDto>, LthNupl>()
+                .IncludeBase<IEnumerable<FloatValueTimestampDto>, ScopedIndicatorBase<float>>();
+
+            CreateMap<IEnumerable<FloatValueTimestampDto>, MarketCapThermocapRatio>()
+                .IncludeBase<IEnumerable<FloatValueTimestampDto>, ScopedIndicatorBase<float>>();
+
+            CreateMap<IEnumerable<FloatValueTimestampDto>, StfDeflection>()
+                .IncludeBase<IEnumerable<FloatValueTimestampDto>, ScopedIndicatorBase<float>>();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using ProofOfConcept.Abstract.ApiClient;
+using ProofOfConcept.Abstract.Domain;
 using ProofOfConcept.Abstract.Domain.Model;
-using ProofOfConcept.AbstractApiClient;
-using ProofOfConcept.AbstractDomain;
 using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain.Helper;
 using System;

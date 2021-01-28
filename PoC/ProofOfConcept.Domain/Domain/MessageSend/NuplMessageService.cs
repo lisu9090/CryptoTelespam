@@ -1,6 +1,6 @@
-﻿using ProofOfConcept.Abstract.Domain;
+﻿using ProofOfConcept.Abstract.ApiClient;
+using ProofOfConcept.Abstract.Domain;
 using ProofOfConcept.Abstract.Domain.Model;
-using ProofOfConcept.AbstractApiClient;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.MessageSend

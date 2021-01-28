@@ -1,5 +1,5 @@
-﻿using ProofOfConcept.AbstractDomain;
-using ProofOfConcept.AbstractDomain.Model;
+﻿using ProofOfConcept.Abstract.Domain;
+using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.ServiceWorker.Abstract;
 using System.Threading.Tasks;
 

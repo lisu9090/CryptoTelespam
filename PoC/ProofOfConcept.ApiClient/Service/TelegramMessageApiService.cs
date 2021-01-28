@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using ProofOfConcept.AbstractApiClient;
+using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.ApiClient.Helpers;
 using System.Net.Http;
 using System.Threading.Tasks;
