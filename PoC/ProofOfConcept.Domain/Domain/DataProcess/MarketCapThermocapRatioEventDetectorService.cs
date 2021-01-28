@@ -1,12 +1,12 @@
-﻿using ProofOfConcept.AbstractDomain;
-using ProofOfConcept.AbstractDomain.Model;
+﻿using ProofOfConcept.Abstract.Domain.Model;
+using ProofOfConcept.AbstractDomain;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.DataProcess
 {
-    public class MarketCapThermocapRatioEventDetectorService : IDataProcessorService<IMarketCapThermocapRatio>
+    public class MarketCapThermocapRatioEventDetectorService : IDataProcessorService<MarketCapThermocapRatio>
     {
-        public Task<bool> DetectEventAsync(IMarketCapThermocapRatio data)
+        public Task<bool> DetectEventAsync(MarketCapThermocapRatio data)
         {
             return Task.Run(() => data.Value >= 0.75);
         }

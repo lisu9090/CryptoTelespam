@@ -1,19 +1,15 @@
 ﻿using AutoMapper;
+using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.AbstractApiClient;
 using ProofOfConcept.AbstractDomain;
-using ProofOfConcept.AbstractDomain.Model;
-using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain.Helper;
-using ProofOfConcept.Domain.Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
 {
-    public class TotalAddressesLoaderService : IDataLoaderService<ITotalAddresses>
+    public class TotalAddressesLoaderService : IDataLoaderService<TotalAddresses>
     {
         private IRestApiService _apiService;
         private IMapper _mapper;
@@ -24,7 +20,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
             _mapper = mapper;
         }
 
-        public async Task<ITotalAddresses> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<TotalAddresses> LoadDataAsync(string cryptocurrencySymbol)
         {
             var since = DateTimeBuilder.UtcNow()
                 .AddDays(-1)
@@ -33,7 +29,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 
             var dtos = await _apiService.GetTotalAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
             var dto = dtos.OrderBy(item => item.T).LastOrDefault();
-            var entity = _mapper.Map<TotalAddressesEntity>(dto);
+            var entity = _mapper.Map<TotalAddresses>(dto);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

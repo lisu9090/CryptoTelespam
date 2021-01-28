@@ -1,17 +1,16 @@
 ﻿using AutoMapper;
+using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.AbstractApiClient;
 using ProofOfConcept.AbstractDomain;
-using ProofOfConcept.AbstractDomain.Model;
 using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain.Helper;
-using ProofOfConcept.Domain.Model;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
 {
-    public class MarketCapThermocapRatioLoaderService : IDataLoaderService<IMarketCapThermocapRatio>
+    public class MarketCapThermocapRatioLoaderService : IDataLoaderService<MarketCapThermocapRatio>
     {
         private IRestApiService _apiService;
         private IMapper _mapper;
@@ -22,7 +21,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
             _mapper = mapper;
         }
 
-        public async Task<IMarketCapThermocapRatio> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<MarketCapThermocapRatio> LoadDataAsync(string cryptocurrencySymbol)
         {
             if(!(cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC) || cryptocurrencySymbol.Equals(CryptocurrencySymbol.ETH)))
             {
@@ -36,7 +35,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 
             var dtos = await _apiService.GetMarketCapThermocapRatioAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
             var dto = dtos.OrderBy(item => item.T).LastOrDefault();
-            var entity = _mapper.Map<MarketCapThermocapRatioEntity>(dto);
+            var entity = _mapper.Map<MarketCapThermocapRatio>(dto);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

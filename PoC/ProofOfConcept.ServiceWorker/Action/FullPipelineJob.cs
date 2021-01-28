@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class FullPipelineJob<T> : IJob where T : ICryptocurrencyIndicator
+    class FullPipelineJob<T> : IJob where T : CryptocurrencyIndicator
     {
         protected readonly IDataLoaderService<T> _dataLoaderService;
         protected readonly IDataProcessorService<T> _dataProcessorService;

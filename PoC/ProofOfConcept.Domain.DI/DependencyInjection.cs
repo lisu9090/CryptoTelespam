@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
+using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.AbstractDomain;
-using ProofOfConcept.AbstractDomain.Model;
 using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.Domain.Domain.DataLoad;
 using ProofOfConcept.Domain.Domain.DataProcess;
@@ -22,29 +22,29 @@ namespace ProofOfConcept.DomainWorker
 
         private static void RegisterDataLoadServices(this IServiceCollection services)
         {
-            services.AddTransient<IDataLoaderService<INupl>, NuplLoaderService>();
-            services.AddTransient<IDataLoaderService<INewAddresses>, NewAddressesLoaderService>();
-            services.AddTransient<IDataLoaderService<ITotalAddresses>, TotalAddressesLoaderService>();
-            services.AddTransient<IDataLoaderService<IActiveAddresses>, ActiveAddressesLoaderService>();
-            services.AddTransient<IDataLoaderService<ILthNupl>, LthNuplLoaderService>();
-            services.AddTransient<IDataLoaderService<IMarketCapThermocapRatio>, MarketCapThermocapRatioLoaderService>();
-            services.AddTransient<IDataLoaderService<IStfDeflection>, StfDeflectionLoaderService>();
+            services.AddTransient<IDataLoaderService<Nupl>, NuplLoaderService>();
+            services.AddTransient<IDataLoaderService<NewAddresses>, NewAddressesLoaderService>();
+            services.AddTransient<IDataLoaderService<TotalAddresses>, TotalAddressesLoaderService>();
+            services.AddTransient<IDataLoaderService<ActiveAddresses>, ActiveAddressesLoaderService>();
+            services.AddTransient<IDataLoaderService<LthNupl>, LthNuplLoaderService>();
+            services.AddTransient<IDataLoaderService<MarketCapThermocapRatio>, MarketCapThermocapRatioLoaderService>();
+            services.AddTransient<IDataLoaderService<StfDeflection>, StfDeflectionLoaderService>();
         }
 
         private static void RegisterDataProcessServices(this IServiceCollection services)
         {
-            services.AddTransient<IDataProcessorService<INupl>, NuplEventDetectorService>();
-            services.AddTransient<IDataProcessorService<INewAddresses>, NewAddressesEventDetectorService>();
-            services.AddTransient<IDataProcessorService<ITotalAddresses>, TotalAddressesEventDetectorService>();
-            services.AddTransient<IDataProcessorService<IActiveAddresses>, ActiveAddressesEventDetectorService>();
-            services.AddTransient<IDataProcessorService<ILthNupl>, LthNuplEventDetectorService>();
-            services.AddTransient<IDataProcessorService<IMarketCapThermocapRatio>, MarketCapThermocapRatioEventDetectorService>();
-            services.AddTransient<IDataProcessorService<IStfDeflection>, StfDeflectionEventDetectorService>();
+            services.AddTransient<IDataProcessorService<Nupl>, NuplEventDetectorService>();
+            services.AddTransient<IDataProcessorService<NewAddresses>, NewAddressesEventDetectorService>();
+            services.AddTransient<IDataProcessorService<TotalAddresses>, TotalAddressesEventDetectorService>();
+            services.AddTransient<IDataProcessorService<ActiveAddresses>, ActiveAddressesEventDetectorService>();
+            services.AddTransient<IDataProcessorService<LthNupl>, LthNuplEventDetectorService>();
+            services.AddTransient<IDataProcessorService<MarketCapThermocapRatio>, MarketCapThermocapRatioEventDetectorService>();
+            services.AddTransient<IDataProcessorService<StfDeflection>, StfDeflectionEventDetectorService>();
         }
 
         private static void RegisterMessageSendServices(this IServiceCollection services)
         {
-            services.AddTransient<IMessageSenderService<INupl>, NuplMessageService>();
+            services.AddTransient<IMessageSenderService<Nupl>, NuplMessageService>();
         }
     }
 }

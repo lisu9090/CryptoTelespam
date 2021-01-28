@@ -1,15 +1,12 @@
-﻿using ProofOfConcept.AbstractDomain;
-using ProofOfConcept.AbstractDomain.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using ProofOfConcept.Abstract.Domain.Model;
+using ProofOfConcept.AbstractDomain;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.DataProcess
 {
-    public class NewAddressesEventDetectorService : IDataProcessorService<INewAddresses>
+    public class NewAddressesEventDetectorService : IDataProcessorService<NewAddresses>
     {
-        public Task<bool> DetectEventAsync(INewAddresses data)
+        public Task<bool> DetectEventAsync(NewAddresses data)
         {
             return Task.FromResult(true); //todo
         }

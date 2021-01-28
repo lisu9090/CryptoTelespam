@@ -1,11 +1,11 @@
-﻿using ProofOfConcept.AbstractApiClient;
-using ProofOfConcept.AbstractDomain;
-using ProofOfConcept.AbstractDomain.Model;
+﻿using ProofOfConcept.Abstract.Domain;
+using ProofOfConcept.Abstract.Domain.Model;
+using ProofOfConcept.AbstractApiClient;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.MessageSend
 {
-    public class NuplMessageService : IMessageSenderService<INupl>
+    public class NuplMessageService : IMessageSenderService<Nupl>
     {
         private IMessageApiService _messageApiAdapter;
 
@@ -14,7 +14,7 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
             _messageApiAdapter = messageApiAdapter;
         }
 
-        public async Task SendEventMessageAsync(INupl data)
+        public async Task SendEventMessageAsync(Nupl data)
         {
             await _messageApiAdapter.SendAsync($"Nupl event detected: Euphoria; Nupl value {data.Value}.");
         }

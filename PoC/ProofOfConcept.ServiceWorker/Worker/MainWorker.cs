@@ -59,10 +59,10 @@ namespace ProofOfConcept.ServiceWorker.Worker
 
         private void Test()
         {
-            _actionEnqueuer.EnqueueAction(new FullPipelineAction<INupl>(
-                _serviceProvider.GetRequiredService<IDataLoaderService<INupl>>(),
-                _serviceProvider.GetRequiredService<IDataProcessorService<INupl>>(),
-                _serviceProvider.GetRequiredService<IMessageSenderService<INupl>>(),
+            _actionEnqueuer.EnqueueAction(new FullPipelineAction<Nupl>(
+                _serviceProvider.GetRequiredService<IDataLoaderService<Nupl>>(),
+                _serviceProvider.GetRequiredService<IDataProcessorService<Nupl>>(),
+                _serviceProvider.GetRequiredService<IMessageSenderService<Nupl>>(),
                 CryptocurrencySymbol.BTC));
         }
     }

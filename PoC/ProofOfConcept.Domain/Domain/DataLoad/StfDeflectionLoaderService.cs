@@ -1,17 +1,16 @@
 ﻿using AutoMapper;
+using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.AbstractApiClient;
 using ProofOfConcept.AbstractDomain;
-using ProofOfConcept.AbstractDomain.Model;
 using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain.Helper;
-using ProofOfConcept.Domain.Model;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
 {
-    public class StfDeflectionLoaderService : IDataLoaderService<IStfDeflection>
+    public class StfDeflectionLoaderService : IDataLoaderService<StfDeflection>
     {
         private IRestApiService _apiService;
         private IMapper _mapper;
@@ -22,7 +21,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
             _mapper = mapper;
         }
 
-        public async Task<IStfDeflection> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<StfDeflection> LoadDataAsync(string cryptocurrencySymbol)
         {
             if(!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
             {
@@ -36,7 +35,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 
             var dtos = await _apiService.GetStfDefectionAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
             var dto = dtos.OrderBy(item => item.T).LastOrDefault();
-            var entity = _mapper.Map<StfDeflectionEntity>(dto);
+            var entity = _mapper.Map<StfDeflection>(dto);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

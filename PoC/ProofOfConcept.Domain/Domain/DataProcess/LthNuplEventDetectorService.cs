@@ -1,12 +1,12 @@
-﻿using ProofOfConcept.AbstractDomain;
-using ProofOfConcept.AbstractDomain.Model;
+﻿using ProofOfConcept.Abstract.Domain.Model;
+using ProofOfConcept.AbstractDomain;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.DataProcess
 {
-    public class LthNuplEventDetectorService : IDataProcessorService<ILthNupl>
+    public class LthNuplEventDetectorService : IDataProcessorService<LthNupl>
     {
-        public Task<bool> DetectEventAsync(ILthNupl data)
+        public Task<bool> DetectEventAsync(LthNupl data)
         {
             return Task.Run(() => data.Value >= 0.75);
         }
