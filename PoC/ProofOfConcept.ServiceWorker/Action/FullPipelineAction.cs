@@ -25,12 +25,12 @@ namespace ProofOfConcept.ServiceWorker.Action
 
         public virtual async Task ExecuteAsync()
         {
-            var data = await _dataLoaderService.LoadDataAsync(_cryptocurrencySymbol);
+            //var data = await _dataLoaderService.LoadDataAsync(_cryptocurrencySymbol);
 
-            if(await _dataProcessorService.DetectEventAsync(data))
-            {
-               await _messageSenderService.SendEventMessageAsync(data);
-            }
+            //if(await _dataProcessorService.DetectEventAsync(data))
+            //{
+            //   await _messageSenderService.SendEventMessageAsync(data);
+            //}
         }
     }
 }

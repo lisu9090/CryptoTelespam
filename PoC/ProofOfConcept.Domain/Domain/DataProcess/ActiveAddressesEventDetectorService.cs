@@ -6,9 +6,9 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
 {
     public class ActiveAddressesEventDetectorService : IDataProcessorService<ActiveAddresses>
     {
-        public Task<bool> DetectEventAsync(ActiveAddresses data)
+        public Task<StockEvent<ActiveAddresses>> DetectEventAsync(ActiveAddresses data)
         {
-            return Task.FromResult(true); //todo
+            return Task.FromResult<StockEvent<ActiveAddresses>>(null); //todo
         }
     }
 }

@@ -6,9 +6,9 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
 {
     public class MarketCapThermocapRatioEventDetectorService : IDataProcessorService<MarketCapThermocapRatio>
     {
-        public Task<bool> DetectEventAsync(MarketCapThermocapRatio data)
+        public Task<StockEvent<MarketCapThermocapRatio>> DetectEventAsync(MarketCapThermocapRatio data)
         {
-            return Task.Run(() => data.Value >= 0.75);
+            return Task.FromResult<StockEvent<MarketCapThermocapRatio>>(null);
         }
     }
 }

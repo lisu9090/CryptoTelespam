@@ -6,9 +6,9 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
 {
     public class StfDeflectionEventDetectorService : IDataProcessorService<StfDeflection>
     {
-        public Task<bool> DetectEventAsync(StfDeflection data)
+        public Task<StockEvent<StfDeflection>> DetectEventAsync(StfDeflection data)
         {
-            return Task.Run(() => data.Value >= 0.75);
+            throw new System.NotImplementedException();
         }
     }
 }

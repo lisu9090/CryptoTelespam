@@ -6,9 +6,9 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
 {
     public class LthNuplEventDetectorService : IDataProcessorService<LthNupl>
     {
-        public Task<bool> DetectEventAsync(LthNupl data)
+        public Task<StockEvent<LthNupl>> DetectEventAsync(LthNupl data)
         {
-            return Task.Run(() => data.Value >= 0.75);
+            return Task.FromResult<StockEvent<LthNupl>>(null);
         }
     }
 }

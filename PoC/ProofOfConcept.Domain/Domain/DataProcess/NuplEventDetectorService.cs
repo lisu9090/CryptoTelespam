@@ -6,9 +6,9 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
 {
     public class NuplEventDetectorService : IDataProcessorService<Nupl>
     {
-        public Task<bool> DetectEventAsync(Nupl data)
+        public Task<StockEvent<Nupl>> DetectEventAsync(Nupl data)
         {
-            return Task.Run(() => data.Value >= 0.75);
+            throw new System.NotImplementedException();
         }
     }
 }
