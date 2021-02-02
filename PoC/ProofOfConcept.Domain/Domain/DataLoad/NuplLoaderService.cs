@@ -7,6 +7,7 @@ using ProofOfConcept.Domain.Helper;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using ProofOfConcept.Abstract.ApiClient.Dto;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
 {
@@ -29,13 +30,13 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
             }
 
             var since = DateTimeBuilder.UtcNow()
-                .AddDays(-2)
+                .AddDays(-20)
                 .Truncate()
                 .Build();
 
             var dtos = await _apiService.GetNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
-            var entity = _mapper.Map<Nupl>(dtos);
-
+            
+            var entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, Nupl>(dtos);
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 
             return entity;

@@ -12,40 +12,30 @@ namespace ProofOfConcept.ApiClientDomain
         public ApiClientToDomainProfile()
         {
             CreateMap<IEnumerable<IntValueTimestampDto>, ScopedIndicatorBase<int>>()
-                .ConvertUsing((s, d) => 
-                {
-                    if(s.Count() < 2)
-                    {
-                        throw new Exception("Mapping error, collection must contain 2 or more items.");
-                    }
-
-                    s = s.OrderByDescending(item => item.T);
-
-                    d.Time = DateTimeOffset.FromUnixTimeSeconds(s.First().T);
-                    d.Value = s.First().V;
-                    d.PreviousTime = DateTimeOffset.FromUnixTimeSeconds(s.ElementAt(1).T);
-                    d.PreviousValue = s.ElementAt(1).V;
-
-                    return d;
-                });
-
-            CreateMap<IEnumerable<FloatValueTimestampDto>, ScopedIndicatorBase<float>>()
-                .ConvertUsing((s, d) =>
+                .BeforeMap((s, d) =>
                 {
                     if (s.Count() < 2)
                     {
                         throw new Exception("Mapping error, collection must contain 2 or more items.");
                     }
+                })
+                .ForMember(d => d.Time, opt => opt.MapFrom(s => DateTimeOffset.FromUnixTimeSeconds(s.First().T)))
+                .ForMember(d => d.Value, opt => opt.MapFrom(s => s.First().V))
+                .ForMember(d => d.PreviousTime, opt => opt.MapFrom(s => DateTimeOffset.FromUnixTimeSeconds(s.ElementAt(1).T)))
+                .ForMember(d => d.PreviousValue, opt => opt.MapFrom(s => s.ElementAt(1).V));
 
-                    s = s.OrderByDescending(item => item.T);
-
-                    d.Time = DateTimeOffset.FromUnixTimeSeconds(s.First().T);
-                    d.Value = s.First().V;
-                    d.PreviousTime = DateTimeOffset.FromUnixTimeSeconds(s.ElementAt(1).T);
-                    d.PreviousValue = s.ElementAt(1).V;
-
-                    return d;
-                });
+            CreateMap<IEnumerable<FloatValueTimestampDto>, ScopedIndicatorBase<float>>()
+                .BeforeMap((s, d) =>
+                {
+                    if (s.Count() < 2)
+                    {
+                        throw new Exception("Mapping error, collection must contain 2 or more items.");
+                    }
+                })
+                .ForMember(d => d.Time, opt => opt.MapFrom(s => DateTimeOffset.FromUnixTimeSeconds(s.First().T)))
+                .ForMember(d => d.Value, opt => opt.MapFrom(s => s.First().V))
+                .ForMember(d => d.PreviousTime, opt => opt.MapFrom(s => DateTimeOffset.FromUnixTimeSeconds(s.ElementAt(1).T)))
+                .ForMember(d => d.PreviousValue, opt => opt.MapFrom(s => s.ElementAt(1).V));
 
             CreateMap<IEnumerable<FloatValueTimestampDto>, Nupl>()
                 .IncludeBase<IEnumerable<FloatValueTimestampDto>, ScopedIndicatorBase<float>>();
