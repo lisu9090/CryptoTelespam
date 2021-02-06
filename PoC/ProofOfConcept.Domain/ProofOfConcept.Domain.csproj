@@ -15,4 +15,8 @@
     <PackageReference Include="AutoMapper.Collection" Version="7.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+  </ItemGroup>
+
 </Project>
