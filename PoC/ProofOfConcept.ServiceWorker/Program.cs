@@ -1,8 +1,11 @@
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.DomainWorker;
 using ProofOfConcept.ServiceWorker.Abstract;
+using ProofOfConcept.ServiceWorker.Action;
 using ProofOfConcept.ServiceWorker.Helpers;
 using ProofOfConcept.ServiceWorker.Worker;
 using Quartz;
@@ -24,21 +27,22 @@ namespace ProofOfConcept.ServiceWorker
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .ConfigureServices((hostContext, services) =>
+            .UseSerilog()
+            .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddHostedService<MainWorker>();
+                    services.AddSingleton<IActionEnqueuer<IAction>, ActionQueue>();
+                    services.AddSingleton<IActionDequeuer<IAction>, ActionQueue>();
+                    services.AddSingleton<IJob, FullPipelineJob<Nupl>>();
 
-                    RegisterServiceWorker(services);
+                    RegisterServiceWorker(services, hostContext.Configuration);
 
                     services.RegisterDomain();
                     services.RegisterApiClients(hostContext.Configuration);
-                })
-                .UseSerilog();
+                });
 
-        private static void RegisterServiceWorker(IServiceCollection services)
+        private static void RegisterServiceWorker(IServiceCollection services, IConfiguration config)
         {
-            services.AddSingleton<IActionEnqueuer<IAction>, ActionQueue>();
-            services.AddSingleton<IActionDequeuer<IAction>, ActionQueue>();
+            services.Configure<QuartzOptions>(config.GetSection("Quartz"));
 
             services.AddQuartz(q =>
             {
@@ -46,6 +50,9 @@ namespace ProofOfConcept.ServiceWorker
                 {
                     options.AllowDefaultConstructor = true;
                 });
+
+                //q.UseDefaultThreadPool();
+
             });
         }
     }

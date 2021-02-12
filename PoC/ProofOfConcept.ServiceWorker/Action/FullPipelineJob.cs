@@ -24,9 +24,15 @@ namespace ProofOfConcept.ServiceWorker.Action
             _cryptocurrencySymbol = cryptocurrencySymbol;
         }
 
-        public Task Execute(IJobExecutionContext context)
+        public async Task Execute(IJobExecutionContext context)
         {
-            throw new NotImplementedException();
+            var data = await _dataLoaderService.LoadDataAsync(_cryptocurrencySymbol);
+            var stockEvent = await _dataProcessorService.DetectEventAsync(data);
+
+            if (stockEvent != null)
+            {
+                await _messageSenderService.SendEventMessageAsync(stockEvent);
+            }
         }
     }
 }
