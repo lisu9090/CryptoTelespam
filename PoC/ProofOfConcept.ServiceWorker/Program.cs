@@ -10,6 +10,7 @@ using ProofOfConcept.ServiceWorker.Helpers;
 using ProofOfConcept.ServiceWorker.Worker;
 using Quartz;
 using Serilog;
+using System;
 
 namespace ProofOfConcept.ServiceWorker
 {
@@ -32,7 +33,7 @@ namespace ProofOfConcept.ServiceWorker
                 {
                     services.AddSingleton<IActionEnqueuer<IAction>, ActionQueue>();
                     services.AddSingleton<IActionDequeuer<IAction>, ActionQueue>();
-                    services.AddSingleton<IJob, FullPipelineJob<Nupl>>();
+                    services.AddTransient<IJob, NuplEthJob>();
 
                     RegisterServiceWorker(services, hostContext.Configuration);
 
@@ -51,8 +52,36 @@ namespace ProofOfConcept.ServiceWorker
                     options.AllowDefaultConstructor = true;
                 });
 
-                //q.UseDefaultThreadPool();
+                q.UseSimpleTypeLoader();
+                q.UseInMemoryStore();
+                q.UseDefaultThreadPool(tp =>
+                {
+                    tp.MaxConcurrency = 10;
+                });
 
+                //todo move job & trigger setup to other files
+
+                var nuplKey = new JobKey("nupl-eth", "nupl");
+                q.AddJob<NuplEthJob>(j => j
+                    .StoreDurably()
+                    .WithIdentity(nuplKey)
+                    //.WithDescription("my awesome job")
+                );
+
+                q.AddTrigger(t => t
+                    .WithIdentity("nupl-trigger")
+                    .ForJob(nuplKey)
+                    .StartNow()
+                    .WithSimpleSchedule(x => 
+                        x.WithInterval(TimeSpan.FromSeconds(10))
+                        .RepeatForever())
+                    //.WithDescription("my awesome simple trigger")
+                );
+            });
+
+            services.AddQuartzHostedService(options =>
+            {
+                options.WaitForJobsToComplete = true;
             });
         }
     }
