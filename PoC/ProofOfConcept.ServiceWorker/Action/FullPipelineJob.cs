@@ -1,7 +1,10 @@
-﻿using ProofOfConcept.Abstract.Domain;
+﻿using Microsoft.Extensions.Logging;
+using ProofOfConcept.Abstract.Domain;
 using ProofOfConcept.Abstract.Domain.Model;
 using Quartz;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
@@ -11,26 +14,32 @@ namespace ProofOfConcept.ServiceWorker.Action
         protected readonly IDataLoaderService<T> _dataLoaderService;
         protected readonly IDataProcessorService<T> _dataProcessorService;
         protected readonly IMessageSenderService<T> _messageSenderService;
-        private readonly string _cryptocurrencySymbol;
+        protected readonly ILogger<FullPipelineJob<T>> _logger;
+        protected IEnumerable<string> _cryptocurrencySymbols;
 
         public FullPipelineJob(IDataLoaderService<T> dataLoaderService,
             IDataProcessorService<T> dataProcessorService,
             IMessageSenderService<T> messageSenderService,
-            string cryptocurrencySymbol)
+            ILogger<FullPipelineJob<T>> logger)
         {
             _dataLoaderService = dataLoaderService;
             _dataProcessorService = dataProcessorService;
             _messageSenderService = messageSenderService;
-            _cryptocurrencySymbol = cryptocurrencySymbol;
+            _logger = logger;
         }
 
         public async Task Execute(IJobExecutionContext context)
         {
-            var data = await _dataLoaderService.LoadDataAsync(_cryptocurrencySymbol);
-            var stockEvent = await _dataProcessorService.DetectEventAsync(data);
-
-            if (stockEvent != null)
+            if (_cryptocurrencySymbols == null || _cryptocurrencySymbols.Count() < 1)
             {
+                _logger.LogWarning("Cryptocurrncy symbol array of job {0} is null or contains no elements.", typeof(T).Name);
+                return;
+            }
+
+            foreach (var cryptocurrencySymbol in _cryptocurrencySymbols)
+            {
+                var data = await _dataLoaderService.LoadDataAsync(cryptocurrencySymbol);
+                var stockEvent = await _dataProcessorService.DetectEventAsync(data);
                 await _messageSenderService.SendEventMessageAsync(stockEvent);
             }
         }

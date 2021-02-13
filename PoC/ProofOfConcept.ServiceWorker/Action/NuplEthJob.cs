@@ -1,4 +1,5 @@
-﻿using ProofOfConcept.Abstract.Domain;
+﻿using Microsoft.Extensions.Logging;
+using ProofOfConcept.Abstract.Domain;
 using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.Common.Const;
 using System;
@@ -13,12 +14,14 @@ namespace ProofOfConcept.ServiceWorker.Action
     {
         public NuplEthJob(IDataLoaderService<Nupl> dataLoaderService, 
             IDataProcessorService<Nupl> dataProcessorService, 
-            IMessageSenderService<Nupl> messageSenderService) 
+            IMessageSenderService<Nupl> messageSenderService,
+            ILogger<NuplEthJob> logger) 
             : base(dataLoaderService, 
                   dataProcessorService, 
-                  messageSenderService, 
-                  CryptocurrencySymbol.ETH)
+                  messageSenderService,
+                  logger)
         {
+            _cryptocurrencySymbols = new List<string> { CryptocurrencySymbol.BTC, CryptocurrencySymbol.ETH };
         }
     }
 }

@@ -17,6 +17,11 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
 
         public async Task SendEventMessageAsync(StockEvent<Nupl> data)
         {
+            if (data == null)
+            {
+                return;
+            }
+            
             var msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED,
                 data.Code,
                 data.Indicator.Value,

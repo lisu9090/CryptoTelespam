@@ -73,7 +73,7 @@ namespace ProofOfConcept.ServiceWorker
                     .ForJob(nuplKey)
                     .StartNow()
                     .WithSimpleSchedule(x => 
-                        x.WithInterval(TimeSpan.FromSeconds(10))
+                        x.WithInterval(TimeSpan.FromSeconds(15))
                         .RepeatForever())
                     //.WithDescription("my awesome simple trigger")
                 );
