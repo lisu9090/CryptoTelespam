@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class ActiveAddressesJob : FullPipelineJob<NewAddresses>
+    class ActiveAddressesJob : FullPipelineJob<ActiveAddresses>
     {
-        public ActiveAddressesJob(IDataLoaderService<NewAddresses> dataLoaderService, 
-            IDataProcessorService<NewAddresses> dataProcessorService,
-            IMessageSenderService<NewAddresses> messageSenderService, 
-            ILogger<FullPipelineJob<NewAddresses>> logger) : base(dataLoaderService, 
+        public ActiveAddressesJob(IDataLoaderService<ActiveAddresses> dataLoaderService, 
+            IDataProcessorService<ActiveAddresses> dataProcessorService,
+            IMessageSenderService<ActiveAddresses> messageSenderService, 
+            ILogger<ActiveAddressesJob> logger) : base(dataLoaderService, 
                 dataProcessorService,
                 messageSenderService, 
                 logger)

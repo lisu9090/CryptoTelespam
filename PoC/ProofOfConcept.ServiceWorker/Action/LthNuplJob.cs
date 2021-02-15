@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class LthNuplJob : FullPipelineJob<Nupl>
+    class LthNuplJob : FullPipelineJob<LthNupl>
     {
-        public LthNuplJob(IDataLoaderService<Nupl> dataLoaderService, 
-            IDataProcessorService<Nupl> dataProcessorService, 
-            IMessageSenderService<Nupl> messageSenderService,
-            ILogger<NuplJob> logger) 
+        public LthNuplJob(IDataLoaderService<LthNupl> dataLoaderService, 
+            IDataProcessorService<LthNupl> dataProcessorService, 
+            IMessageSenderService<LthNupl> messageSenderService,
+            ILogger<LthNuplJob> logger) 
             : base(dataLoaderService, 
                   dataProcessorService, 
                   messageSenderService,

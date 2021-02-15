@@ -14,8 +14,8 @@ namespace ProofOfConcept.ServiceWorker.Action
     {
         public NewAddressesJob(IDataLoaderService<NewAddresses> dataLoaderService, 
             IDataProcessorService<NewAddresses> dataProcessorService,
-            IMessageSenderService<NewAddresses> messageSenderService, 
-            ILogger<FullPipelineJob<NewAddresses>> logger) : base(dataLoaderService, 
+            IMessageSenderService<NewAddresses> messageSenderService,
+            ILogger<NewAddressesJob> logger) : base(dataLoaderService, 
                 dataProcessorService,
                 messageSenderService, 
                 logger)
