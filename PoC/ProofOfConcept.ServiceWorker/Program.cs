@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.DomainWorker;
 using ProofOfConcept.ServiceWorker.Action;
+using ProofOfConcept.ServiceWorker.Configuration;
 using Quartz;
 using Serilog;
 using System;
@@ -27,13 +28,20 @@ namespace ProofOfConcept.ServiceWorker
             .UseSerilog()
             .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddTransient<IJob, NuplJob>();
-
+                    RegisterService(services);
+                   
                     RegisterServiceWorker(services, hostContext.Configuration);
 
                     services.RegisterDomain();
+                    
                     services.RegisterApiClients(hostContext.Configuration);
                 });
+
+        private static void RegisterService(IServiceCollection services)
+        {
+            services.AddTransient<IJob, NuplJob>();
+            //todo register services if necessary 
+        }
 
         private static void RegisterServiceWorker(IServiceCollection services, IConfiguration config)
         {
@@ -53,24 +61,9 @@ namespace ProofOfConcept.ServiceWorker
                     tp.MaxConcurrency = 10;
                 });
 
-                //todo move job & trigger setup to other files
+                q.RegisterJobs();
 
-                var nuplKey = new JobKey("nupl-eth", "nupl");
-                q.AddJob<NuplJob>(j => j
-                    .StoreDurably()
-                    .WithIdentity(nuplKey)
-                    //.WithDescription("my awesome job")
-                );
-
-                q.AddTrigger(t => t
-                    .WithIdentity("nupl-trigger")
-                    .ForJob(nuplKey)
-                    .StartNow()
-                    .WithSimpleSchedule(x => 
-                        x.WithInterval(TimeSpan.FromSeconds(15))
-                        .RepeatForever())
-                    //.WithDescription("my awesome simple trigger")
-                );
+                q.RegisterTriggers();
             });
 
             services.AddQuartzHostedService(options =>

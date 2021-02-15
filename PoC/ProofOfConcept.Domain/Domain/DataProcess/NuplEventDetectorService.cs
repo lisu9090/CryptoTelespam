@@ -15,15 +15,15 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
         private const float LEVEL_1 = 0.25f;
         private const float LEVEL_2 = 0.5f;
         private const float LEVEL_3 = 0.75f;
-        private readonly Dictionary<string, Range2D> _eventLevels = new Dictionary<string, Range2D>();
+        private readonly Dictionary<string, Range> _eventLevels = new Dictionary<string, Range>();
 
         public NuplEventDetectorService()
         {
-            _eventLevels.Add(NuplEventCode.CAPITULATION, Range2D.And(x => x >= double.MinValue, y => y < LEVEL_0));
-            _eventLevels.Add(NuplEventCode.BELIEFE, Range2D.And(x => x >= LEVEL_0, y => y < LEVEL_1));
-            _eventLevels.Add(NuplEventCode.OPTIMISM, Range2D.And(x => x >= LEVEL_1, y => y < LEVEL_2));
-            _eventLevels.Add(NuplEventCode.HOPE, Range2D.And(x => x >= LEVEL_2, y => y < LEVEL_3));
-            _eventLevels.Add(NuplEventCode.EUPHORIA, Range2D.And(x => x >= LEVEL_3, y => y <= double.MaxValue));
+            _eventLevels.Add(NuplEventCode.CAPITULATION, Range.And(x => x >= double.MinValue, y => y < LEVEL_0));
+            _eventLevels.Add(NuplEventCode.BELIEFE, Range.And(x => x >= LEVEL_0, y => y < LEVEL_1));
+            _eventLevels.Add(NuplEventCode.OPTIMISM, Range.And(x => x >= LEVEL_1, y => y < LEVEL_2));
+            _eventLevels.Add(NuplEventCode.HOPE, Range.And(x => x >= LEVEL_2, y => y < LEVEL_3));
+            _eventLevels.Add(NuplEventCode.EUPHORIA, Range.And(x => x >= LEVEL_3, y => y <= double.MaxValue));
         }
 
         public Task<StockEvent<Nupl>> DetectEventAsync(Nupl data)

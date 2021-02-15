@@ -24,6 +24,5 @@
 
   <ItemGroup>
     <Folder Include="Abstract\" />
-    <Folder Include="Configuration\" />
   </ItemGroup>
 </Project>
