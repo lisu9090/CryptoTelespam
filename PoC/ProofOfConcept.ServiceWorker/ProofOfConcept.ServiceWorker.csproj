@@ -21,4 +21,9 @@
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Domain.DI\ProofOfConcept.Domain.DI.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Abstract\" />
+    <Folder Include="Configuration\" />
+  </ItemGroup>
 </Project>

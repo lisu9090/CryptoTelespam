@@ -1,13 +1,9 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.DomainWorker;
-using ProofOfConcept.ServiceWorker.Abstract;
 using ProofOfConcept.ServiceWorker.Action;
-using ProofOfConcept.ServiceWorker.Helpers;
-using ProofOfConcept.ServiceWorker.Worker;
 using Quartz;
 using Serilog;
 using System;
@@ -31,8 +27,6 @@ namespace ProofOfConcept.ServiceWorker
             .UseSerilog()
             .ConfigureServices((hostContext, services) =>
                 {
-                    services.AddSingleton<IActionEnqueuer<IAction>, ActionQueue>();
-                    services.AddSingleton<IActionDequeuer<IAction>, ActionQueue>();
                     services.AddTransient<IJob, NuplJob>();
 
                     RegisterServiceWorker(services, hostContext.Configuration);
