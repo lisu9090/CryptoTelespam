@@ -33,7 +33,7 @@ namespace ProofOfConcept.ApiClient.Service
         public async Task SendAsync(string msg)
         {
             var uri = new UriBuilder(_apiBase, _messageTargetParamName, _messageTarget)
-                .SetEndpoint("/sendMessage")
+                .SetEndpoint("sendMessage")
                 .AddParameter("text", msg)
                 .Biuld();
 

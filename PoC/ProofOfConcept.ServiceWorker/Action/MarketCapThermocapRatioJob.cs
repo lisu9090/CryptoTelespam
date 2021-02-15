@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class NuplEthJob : FullPipelineJob<Nupl>
+    class MarketCapThermocapRatioJob : FullPipelineJob<Nupl>
     {
-        public NuplEthJob(IDataLoaderService<Nupl> dataLoaderService, 
+        public MarketCapThermocapRatioJob(IDataLoaderService<Nupl> dataLoaderService, 
             IDataProcessorService<Nupl> dataProcessorService, 
             IMessageSenderService<Nupl> messageSenderService,
-            ILogger<NuplEthJob> logger) 
+            ILogger<NuplJob> logger) 
             : base(dataLoaderService, 
                   dataProcessorService, 
                   messageSenderService,

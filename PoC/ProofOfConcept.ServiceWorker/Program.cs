@@ -33,7 +33,7 @@ namespace ProofOfConcept.ServiceWorker
                 {
                     services.AddSingleton<IActionEnqueuer<IAction>, ActionQueue>();
                     services.AddSingleton<IActionDequeuer<IAction>, ActionQueue>();
-                    services.AddTransient<IJob, NuplEthJob>();
+                    services.AddTransient<IJob, NuplJob>();
 
                     RegisterServiceWorker(services, hostContext.Configuration);
 
@@ -62,7 +62,7 @@ namespace ProofOfConcept.ServiceWorker
                 //todo move job & trigger setup to other files
 
                 var nuplKey = new JobKey("nupl-eth", "nupl");
-                q.AddJob<NuplEthJob>(j => j
+                q.AddJob<NuplJob>(j => j
                     .StoreDurably()
                     .WithIdentity(nuplKey)
                     //.WithDescription("my awesome job")

@@ -37,6 +37,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
             var dtos = await _apiService.GetNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
             
             var entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, Nupl>(dtos);
+            
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 
             return entity;
