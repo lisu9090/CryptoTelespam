@@ -12,10 +12,9 @@ namespace ProofOfConcept.ServiceWorker.Configuration
     {
         public static void RegisterJobs(this IServiceCollectionQuartzConfigurator quartzJobs)
         {
-            var nuplKey = new JobKey("nupl-eth", "nupl");
             quartzJobs.AddJob<NuplJob>(j => j
                 .StoreDurably()
-                .WithIdentity(nuplKey)
+                .WithIdentity(KeyConfiguration.NuplKey)
             //.WithDescription("my awesome job")
             );
         }

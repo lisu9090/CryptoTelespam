@@ -12,8 +12,8 @@ namespace ProofOfConcept.ServiceWorker.Configuration
         public static void RegisterTriggers(this IServiceCollectionQuartzConfigurator quartzTriggers)
         {
             quartzTriggers.AddTrigger(t => t
-            .WithIdentity("nupl-trigger")
-            .ForJob(nuplKey)
+            .WithIdentity(KeyConfiguration.NUPL_TRIGGER_KEY)
+            .ForJob(KeyConfiguration.NuplKey)
             .StartNow()
             .WithSimpleSchedule(x =>
                 x.WithInterval(TimeSpan.FromSeconds(15))
