@@ -9,7 +9,7 @@ namespace ProofOfConcept.ServiceWorker.Configuration
 {
     static class KeyConfiguration
     {
-        public const string FULL_PIPELINE_GROUP = "full-pipeline-jobs";
+        public const string FULL_PIPELINE_GROUP = "full-pipeline-job-group";
         
         public const string ACTIVE_ADDRESSES_JOB_KEY = "active-addresses-job";
         public const string LTH_NUPL_JOB_KEY = "lth-nupl-job";

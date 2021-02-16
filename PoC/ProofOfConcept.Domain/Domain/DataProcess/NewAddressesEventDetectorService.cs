@@ -8,7 +8,7 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
     {
         public Task<StockEvent<NewAddresses>> DetectEventAsync(NewAddresses data)
         {
-            throw new System.NotImplementedException();
+            return Task.FromResult<StockEvent<NewAddresses>>(null); //todo
         }
     }
 }
