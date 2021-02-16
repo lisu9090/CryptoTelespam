@@ -45,6 +45,13 @@ namespace ProofOfConcept.DomainWorker
         private static void RegisterMessageSendServices(this IServiceCollection services)
         {
             services.AddTransient<IMessageSenderService<Nupl>, NuplMessageService>();
+            services.AddTransient<IMessageSenderService<NewAddresses>, NewAddressesMessageService>();
+            services.AddTransient<IMessageSenderService<TotalAddresses>, TotalAddressesMessageService>();
+            services.AddTransient<IMessageSenderService<ActiveAddresses>, ActiveAddressesMessageService>();
+            services.AddTransient<IMessageSenderService<LthNupl>, LthNuplMessageService>();
+            services.AddTransient<IMessageSenderService<MarketCapThermocapRatio>, MarketCapThermocapRatioMessageService>();
+            services.AddTransient<IMessageSenderService<StfDeflection>, StfDeflectionMessageService>();
+
         }
     }
 }

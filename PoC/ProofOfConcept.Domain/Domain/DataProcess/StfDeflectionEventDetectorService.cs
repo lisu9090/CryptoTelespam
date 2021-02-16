@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using ProofOfConcept.Domain.Helper;
 using System.Linq;
+using ProofOfConcept.Domain.Const.Code;
 
 namespace ProofOfConcept.Domain.Domain.DataProcess
 {
@@ -14,8 +15,8 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
 
         public StfDeflectionEventDetectorService()
         {
-            _eventLevels.Add("acceptable", Range.And(x => x >= double.MinValue, y => y <= LEVEL_0));
-            _eventLevels.Add("unacceptable", Range.And(x => x > LEVEL_0, y => y <= double.MaxValue));
+            _eventLevels.Add(StfDeflectionEventCode.ACCEPTABLE, Range.And(x => x >= double.MinValue, y => y <= LEVEL_0));
+            _eventLevels.Add(StfDeflectionEventCode.UNACCEPTABLE, Range.And(x => x > LEVEL_0, y => y <= double.MaxValue));
         }
 
         public Task<StockEvent<StfDeflection>> DetectEventAsync(StfDeflection data)
