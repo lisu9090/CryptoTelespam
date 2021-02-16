@@ -23,7 +23,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
         public async Task<TotalAddresses> LoadDataAsync(string cryptocurrencySymbol)
         {
             var since = DateTimeBuilder.UtcNow()
-                .AddDays(-1)
+                .AddDays(-2)
                 .Truncate()
                 .Build();
 

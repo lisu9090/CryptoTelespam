@@ -29,7 +29,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
             }
 
             var since = DateTimeBuilder.UtcNow()
-                .AddDays(-1)
+                .AddDays(-2)
                 .Truncate()
                 .Build();
 
