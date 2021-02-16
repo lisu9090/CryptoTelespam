@@ -22,7 +22,7 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
                 return;
             }
             
-            var msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED,
+            var msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED, //todo fix
                 data.Code,
                 data.Indicator.Value,
                 data.Indicator.CryptocurrencySymbol);

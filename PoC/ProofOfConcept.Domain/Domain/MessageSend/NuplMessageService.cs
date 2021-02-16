@@ -23,9 +23,10 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
             }
             
             var msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED,
+                data.Indicator.CryptocurrencySymbol,
                 data.Code,
-                data.Indicator.Value,
-                data.Indicator.CryptocurrencySymbol);
+                data.Code, //todo add previos state
+                data.Indicator.Value);
 
             await _messageApiService.SendAsync(msg);
         }
