@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ProofOfConcept.Abstract.ApiClient;
+using ProofOfConcept.Abstract.ApiClient.Dto;
 using ProofOfConcept.Abstract.Domain;
 using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.Common.Const;
@@ -34,8 +35,8 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
                 .Build();
 
             var dtos = await _apiService.GetMarketCapThermocapRatioAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
-            var dto = dtos.OrderBy(item => item.T).LastOrDefault();
-            var entity = _mapper.Map<MarketCapThermocapRatio>(dto);
+            
+            var entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, MarketCapThermocapRatio>(dtos);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

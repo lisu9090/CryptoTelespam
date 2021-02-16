@@ -13,7 +13,6 @@ namespace ProofOfConcept.ApiClient.Service
 {
     public class GlassNodeApiService : IRestApiService
     {
-        private readonly int _timeout;
         private readonly string _apiBase;
         private readonly string _apiKeyParamName;
         private readonly string _key;
@@ -28,7 +27,6 @@ namespace ProofOfConcept.ApiClient.Service
             HttpClient httpClient, 
             ILogger<GlassNodeApiService> logger)
         {
-            _timeout = timeout;
             _apiBase = apiBase;
             _apiKeyParamName = apiKeyParamName;
             _key = key;
@@ -40,6 +38,7 @@ namespace ProofOfConcept.ApiClient.Service
                 PropertyNameCaseInsensitive = true
             };
 
+            _httpClient.Timeout = System.TimeSpan.FromSeconds(timeout);
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(
                 new MediaTypeWithQualityHeaderValue("application/json"));

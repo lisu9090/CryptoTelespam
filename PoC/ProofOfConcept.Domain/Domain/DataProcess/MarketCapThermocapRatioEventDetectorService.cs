@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using ProofOfConcept.Domain.Helper;
 using System.Linq;
+using ProofOfConcept.Domain.Const.Code;
 
 namespace ProofOfConcept.Domain.Domain.DataProcess
 {
@@ -15,9 +16,9 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
 
         public MarketCapThermocapRatioEventDetectorService()
         {
-            _eventLevels.Add("acceptable", Range.And(x => x >= double.MinValue, y => y <= LEVEL_0));
-            _eventLevels.Add("close-to-overheat", Range.And(x => x > LEVEL_0, y => y <= LEVEL_1));
-            _eventLevels.Add("overheat", Range.And(x => x > LEVEL_1, y => y <= double.MaxValue));
+            _eventLevels.Add(MarketCapEventCode.ACCEPTABLE, Range.And(x => x >= double.MinValue, y => y <= LEVEL_0));
+            _eventLevels.Add(MarketCapEventCode.CLOSE_TO_OVERHEAT, Range.And(x => x > LEVEL_0, y => y <= LEVEL_1));
+            _eventLevels.Add(MarketCapEventCode.OVERHEATED, Range.And(x => x > LEVEL_1, y => y <= double.MaxValue));
         }
 
         public Task<StockEvent<MarketCapThermocapRatio>> DetectEventAsync(MarketCapThermocapRatio data)

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using ProofOfConcept.Abstract.ApiClient;
+using ProofOfConcept.Abstract.ApiClient.Dto;
 using ProofOfConcept.Abstract.Domain;
 using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.Domain.Helper;
@@ -28,8 +29,8 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
                 .Build();
 
             var dtos = await _apiService.GetNewAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
-            var dto = dtos.OrderBy(item => item.T).LastOrDefault();
-            var entity = _mapper.Map<NewAddresses>(dto);
+            
+            var entity = _mapper.DtoOrderedMap<IntValueTimestampDto, NewAddresses>(dtos);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

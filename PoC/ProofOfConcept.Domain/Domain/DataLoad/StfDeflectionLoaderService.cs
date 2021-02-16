@@ -7,6 +7,7 @@ using ProofOfConcept.Domain.Helper;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using ProofOfConcept.Abstract.ApiClient.Dto;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
 {
@@ -34,8 +35,8 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
                 .Build();
 
             var dtos = await _apiService.GetStfDefectionAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
-            var dto = dtos.OrderBy(item => item.T).LastOrDefault();
-            var entity = _mapper.Map<StfDeflection>(dto);
+           
+            var entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, StfDeflection>(dtos);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 
