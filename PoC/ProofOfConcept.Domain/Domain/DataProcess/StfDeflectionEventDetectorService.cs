@@ -23,10 +23,10 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
         {
             return Task.Run(() =>
             {
-                var result = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
-                var differenceCheck = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
+                var currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
+                var previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
 
-                return !result.Equals(differenceCheck) ? new StockEvent<StfDeflection>(data, result) : null;
+                return !currentLevel.Equals(previousLevel) ? new StockEvent<StfDeflection>(data, currentLevel, previousLevel) : null;
             });
         }
     }

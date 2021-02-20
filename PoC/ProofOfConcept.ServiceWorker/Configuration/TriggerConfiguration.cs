@@ -13,13 +13,13 @@ namespace ProofOfConcept.ServiceWorker.Configuration
         {
             quartzTriggers.AddTrigger(t => t
             .WithIdentity(KeyConfiguration.FULL_PIPELINE_TRIGGER_KEY)
-            .ForJob(KeyConfiguration.ActiveAddressesKey)
-            .ForJob(KeyConfiguration.LthNuplKey)
-            .ForJob(KeyConfiguration.MarketCapKey)
-            .ForJob(KeyConfiguration.NewAddressesKey)
+            //.ForJob(KeyConfiguration.ActiveAddressesKey)
+            //.ForJob(KeyConfiguration.LthNuplKey)
+            //.ForJob(KeyConfiguration.MarketCapKey)
+            //.ForJob(KeyConfiguration.NewAddressesKey)
             .ForJob(KeyConfiguration.NuplKey)
-            .ForJob(KeyConfiguration.StfDeflectionKey)
-            .ForJob(KeyConfiguration.TotalAddressesKey)
+            //.ForJob(KeyConfiguration.StfDeflectionKey)
+            //.ForJob(KeyConfiguration.TotalAddressesKey)
             .StartNow()
             .WithSimpleSchedule(x =>
                 x.WithInterval(TimeSpan.FromSeconds(15))

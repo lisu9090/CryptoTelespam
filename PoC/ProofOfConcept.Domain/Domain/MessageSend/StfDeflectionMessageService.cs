@@ -2,6 +2,7 @@
 using ProofOfConcept.Abstract.Domain;
 using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.Domain.Const.Message;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Domain.Domain.MessageSend
@@ -25,7 +26,6 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
             var msg = string.Format(StfDefectionEventMessage.STF_STATE_CHANGED,
                 data.Indicator.CryptocurrencySymbol,
                 data.Code,
-                data.Code, //todo add previos state
                 data.Indicator.Value);
 
             await _messageApiService.SendAsync(msg);

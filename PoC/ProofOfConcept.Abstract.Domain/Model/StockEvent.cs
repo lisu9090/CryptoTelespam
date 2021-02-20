@@ -10,9 +10,18 @@ namespace ProofOfConcept.Abstract.Domain.Model
         {
             Indicator = indicator;
             Code = code;
+            AdditionalData = new List<object>();
+        }
+
+        public StockEvent(T indicator, string code, params object[] data)
+        {
+            Indicator = indicator;
+            Code = code;
+            AdditionalData = new List<object>(data);
         }
 
         public T Indicator { get; private set; }
         public string Code { get; private set; }
+        public IEnumerable<object> AdditionalData { get; private set; }
     }
 }
