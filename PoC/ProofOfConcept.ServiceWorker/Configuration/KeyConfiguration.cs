@@ -19,7 +19,13 @@ namespace ProofOfConcept.ServiceWorker.Configuration
         public const string STF_JOB_KEY = "stf-deflection-job";
         public const string TOTAL_ADDRESSES_JOB_KEY = "total-addresses-job";
 
-        public const string FULL_PIPELINE_TRIGGER_KEY = "full-pipeline-trigger";
+        public const string ACTIVE_ADDRESSES_TRIGGER_KEY = ACTIVE_ADDRESSES_JOB_KEY + "-trigger";
+        public const string LTH_NUPL_TRIGGER_KEY = LTH_NUPL_JOB_KEY + "-trigger";
+        public const string MARKET_CAP_TRIGGER_KEY = MARKET_CAP_JOB_KEY + "-trigger";
+        public const string NEW_ADDRESSES_TRIGGER_KEY = NEW_ADDRESSES_JOB_KEY + "-trigger";
+        public const string NUPL_TRIGGER_KEY = NUPL_JOB_KEY + "-trigger";
+        public const string STF_TRIGGER_KEY = STF_JOB_KEY + "-trigger";
+        public const string TOTAL_ADDRESSES_TRIGGER_KEY = TOTAL_ADDRESSES_JOB_KEY + "-trigger";
 
         public static JobKey ActiveAddressesKey
         { 
