@@ -40,6 +40,9 @@ namespace ProofOfConcept.ApiClientDomain
             CreateMap<IEnumerable<FloatValueTimestampDto>, Nupl>()
                 .IncludeBase<IEnumerable<FloatValueTimestampDto>, ScopedIndicatorBase<float>>();
 
+            CreateMap<IEnumerable<FloatValueTimestampDto>, Puell>()
+                .IncludeBase<IEnumerable<FloatValueTimestampDto>, ScopedIndicatorBase<float>>();
+
             CreateMap<IEnumerable<IntValueTimestampDto>, NewAddresses>()
                 .IncludeBase<IEnumerable<IntValueTimestampDto>, ScopedIndicatorBase<int>>();
 

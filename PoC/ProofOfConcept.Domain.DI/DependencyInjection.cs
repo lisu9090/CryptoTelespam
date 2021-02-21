@@ -23,6 +23,7 @@ namespace ProofOfConcept.DomainWorker
         private static void RegisterDataLoadServices(this IServiceCollection services)
         {
             services.AddTransient<IDataLoaderService<Nupl>, NuplLoaderService>();
+            services.AddTransient<IDataLoaderService<Puell>, PuellLoaderService>();
             services.AddTransient<IDataLoaderService<NewAddresses>, NewAddressesLoaderService>();
             services.AddTransient<IDataLoaderService<TotalAddresses>, TotalAddressesLoaderService>();
             services.AddTransient<IDataLoaderService<ActiveAddresses>, ActiveAddressesLoaderService>();
@@ -34,6 +35,7 @@ namespace ProofOfConcept.DomainWorker
         private static void RegisterDataProcessServices(this IServiceCollection services)
         {
             services.AddTransient<IDataProcessorService<Nupl>, NuplEventDetectorService>();
+            services.AddTransient<IDataProcessorService<Puell>, PuellEventDetectorService>();
             services.AddTransient<IDataProcessorService<NewAddresses>, NewAddressesEventDetectorService>();
             services.AddTransient<IDataProcessorService<TotalAddresses>, TotalAddressesEventDetectorService>();
             services.AddTransient<IDataProcessorService<ActiveAddresses>, ActiveAddressesEventDetectorService>();
@@ -45,6 +47,7 @@ namespace ProofOfConcept.DomainWorker
         private static void RegisterMessageSendServices(this IServiceCollection services)
         {
             services.AddTransient<IMessageSenderService<Nupl>, NuplMessageService>();
+            services.AddTransient<IMessageSenderService<Puell>, PuellMessageService>();
             services.AddTransient<IMessageSenderService<NewAddresses>, NewAddressesMessageService>();
             services.AddTransient<IMessageSenderService<TotalAddresses>, TotalAddressesMessageService>();
             services.AddTransient<IMessageSenderService<ActiveAddresses>, ActiveAddressesMessageService>();

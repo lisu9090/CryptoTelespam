@@ -55,6 +55,16 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
+        public async Task<IEnumerable<FloatValueTimestampDto>> GetPuellMultipleAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        {
+            return await GetIndicatorAsync<IEnumerable<FloatValueTimestampDto>>("v1/metrics/indicators/puell_multiple",
+                asset,
+                sinceTimeStamp,
+                untilTimeStamp,
+                interval,
+                format);
+        }
+
         public async Task<IEnumerable<IntValueTimestampDto>> GetNewAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             return await GetIndicatorAsync<IEnumerable<IntValueTimestampDto>>("/v1/metrics/addresses/sending_to_exchanges_count",
