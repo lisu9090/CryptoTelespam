@@ -12,10 +12,3 @@ nupl
 0.5
 >0.75 ->  euphoria
 euphoria => event
-
-
-TODO
-Sprawdzic kiedy aktualizowane sa dane (api)
-Stworzyc scheduler odpytujacy api
-Dodac logging
-Integracja z tg

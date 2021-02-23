@@ -12,16 +12,6 @@ namespace ProofOfConcept.ServiceWorker.Configuration
         public static void RegisterTriggers(this IServiceCollectionQuartzConfigurator quartzTriggers)
         {
             quartzTriggers.AddTrigger(t => t
-            .WithIdentity(KeyConfiguration.ACTIVE_ADDRESSES_TRIGGER_KEY)
-            .ForJob(KeyConfiguration.ActiveAddressesKey)
-            .StartNow()
-            .WithSimpleSchedule(x =>
-                x.WithInterval(TimeSpan.FromSeconds(15))
-                .RepeatForever())
-                //.WithDescription("my awesome simple trigger")
-                );
-
-            quartzTriggers.AddTrigger(t => t
             .WithIdentity(KeyConfiguration.LTH_NUPL_TRIGGER_KEY)
             .ForJob(KeyConfiguration.LthNuplKey)
             .StartNow()
@@ -32,14 +22,6 @@ namespace ProofOfConcept.ServiceWorker.Configuration
             quartzTriggers.AddTrigger(t => t
             .WithIdentity(KeyConfiguration.MARKET_CAP_TRIGGER_KEY)
             .ForJob(KeyConfiguration.MarketCapKey)
-            .StartNow()
-            .WithSimpleSchedule(x =>
-                x.WithInterval(TimeSpan.FromSeconds(15))
-                .RepeatForever()));
-
-            quartzTriggers.AddTrigger(t => t
-            .WithIdentity(KeyConfiguration.NEW_ADDRESSES_TRIGGER_KEY)
-            .ForJob(KeyConfiguration.NewAddressesKey)
             .StartNow()
             .WithSimpleSchedule(x =>
                 x.WithInterval(TimeSpan.FromSeconds(15))
@@ -68,6 +50,24 @@ namespace ProofOfConcept.ServiceWorker.Configuration
             .WithSimpleSchedule(x =>
                 x.WithInterval(TimeSpan.FromSeconds(15))
                 .RepeatForever()));
+
+            //quartzTriggers.AddTrigger(t => t
+            //.WithIdentity(KeyConfiguration.NEW_ADDRESSES_TRIGGER_KEY)
+            //.ForJob(KeyConfiguration.NewAddressesKey)
+            //.StartNow()
+            //.WithSimpleSchedule(x =>
+            //    x.WithInterval(TimeSpan.FromSeconds(15))
+            //    .RepeatForever()));
+
+            //quartzTriggers.AddTrigger(t => t
+            //.WithIdentity(KeyConfiguration.ACTIVE_ADDRESSES_TRIGGER_KEY)
+            //.ForJob(KeyConfiguration.ActiveAddressesKey)
+            //.StartNow()
+            //.WithSimpleSchedule(x =>
+            //    x.WithInterval(TimeSpan.FromSeconds(15))
+            //    .RepeatForever())
+            //    //.WithDescription("my awesome simple trigger")
+            //    );
         }
     }
 }
