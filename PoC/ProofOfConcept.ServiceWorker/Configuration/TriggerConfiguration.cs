@@ -19,37 +19,37 @@ namespace ProofOfConcept.ServiceWorker.Configuration
                 x.WithInterval(TimeSpan.FromSeconds(15))
                 .RepeatForever()));
 
-            quartzTriggers.AddTrigger(t => t
-            .WithIdentity(KeyConfiguration.MARKET_CAP_TRIGGER_KEY)
-            .ForJob(KeyConfiguration.MarketCapKey)
-            .StartNow()
-            .WithSimpleSchedule(x =>
-                x.WithInterval(TimeSpan.FromSeconds(15))
-                .RepeatForever()));
+            //quartzTriggers.AddTrigger(t => t
+            //.WithIdentity(KeyConfiguration.MARKET_CAP_TRIGGER_KEY)
+            //.ForJob(KeyConfiguration.MarketCapKey)
+            //.StartNow()
+            //.WithSimpleSchedule(x =>
+            //    x.WithInterval(TimeSpan.FromSeconds(15))
+            //    .RepeatForever()));
 
-            quartzTriggers.AddTrigger(t => t
-            .WithIdentity(KeyConfiguration.NUPL_TRIGGER_KEY)
-            .ForJob(KeyConfiguration.NuplKey)
-            .StartNow()
-            .WithSimpleSchedule(x =>
-                x.WithInterval(TimeSpan.FromSeconds(15))
-                .RepeatForever()));
+            //quartzTriggers.AddTrigger(t => t
+            //.WithIdentity(KeyConfiguration.NUPL_TRIGGER_KEY)
+            //.ForJob(KeyConfiguration.NuplKey)
+            //.StartNow()
+            //.WithSimpleSchedule(x =>
+            //    x.WithInterval(TimeSpan.FromSeconds(15))
+            //    .RepeatForever()));
 
-            quartzTriggers.AddTrigger(t => t
-            .WithIdentity(KeyConfiguration.STF_TRIGGER_KEY)
-            .ForJob(KeyConfiguration.StfDeflectionKey)
-            .StartNow()
-            .WithSimpleSchedule(x =>
-                x.WithInterval(TimeSpan.FromSeconds(15))
-                .RepeatForever()));
+            //quartzTriggers.AddTrigger(t => t
+            //.WithIdentity(KeyConfiguration.STF_TRIGGER_KEY)
+            //.ForJob(KeyConfiguration.StfDeflectionKey)
+            //.StartNow()
+            //.WithSimpleSchedule(x =>
+            //    x.WithInterval(TimeSpan.FromSeconds(15))
+            //    .RepeatForever()));
 
-            quartzTriggers.AddTrigger(t => t
-            .WithIdentity(KeyConfiguration.TOTAL_ADDRESSES_TRIGGER_KEY)
-            .ForJob(KeyConfiguration.TotalAddressesKey)
-            .StartNow()
-            .WithSimpleSchedule(x =>
-                x.WithInterval(TimeSpan.FromSeconds(15))
-                .RepeatForever()));
+            //quartzTriggers.AddTrigger(t => t
+            //.WithIdentity(KeyConfiguration.TOTAL_ADDRESSES_TRIGGER_KEY)
+            //.ForJob(KeyConfiguration.TotalAddressesKey)
+            //.StartNow()
+            //.WithSimpleSchedule(x =>
+            //    x.WithInterval(TimeSpan.FromSeconds(15))
+            //    .RepeatForever()));
 
             //quartzTriggers.AddTrigger(t => t
             //.WithIdentity(KeyConfiguration.NEW_ADDRESSES_TRIGGER_KEY)

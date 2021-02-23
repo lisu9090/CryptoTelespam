@@ -7,6 +7,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using ProofOfConcept.Abstract.ApiClient.Dto;
+using ProofOfConcept.Common.Const;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
 {
@@ -28,7 +29,9 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
                 .Truncate()
                 .Build();
 
-            var dtos = await _apiService.GetTotalAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            var dtos = await _apiService.GetTotalAddressesAsync(cryptocurrencySymbol, 
+                Convert.ToInt32(since.ToUnixTimeSeconds()), 
+                interval: Interval.HOUR);
             
             var entity = _mapper.DtoOrderedMap<IntValueTimestampDto, TotalAddresses>(dtos);
 
