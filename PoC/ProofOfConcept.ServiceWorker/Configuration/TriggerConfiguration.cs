@@ -1,4 +1,5 @@
-﻿using Quartz;
+﻿using Microsoft.Extensions.Configuration;
+using Quartz;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,39 +10,39 @@ namespace ProofOfConcept.ServiceWorker.Configuration
 {
     static class TriggerConfiguration
     {
-        public static void RegisterTriggers(this IServiceCollectionQuartzConfigurator quartzTriggers)
-        {
+        private const string QUARTZ_TRIGGER_CONFIG = "QuartzTriggers:Triggers:";
+        private const string QUARTZ_TRIGGER_DEFAULT_CONFIG = "0 0 0/8 ? * *";
+        public static void RegisterTriggers(this IServiceCollectionQuartzConfigurator quartzTriggers, IConfiguration config)
+        { 
             quartzTriggers.AddTrigger(t => t
             .WithIdentity(KeyConfiguration.LTH_NUPL_TRIGGER_KEY)
             .ForJob(KeyConfiguration.LthNuplKey)
             .StartNow()
-            .WithSimpleSchedule(x =>
-                x.WithInterval(TimeSpan.FromSeconds(15))
-                .RepeatForever()));
+            .WithCronSchedule(config.GetSectionOrDefault(QUARTZ_TRIGGER_CONFIG + "LthNupl")));
 
-            //quartzTriggers.AddTrigger(t => t
-            //.WithIdentity(KeyConfiguration.MARKET_CAP_TRIGGER_KEY)
-            //.ForJob(KeyConfiguration.MarketCapKey)
-            //.StartNow()
-            //.WithSimpleSchedule(x =>
-            //    x.WithInterval(TimeSpan.FromSeconds(15))
-            //    .RepeatForever()));
+            quartzTriggers.AddTrigger(t => t
+            .WithIdentity(KeyConfiguration.MARKET_CAP_TRIGGER_KEY)
+            .ForJob(KeyConfiguration.MarketCapKey)
+            .StartNow()
+            .WithCronSchedule(config.GetSectionOrDefault(QUARTZ_TRIGGER_CONFIG + "MarketCap")));
 
-            //quartzTriggers.AddTrigger(t => t
-            //.WithIdentity(KeyConfiguration.NUPL_TRIGGER_KEY)
-            //.ForJob(KeyConfiguration.NuplKey)
-            //.StartNow()
-            //.WithSimpleSchedule(x =>
-            //    x.WithInterval(TimeSpan.FromSeconds(15))
-            //    .RepeatForever()));
+            quartzTriggers.AddTrigger(t => t
+            .WithIdentity(KeyConfiguration.NUPL_TRIGGER_KEY)
+            .ForJob(KeyConfiguration.NuplKey)
+            .StartNow()
+            .WithCronSchedule(config.GetSectionOrDefault(QUARTZ_TRIGGER_CONFIG + "Nupl")));
 
-            //quartzTriggers.AddTrigger(t => t
-            //.WithIdentity(KeyConfiguration.STF_TRIGGER_KEY)
-            //.ForJob(KeyConfiguration.StfDeflectionKey)
-            //.StartNow()
-            //.WithSimpleSchedule(x =>
-            //    x.WithInterval(TimeSpan.FromSeconds(15))
-            //    .RepeatForever()));
+            quartzTriggers.AddTrigger(t => t
+            .WithIdentity(KeyConfiguration.PUELL_TRIGGER_KEY)
+            .ForJob(KeyConfiguration.PuellKey)
+            .StartNow()
+            .WithCronSchedule(config.GetSectionOrDefault(QUARTZ_TRIGGER_CONFIG + "Puell")));
+
+            quartzTriggers.AddTrigger(t => t
+            .WithIdentity(KeyConfiguration.STF_TRIGGER_KEY)
+            .ForJob(KeyConfiguration.StfDeflectionKey)
+            .StartNow()
+            .WithCronSchedule(config.GetSectionOrDefault(QUARTZ_TRIGGER_CONFIG + "Stf")));
 
             //quartzTriggers.AddTrigger(t => t
             //.WithIdentity(KeyConfiguration.TOTAL_ADDRESSES_TRIGGER_KEY)
@@ -68,6 +69,11 @@ namespace ProofOfConcept.ServiceWorker.Configuration
             //    .RepeatForever())
             //    //.WithDescription("my awesome simple trigger")
             //    );
+        }
+
+        private static string GetSectionOrDefault(this IConfiguration config, string section)
+        {
+            return config.GetSection(section).Exists() ? config[section] : QUARTZ_TRIGGER_DEFAULT_CONFIG;
         }
     }
 }

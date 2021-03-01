@@ -34,6 +34,10 @@ namespace ProofOfConcept.ServiceWorker.Configuration
                 .StoreDurably()
                 .WithIdentity(KeyConfiguration.NuplKey));
 
+            quartzJobs.AddJob<PuellJob>(j => j
+                .StoreDurably()
+                .WithIdentity(KeyConfiguration.PuellKey));
+
             quartzJobs.AddJob<StfDeflectionJob>(j => j
                 .StoreDurably()
                 .WithIdentity(KeyConfiguration.StfDeflectionKey));

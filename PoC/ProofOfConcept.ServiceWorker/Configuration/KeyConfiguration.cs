@@ -16,6 +16,7 @@ namespace ProofOfConcept.ServiceWorker.Configuration
         public const string MARKET_CAP_JOB_KEY = "market-cap-thermocap-ratio-job";
         public const string NEW_ADDRESSES_JOB_KEY = "new-addresses-job";
         public const string NUPL_JOB_KEY = "nupl-job";
+        public const string PUELL_JOB_KEY = "puell-job";
         public const string STF_JOB_KEY = "stf-deflection-job";
         public const string TOTAL_ADDRESSES_JOB_KEY = "total-addresses-job";
 
@@ -24,6 +25,7 @@ namespace ProofOfConcept.ServiceWorker.Configuration
         public const string MARKET_CAP_TRIGGER_KEY = MARKET_CAP_JOB_KEY + "-trigger";
         public const string NEW_ADDRESSES_TRIGGER_KEY = NEW_ADDRESSES_JOB_KEY + "-trigger";
         public const string NUPL_TRIGGER_KEY = NUPL_JOB_KEY + "-trigger";
+        public const string PUELL_TRIGGER_KEY = PUELL_JOB_KEY + "-trigger";
         public const string STF_TRIGGER_KEY = STF_JOB_KEY + "-trigger";
         public const string TOTAL_ADDRESSES_TRIGGER_KEY = TOTAL_ADDRESSES_JOB_KEY + "-trigger";
 
@@ -64,6 +66,14 @@ namespace ProofOfConcept.ServiceWorker.Configuration
             get
             {
                 return new JobKey(NUPL_JOB_KEY, FULL_PIPELINE_GROUP);
+            }
+        }
+
+        public static JobKey PuellKey
+        {
+            get
+            {
+                return new JobKey(PUELL_JOB_KEY, FULL_PIPELINE_GROUP);
             }
         }
 

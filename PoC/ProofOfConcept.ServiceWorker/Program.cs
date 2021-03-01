@@ -29,7 +29,7 @@ namespace ProofOfConcept.ServiceWorker
             .ConfigureServices((hostContext, services) =>
                 {
                     RegisterService(services);
-                   
+
                     RegisterServiceWorker(services, hostContext.Configuration);
 
                     services.RegisterDomain();
@@ -63,7 +63,7 @@ namespace ProofOfConcept.ServiceWorker
 
                 q.RegisterJobs();
 
-                q.RegisterTriggers();
+                q.RegisterTriggers(config);
             });
 
             services.AddQuartzHostedService(options =>
