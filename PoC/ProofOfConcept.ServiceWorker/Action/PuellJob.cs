@@ -21,7 +21,7 @@ namespace ProofOfConcept.ServiceWorker.Action
                   messageSenderService,
                   logger)
         {
-            _cryptocurrencySymbols = new List<string> { CryptocurrencySymbol.BTC, CryptocurrencySymbol.ETH };
+            _cryptocurrencySymbols = new List<string> { CryptocurrencySymbol.BTC };
         }
     }
 }

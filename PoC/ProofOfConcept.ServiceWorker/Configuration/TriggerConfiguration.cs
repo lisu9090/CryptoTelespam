@@ -13,7 +13,7 @@ namespace ProofOfConcept.ServiceWorker.Configuration
         private const string QUARTZ_TRIGGER_CONFIG = "QuartzTriggers:";
         private const string QUARTZ_TRIGGER_DEFAULT_CONFIG = "0 0 0/8 ? * *";
         public static void RegisterTriggers(this IServiceCollectionQuartzConfigurator quartzTriggers, IConfiguration config)
-        { 
+        {
             quartzTriggers.AddTrigger(t => t
             .WithIdentity(KeyConfiguration.LTH_NUPL_TRIGGER_KEY)
             .ForJob(KeyConfiguration.LthNuplKey)

@@ -24,7 +24,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 
         public async Task<Puell> LoadDataAsync(string cryptocurrencySymbol)
         {
-            if(!(cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC) || cryptocurrencySymbol.Equals(CryptocurrencySymbol.ETH)))
+            if(!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
             {
                 cryptocurrencySymbol = CryptocurrencySymbol.BTC;
             }
@@ -35,7 +35,7 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
                 .Build();
 
             var dtos = await _apiService.GetPuellMultipleAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
-            
+
             var entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, Puell>(dtos);
             
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
