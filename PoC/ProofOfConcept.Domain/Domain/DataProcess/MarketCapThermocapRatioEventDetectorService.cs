@@ -21,15 +21,12 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
             _eventLevels.Add(MarketCapEventCode.OVERHEATED, Range.And(x => x > LEVEL_1, y => y <= double.MaxValue));
         }
 
-        public Task<StockEvent<MarketCapThermocapRatio>> DetectEventAsync(MarketCapThermocapRatio data)
+        public StockEvent<MarketCapThermocapRatio> DetectEvent(MarketCapThermocapRatio data)
         {
-            return Task.Run(() =>
-            {
-                var currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
-                var previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
+            var currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
+            var previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
 
-                return !currentLevel.Equals(previousLevel) ? new StockEvent<MarketCapThermocapRatio>(data, currentLevel, previousLevel) : null;
-            });
+            return !currentLevel.Equals(previousLevel) ? new StockEvent<MarketCapThermocapRatio>(data, currentLevel, previousLevel) : null;
         }
     }
 }

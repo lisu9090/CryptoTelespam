@@ -5,6 +5,6 @@ namespace ProofOfConcept.Abstract.Domain
 {
     public interface IDataProcessorService<T> where T : CryptocurrencyIndicator
     {
-        Task<StockEvent<T>> DetectEventAsync(T data);
+        StockEvent<T> DetectEvent(T data);
     }
 }

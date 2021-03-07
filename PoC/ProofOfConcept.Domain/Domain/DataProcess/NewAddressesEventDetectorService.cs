@@ -6,9 +6,9 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
 {
     public class NewAddressesEventDetectorService : IDataProcessorService<NewAddresses>
     {
-        public Task<StockEvent<NewAddresses>> DetectEventAsync(NewAddresses data)
+        public StockEvent<NewAddresses> DetectEvent(NewAddresses data)
         {
-            return Task.FromResult<StockEvent<NewAddresses>>(null); //todo
+            return null; //todo
 
             //val is greater than 160k
             //algorytm normalizujacy dane

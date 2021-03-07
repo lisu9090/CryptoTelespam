@@ -26,15 +26,12 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
             _eventLevels.Add(NuplEventCode.EUPHORIA, Range.And(x => x >= LEVEL_3, y => y <= double.MaxValue));
         }
 
-        public Task<StockEvent<Nupl>> DetectEventAsync(Nupl data)
+        public StockEvent<Nupl> DetectEvent(Nupl data)
         {
-            return Task.Run(() => 
-            {
-                var currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
-                var previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
+            var currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
+            var previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
 
-                return !currentLevel.Equals(previousLevel) ? new StockEvent<Nupl>(data, currentLevel, previousLevel) : null;
-            });
+            return !currentLevel.Equals(previousLevel) ? new StockEvent<Nupl>(data, currentLevel, previousLevel) : null;
         }
     }
 }
