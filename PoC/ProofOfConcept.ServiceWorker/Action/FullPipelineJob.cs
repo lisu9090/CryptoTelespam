@@ -39,7 +39,7 @@ namespace ProofOfConcept.ServiceWorker.Action
             foreach (var cryptocurrencySymbol in _cryptocurrencySymbols)
             {
                 var data = await _dataLoaderService.LoadDataAsync(cryptocurrencySymbol);
-                var stockEvent = await _dataProcessorService.DetectEvent(data);
+                var stockEvent = _dataProcessorService.DetectEvent(data);
                 await _messageSenderService.SendEventMessageAsync(stockEvent);
             }
         }
