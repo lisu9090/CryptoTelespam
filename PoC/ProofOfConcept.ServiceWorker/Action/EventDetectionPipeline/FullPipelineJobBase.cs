@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Action
+namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
 {
     abstract class FullPipelineJobBase<T> : IJob where T : CryptocurrencyIndicator
     {
@@ -38,9 +38,17 @@ namespace ProofOfConcept.ServiceWorker.Action
 
             foreach (var cryptocurrencySymbol in _cryptocurrencySymbols)
             {
-                var data = await _dataLoaderService.LoadDataAsync(cryptocurrencySymbol);
-                var stockEvent = _dataProcessorService.DetectEvent(data);
-                await _messageSenderService.SendEventMessageAsync(stockEvent);
+                T data = await _dataLoaderService.LoadDataAsync(cryptocurrencySymbol);
+                StockEvent<T> stockEvent = _dataProcessorService.DetectEvent(data);
+
+                if(stockEvent is null)
+                {
+                    await _messageSenderService.SendNotificationAsync(data);
+                }
+                else
+                {
+                    await _messageSenderService.SendEventMessageAsync(stockEvent);
+                }
             }
         }
     }

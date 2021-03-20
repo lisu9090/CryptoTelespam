@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Action
+namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
 {
     class NewAddressesJob : FullPipelineJobBase<NewAddresses>
     {
