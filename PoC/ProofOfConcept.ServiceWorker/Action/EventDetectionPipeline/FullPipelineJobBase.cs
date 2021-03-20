@@ -41,13 +41,13 @@ namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
                 T data = await _dataLoaderService.LoadDataAsync(cryptocurrencySymbol);
                 StockEvent<T> stockEvent = _dataProcessorService.DetectEvent(data);
 
-                if(stockEvent is null)
+                if(stockEvent != null)
                 {
-                    await _messageSenderService.SendNotificationAsync(data);
+                    await _messageSenderService.SendEventMessageAsync(stockEvent);
                 }
                 else
                 {
-                    await _messageSenderService.SendEventMessageAsync(stockEvent);
+                    await _messageSenderService.SendNotificationAsync(data);
                 }
             }
         }
