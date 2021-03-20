@@ -32,14 +32,14 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task SendAsync(string msg)
         {
-            var uri = new UriBuilder(_apiBase, _messageTargetParamName, _messageTarget)
+            string uri = new UriBuilder(_apiBase, _messageTargetParamName, _messageTarget)
                 .SetEndpoint("sendMessage")
                 .AddParameter("text", msg)
                 .Biuld();
 
             _logger.LogDebug(uri);
 
-            var result = await _httpClient.PostAsync(uri, new ByteArrayContent(new byte[0]));
+            HttpResponseMessage result = await _httpClient.PostAsync(uri, new ByteArrayContent(new byte[0]));
 
             if (!result.IsSuccessStatusCode)
             {

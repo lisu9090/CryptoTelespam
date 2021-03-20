@@ -127,7 +127,7 @@ namespace ProofOfConcept.ApiClient.Service
 
         private async Task<TResult> GetIndicatorAsync<TResult>(string endpoint, string asset, int sinceTimeStamp, int untilTimeStamp, string interval, string format)
         {
-            var uri = new UriBuilder(_apiBase, _apiKeyParamName, _key)
+            string uri = new UriBuilder(_apiBase, _apiKeyParamName, _key)
                  .SetEndpoint(endpoint)
                  .AddParameter("a", asset)
                  .AddParameter("s", sinceTimeStamp)
@@ -138,7 +138,7 @@ namespace ProofOfConcept.ApiClient.Service
 
             _logger.LogDebug(uri);
 
-            var responseString = await _httpClient.GetStringAsync(uri);
+            string responseString = await _httpClient.GetStringAsync(uri);
 
             return JsonSerializer.Deserialize<TResult>(responseString, _jsonDefaults);
         }
