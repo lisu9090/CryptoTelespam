@@ -8,6 +8,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using ProofOfConcept.Abstract.ApiClient.Dto;
+using System.Collections.Generic;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
 {
@@ -29,14 +30,14 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
                 cryptocurrencySymbol = CryptocurrencySymbol.BTC;
             }
 
-            var since = DateTimeBuilder.UtcNow()
+            DateTimeOffset since = DateTimeBuilder.UtcNow()
                 .AddDays(-2)
                 .Truncate()
                 .Build();
 
-            var dtos = await _apiService.GetPuellMultipleAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            IEnumerable<FloatValueTimestampDto> dtos = await _apiService.GetPuellMultipleAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
 
-            var entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, Puell>(dtos);
+            Puell entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, Puell>(dtos);
             
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

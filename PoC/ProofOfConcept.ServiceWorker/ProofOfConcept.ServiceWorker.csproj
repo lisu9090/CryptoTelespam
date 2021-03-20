@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Abstract\**" />
+    <Content Remove="Abstract\**" />
+    <EmbeddedResource Remove="Abstract\**" />
+    <None Remove="Abstract\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
     <PackageReference Include="Quartz" Version="3.2.4" />
@@ -21,9 +28,5 @@
     <ProjectReference Include="..\ProofOfConcept.ApiClient.DI\ProofOfConcept.ApiClient.DI.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Domain.DI\ProofOfConcept.Domain.DI.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Abstract\" />
   </ItemGroup>
 </Project>

@@ -22,12 +22,17 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
                 return;
             }
             
-            var msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED, //todo fix
+            string msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED, //todo fix
                 data.Code,
                 data.Indicator.Value,
                 data.Indicator.CryptocurrencySymbol);
 
             await _messageApiService.SendAsync(msg);
+        }
+
+        public Task SendNotificationAsync(ActiveAddresses notification)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

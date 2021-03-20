@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ProofOfConcept.Abstract.ApiClient.Dto;
 using ProofOfConcept.Common.Const;
+using System.Collections.Generic;
 
 namespace ProofOfConcept.Domain.Domain.DataLoad
 {
@@ -24,16 +25,16 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 
         public async Task<TotalAddresses> LoadDataAsync(string cryptocurrencySymbol)
         {
-            var since = DateTimeBuilder.UtcNow()
+            DateTimeOffset since = DateTimeBuilder.UtcNow()
                 .AddDays(-2)
                 .Truncate()
                 .Build();
 
-            var dtos = await _apiService.GetTotalAddressesAsync(cryptocurrencySymbol, 
+            IEnumerable<IntValueTimestampDto> dtos = await _apiService.GetTotalAddressesAsync(cryptocurrencySymbol, 
                 Convert.ToInt32(since.ToUnixTimeSeconds()), 
                 interval: Interval.HOUR);
             
-            var entity = _mapper.DtoOrderedMap<IntValueTimestampDto, TotalAddresses>(dtos);
+            TotalAddresses entity = _mapper.DtoOrderedMap<IntValueTimestampDto, TotalAddresses>(dtos);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

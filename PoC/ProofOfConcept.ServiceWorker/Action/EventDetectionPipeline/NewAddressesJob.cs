@@ -10,16 +10,15 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class NuplJob : FullPipelineJob<Nupl>
+    class NewAddressesJob : FullPipelineJobBase<NewAddresses>
     {
-        public NuplJob(IDataLoaderService<Nupl> dataLoaderService, 
-            IDataProcessorService<Nupl> dataProcessorService, 
-            IMessageSenderService<Nupl> messageSenderService,
-            ILogger<NuplJob> logger) 
-            : base(dataLoaderService, 
-                  dataProcessorService, 
-                  messageSenderService,
-                  logger)
+        public NewAddressesJob(IDataLoaderService<NewAddresses> dataLoaderService, 
+            IDataProcessorService<NewAddresses> dataProcessorService,
+            IMessageSenderService<NewAddresses> messageSenderService,
+            ILogger<NewAddressesJob> logger) : base(dataLoaderService, 
+                dataProcessorService,
+                messageSenderService, 
+                logger)
         {
             _cryptocurrencySymbols = new List<string> { CryptocurrencySymbol.BTC, CryptocurrencySymbol.ETH };
         }

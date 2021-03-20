@@ -21,8 +21,8 @@ namespace ProofOfConcept.Domain.Domain.DataProcess
 
         public StockEvent<StfDeflection> DetectEvent(StfDeflection data)
         {
-            var currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
-            var previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
+            string currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
+            string previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
 
             return !currentLevel.Equals(previousLevel) ? new StockEvent<StfDeflection>(data, currentLevel, previousLevel) : null;
         }

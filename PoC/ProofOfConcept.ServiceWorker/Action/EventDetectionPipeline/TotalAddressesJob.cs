@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class TotalAddressesJob : FullPipelineJob<TotalAddresses>
+    class TotalAddressesJob : FullPipelineJobBase<TotalAddresses>
     {
         public TotalAddressesJob(IDataLoaderService<TotalAddresses> dataLoaderService, 
             IDataProcessorService<TotalAddresses> dataProcessorService,

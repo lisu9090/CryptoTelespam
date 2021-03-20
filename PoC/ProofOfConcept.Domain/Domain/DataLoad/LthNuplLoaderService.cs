@@ -6,6 +6,7 @@ using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain.Helper;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -29,14 +30,15 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
                 cryptocurrencySymbol = CryptocurrencySymbol.BTC;
             }
 
-            var since = DateTimeBuilder.UtcNow()
+            DateTimeOffset since = DateTimeBuilder.UtcNow()
                 .AddDays(-2)
                 .Truncate()
                 .Build();
 
-            var dtos = await _apiService.GetLthNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            IEnumerable<FloatValueTimestampDto> dtos = await _apiService
+                .GetLthNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
             
-            var entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, LthNupl>(dtos);
+            LthNupl entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, LthNupl>(dtos);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

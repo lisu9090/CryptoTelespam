@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class StfDeflectionJob : FullPipelineJob<StfDeflection>
+    class StfDeflectionJob : FullPipelineJobBase<StfDeflection>
     {
         public StfDeflectionJob(IDataLoaderService<StfDeflection> dataLoaderService, 
             IDataProcessorService<StfDeflection> dataProcessorService,

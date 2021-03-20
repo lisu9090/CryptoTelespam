@@ -5,6 +5,7 @@ using ProofOfConcept.Abstract.Domain;
 using ProofOfConcept.Abstract.Domain.Model;
 using ProofOfConcept.Domain.Helper;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,14 +24,14 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 
         public async Task<NewAddresses> LoadDataAsync(string cryptocurrencySymbol)
         {
-            var since = DateTimeBuilder.UtcNow()
+            DateTimeOffset since = DateTimeBuilder.UtcNow()
                 .AddDays(-2)
                 .Truncate()
                 .Build();
 
-            var dtos = await _apiService.GetNewAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            IEnumerable<IntValueTimestampDto> dtos = await _apiService.GetNewAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
             
-            var entity = _mapper.DtoOrderedMap<IntValueTimestampDto, NewAddresses>(dtos);
+            NewAddresses entity = _mapper.DtoOrderedMap<IntValueTimestampDto, NewAddresses>(dtos);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

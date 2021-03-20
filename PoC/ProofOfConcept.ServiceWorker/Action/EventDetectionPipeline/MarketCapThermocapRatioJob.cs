@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class MarketCapThermocapRatioJob : FullPipelineJob<MarketCapThermocapRatio>
+    class MarketCapThermocapRatioJob : FullPipelineJobBase<MarketCapThermocapRatio>
     {
         public MarketCapThermocapRatioJob(IDataLoaderService<MarketCapThermocapRatio> dataLoaderService, 
             IDataProcessorService<MarketCapThermocapRatio> dataProcessorService, 

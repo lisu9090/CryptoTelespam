@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action
 {
-    class FullPipelineJob<T> : IJob where T : CryptocurrencyIndicator
+    abstract class FullPipelineJobBase<T> : IJob where T : CryptocurrencyIndicator
     {
         protected readonly IDataLoaderService<T> _dataLoaderService;
         protected readonly IDataProcessorService<T> _dataProcessorService;
         protected readonly IMessageSenderService<T> _messageSenderService;
-        protected readonly ILogger<FullPipelineJob<T>> _logger;
+        protected readonly ILogger<FullPipelineJobBase<T>> _logger;
         protected IEnumerable<string> _cryptocurrencySymbols;
 
-        public FullPipelineJob(IDataLoaderService<T> dataLoaderService,
+        public FullPipelineJobBase(IDataLoaderService<T> dataLoaderService,
             IDataProcessorService<T> dataProcessorService,
             IMessageSenderService<T> messageSenderService,
-            ILogger<FullPipelineJob<T>> logger)
+            ILogger<FullPipelineJobBase<T>> logger)
         {
             _dataLoaderService = dataLoaderService;
             _dataProcessorService = dataProcessorService;
