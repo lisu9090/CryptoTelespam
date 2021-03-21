@@ -9,7 +9,7 @@ using Serilog;
 
 namespace ProofOfConcept.ServiceWorker
 {
-    public class Program
+    public static class Program
     {
         public static void Main(string[] args)
         {
@@ -18,24 +18,24 @@ namespace ProofOfConcept.ServiceWorker
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .UseSerilog((hostContext, loggerConfigc) => loggerConfigc.ReadFrom.Configuration(hostContext.Configuration))
+            .UseSerilog((hostContext, loggerConfig) => loggerConfig.ReadFrom.Configuration(hostContext.Configuration))
             .ConfigureServices((hostContext, services) =>
                 {
-                    RegisterService(services);
+                    services.RegisterService();
 
-                    RegisterServiceWorker(services, hostContext.Configuration);
+                    services.RegisterServiceWorker(hostContext.Configuration);
 
                     services.RegisterDomain();
                     
                     services.RegisterApiClients(hostContext.Configuration);
                 });
 
-        private static void RegisterService(IServiceCollection services)
+        private static void RegisterService(this IServiceCollection services)
         {
             //TODO register services if necessary 
         }
 
-        private static void RegisterServiceWorker(IServiceCollection services, IConfiguration config)
+        private static void RegisterServiceWorker(this IServiceCollection services, IConfiguration config)
         {
             services.Configure<QuartzOptions>(config.GetSection("Quartz"));
 
