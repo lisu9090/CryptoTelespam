@@ -22,7 +22,7 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
                 return;
             }
             
-            string msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED, //todo fix
+            string msg = string.Format("TODO", //TODO fix
                 data.Code,
                 data.Indicator.Value,
                 data.Indicator.CryptocurrencySymbol);
@@ -30,9 +30,13 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
             await _messageApiService.SendAsync(msg);
         }
 
-        public Task SendNotificationAsync(ActiveAddresses notification)
+        public async Task SendNotificationAsync(ActiveAddresses notification)
         {
-            throw new System.NotImplementedException();
+            string msg = string.Format(AddressesEventMessage.ACTIVE_ADDRESSES_NOTIFICATION,
+                notification.CryptocurrencySymbol, 
+                notification.Value);
+
+            await _messageApiService.SendAsync(msg);
         }
     }
 }

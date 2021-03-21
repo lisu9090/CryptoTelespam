@@ -37,5 +37,14 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
 
             await _messageApiService.SendAsync(msg);
         }
+
+        public async Task SendNotificationAsync(Puell notification)
+        {
+            string msg = string.Format(PuellEventMessage.PUELL_NOTIFICATION,
+                notification.CryptocurrencySymbol,
+                notification.Value);
+
+            await _messageApiService.SendAsync(msg);
+        }
     }
 }

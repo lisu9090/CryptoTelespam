@@ -22,10 +22,19 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
                 return;
             }
             
-            var msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED, //todo fix
+            var msg = string.Format("TODO", //TODO fix
                 data.Code,
                 data.Indicator.Value,
                 data.Indicator.CryptocurrencySymbol);
+
+            await _messageApiService.SendAsync(msg);
+        }
+
+        public async Task SendNotificationAsync(NewAddresses notification)
+        {
+            string msg = string.Format(AddressesEventMessage.NEW_ADDRESSES_NOTIFICATION,
+                notification.CryptocurrencySymbol,
+                notification.Value);
 
             await _messageApiService.SendAsync(msg);
         }

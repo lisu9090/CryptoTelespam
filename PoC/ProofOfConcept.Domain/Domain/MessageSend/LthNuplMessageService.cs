@@ -23,11 +23,20 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
                 return;
             }
 
-            var msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED,
+            var msg = string.Format(NuplEventMessage.LTH_NUPL_STATE_CHANGED,
                 data.Indicator.CryptocurrencySymbol,
                 data.Code,
                 data.AdditionalData.FirstOrDefault(),
                 data.Indicator.Value);
+
+            await _messageApiService.SendAsync(msg);
+        }
+
+        public async Task SendNotificationAsync(LthNupl notification)
+        {
+            string msg = string.Format(NuplEventMessage.LTH_NUPL_NOTIFICATION,
+                notification.CryptocurrencySymbol,
+                notification.Value);
 
             await _messageApiService.SendAsync(msg);
         }

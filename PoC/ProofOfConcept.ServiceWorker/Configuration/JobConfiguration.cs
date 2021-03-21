@@ -1,10 +1,5 @@
-﻿using ProofOfConcept.ServiceWorker.Action;
+﻿using ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline;
 using Quartz;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Configuration
 {

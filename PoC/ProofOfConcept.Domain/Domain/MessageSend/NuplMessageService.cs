@@ -31,5 +31,14 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
 
             await _messageApiService.SendAsync(msg);
         }
+
+        public async Task SendNotificationAsync(Nupl notification)
+        {
+            string msg = string.Format(NuplEventMessage.NUPL_NOTIFICATION,
+                notification.CryptocurrencySymbol,
+                notification.Value);
+
+            await _messageApiService.SendAsync(msg);
+        }
     }
 }

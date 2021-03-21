@@ -3,11 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.DomainWorker;
-using ProofOfConcept.ServiceWorker.Action;
+using ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline;
 using ProofOfConcept.ServiceWorker.Configuration;
 using Quartz;
 using Serilog;
-using System;
 
 namespace ProofOfConcept.ServiceWorker
 {
@@ -39,8 +38,7 @@ namespace ProofOfConcept.ServiceWorker
 
         private static void RegisterService(IServiceCollection services)
         {
-            services.AddTransient<IJob, NuplJob>();
-            //todo register services if necessary 
+            //TODO register services if necessary 
         }
 
         private static void RegisterServiceWorker(IServiceCollection services, IConfiguration config)

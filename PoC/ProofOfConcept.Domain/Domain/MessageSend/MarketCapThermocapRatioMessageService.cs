@@ -31,5 +31,14 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
 
             await _messageApiService.SendAsync(msg);
         }
+
+        public async Task SendNotificationAsync(MarketCapThermocapRatio notification)
+        {
+            string msg = string.Format(MarketCapEventMessage.MARKET_CAP_NOTIFICATION,
+                notification.CryptocurrencySymbol,
+                notification.Value);
+
+            await _messageApiService.SendAsync(msg); throw new System.NotImplementedException();
+        }
     }
 }

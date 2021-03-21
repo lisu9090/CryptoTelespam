@@ -30,5 +30,14 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
 
             await _messageApiService.SendAsync(msg);
         }
+
+        public async Task SendNotificationAsync(StfDeflection notification)
+        {
+            string msg = string.Format(StfDefectionEventMessage.STF_NOTIFICATION,
+                notification.CryptocurrencySymbol,
+                notification.Value);
+
+            await _messageApiService.SendAsync(msg);
+        }
     }
 }
