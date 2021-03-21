@@ -11,7 +11,6 @@ namespace ProofOfConcept.ServiceWorker
 {
     public class Program
     {
-        private const string LOGGER_SECTION = "Serilog";
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
@@ -19,7 +18,7 @@ namespace ProofOfConcept.ServiceWorker
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration))
+            .UseSerilog((hostContext, loggerConfigc) => loggerConfigc.ReadFrom.Configuration(hostContext.Configuration))
             .ConfigureServices((hostContext, services) =>
                 {
                     RegisterService(services);
