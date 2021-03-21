@@ -136,7 +136,7 @@ namespace ProofOfConcept.ApiClient.Service
                  .AddParameter("f", format)
                  .Biuld();
 
-            _logger.LogDebug(uri);
+            _logger.LogInformation(uri);
 
             string responseString = await _httpClient.GetStringAsync(uri);
 

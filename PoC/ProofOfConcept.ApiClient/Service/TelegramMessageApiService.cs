@@ -37,7 +37,7 @@ namespace ProofOfConcept.ApiClient.Service
                 .AddParameter("text", msg)
                 .Biuld();
 
-            _logger.LogDebug(uri);
+            _logger.LogInformation(uri);
 
             HttpResponseMessage result = await _httpClient.PostAsync(uri, new ByteArrayContent(new byte[0]));
 

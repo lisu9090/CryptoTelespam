@@ -3,7 +3,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.DomainWorker;
-using ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline;
 using ProofOfConcept.ServiceWorker.Configuration;
 using Quartz;
 using Serilog;
@@ -12,19 +11,15 @@ namespace ProofOfConcept.ServiceWorker
 {
     public class Program
     {
+        private const string LOGGER_SECTION = "Serilog";
         public static void Main(string[] args)
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.Console()
-                .CreateLogger();
-
             CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-            .UseSerilog()
+            .UseSerilog((ctx, cfg) => cfg.ReadFrom.Configuration(ctx.Configuration))
             .ConfigureServices((hostContext, services) =>
                 {
                     RegisterService(services);
