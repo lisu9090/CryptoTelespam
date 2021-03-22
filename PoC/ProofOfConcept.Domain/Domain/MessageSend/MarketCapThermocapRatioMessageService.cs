@@ -38,7 +38,7 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
                 notification.CryptocurrencySymbol,
                 notification.Value);
 
-            await _messageApiService.SendAsync(msg); throw new System.NotImplementedException();
+            await _messageApiService.SendAsync(msg);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
 {
     abstract class FullPipelineJobBase<T> : IJob where T : CryptocurrencyIndicator
     {
+        protected const int RETRY_MAX_COUNT = 1;
         protected readonly IDataLoaderService<T> _dataLoaderService;
         protected readonly IDataProcessorService<T> _dataProcessorService;
         protected readonly IMessageSenderService<T> _messageSenderService;
@@ -30,7 +31,23 @@ namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
 
         public async Task Execute(IJobExecutionContext context)
         {
-            if (_cryptocurrencySymbols == null || _cryptocurrencySymbols.Count() < 1)
+            for (var i = 0; i <= RETRY_MAX_COUNT; i++)
+            {
+                try
+                {
+                    await ExecutePipeline(context);
+                    break;
+                }
+                catch (Exception e)
+                {
+                    _logger.LogError($"Error at attempt no. {i} - {e}");
+                }
+            }
+        }
+
+        private async Task ExecutePipeline(IJobExecutionContext context)
+        {
+            if (!_cryptocurrencySymbols?.Any() ?? true)
             {
                 _logger.LogWarning("Cryptocurrncy symbol array of job {0} is null or contains no elements.", typeof(T).Name);
                 return;
@@ -41,7 +58,7 @@ namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
                 T data = await _dataLoaderService.LoadDataAsync(cryptocurrencySymbol);
                 StockEvent<T> stockEvent = _dataProcessorService.DetectEvent(data);
 
-                if(stockEvent != null)
+                if (stockEvent != null)
                 {
                     await _messageSenderService.SendEventMessageAsync(stockEvent);
                 }
