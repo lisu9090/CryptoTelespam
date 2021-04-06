@@ -24,6 +24,21 @@ namespace ProofOfConcept.ApiClient.Helpers
             _apiKey = apiKey;
         }
 
+        private string FixSlashes(string input)
+        {
+            if (!input.StartsWith("/"))
+            {
+                input = "/" + input;
+            }
+
+            if (input.EndsWith("/"))
+            {
+                input = input.Substring(0, input.Length - 1);
+            }
+
+            return input;
+        }
+
         public UriBuilder SetEndpoint(string endpoint)
         {
             if (string.IsNullOrEmpty(endpoint))
@@ -38,7 +53,7 @@ namespace ProofOfConcept.ApiClient.Helpers
 
         public UriBuilder AddParameter(string key, object value)
         {
-            if(string.IsNullOrEmpty(key) || value == null)
+            if (string.IsNullOrEmpty(key) || value == null)
             {
                 throw new ArgumentException("Key and value cannot be null or empty.");
             }
@@ -69,21 +84,6 @@ namespace ProofOfConcept.ApiClient.Helpers
             }
 
             return sb.ToString();
-        }
-
-        private string FixSlashes(string input)
-        {
-            if (!input.StartsWith("/"))
-            {
-                input = "/" + input;
-            }
-
-            if (input.EndsWith("/"))
-            {
-                input = input.Substring(0, input.Length - 1);
-            }
-
-            return input;
         }
     }
 }
