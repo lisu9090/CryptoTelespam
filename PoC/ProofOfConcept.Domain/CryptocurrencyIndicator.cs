@@ -1,4 +1,4 @@
-﻿namespace ProofOfConcept.Abstract.Application.Model
+﻿namespace ProofOfConcept.Domain
 {
     public abstract class CryptocurrencyIndicator
     {

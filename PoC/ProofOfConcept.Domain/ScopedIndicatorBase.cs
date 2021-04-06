@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProofOfConcept.Abstract.Application.Model
+namespace ProofOfConcept.Domain
 {
     public abstract class ScopedIndicatorBase<T> : CryptocurrencyIndicator
     {

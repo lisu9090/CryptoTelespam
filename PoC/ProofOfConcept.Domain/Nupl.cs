@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProofOfConcept.Abstract.Application.Model
+namespace ProofOfConcept.Domain
 {
     public class Nupl : ScopedIndicatorBase<float>
     {
