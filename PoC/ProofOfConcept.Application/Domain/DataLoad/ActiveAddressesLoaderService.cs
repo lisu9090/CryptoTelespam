@@ -1,6 +1,4 @@
-﻿using AutoMapper;
-using ProofOfConcept.Abstract.ApiClient;
-using ProofOfConcept.Abstract.ApiClient.Dto;
+﻿using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Helper;
 using ProofOfConcept.Domain;
@@ -13,12 +11,10 @@ namespace ProofOfConcept.Application.Domain.DataLoad
     public class ActiveAddressesLoaderService : IDataLoaderService<ActiveAddresses>
     {
         private readonly IRestApiService _apiService;
-        private readonly IMapper _mapper;
 
-        public ActiveAddressesLoaderService(IRestApiService apiService, IMapper mapper)
+        public ActiveAddressesLoaderService(IRestApiService apiService)
         {
             _apiService = apiService;
-            _mapper = mapper;
         }
 
         public async Task<ActiveAddresses> LoadDataAsync(string cryptocurrencySymbol)
@@ -28,9 +24,7 @@ namespace ProofOfConcept.Application.Domain.DataLoad
                 .Truncate()
                 .Build();
 
-            IEnumerable<IntValueTimestampDto> dtos = await _apiService.GetActiveAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
-
-            ActiveAddresses entity = _mapper.DtoOrderedMap<IntValueTimestampDto, ActiveAddresses>(dtos);
+            ActiveAddresses entity = await _apiService.GetActiveAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

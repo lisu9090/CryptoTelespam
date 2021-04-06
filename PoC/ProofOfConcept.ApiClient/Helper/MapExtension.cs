@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using ProofOfConcept.Abstract.ApiClient.Dto;
+using ProofOfConcept.ApiClient.Dto;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Application.Helper
+namespace ProofOfConcept.ApiClient.Helper
 {
     internal static class MapExtension
     {

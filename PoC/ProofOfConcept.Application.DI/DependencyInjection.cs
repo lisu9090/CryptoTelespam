@@ -16,8 +16,6 @@ namespace ProofOfConcept.DomainWorker
             services.RegisterDataLoadServices();
             services.RegisterDataProcessServices();
             services.RegisterMessageSendServices();
-
-            services.AddAutoMapper(typeof(ApiClientToDomainProfile));
         }
 
         private static void RegisterDataLoadServices(this IServiceCollection services)

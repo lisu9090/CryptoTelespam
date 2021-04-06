@@ -1,4 +1,4 @@
-﻿namespace ProofOfConcept.Abstract.ApiClient.Dto
+﻿namespace ProofOfConcept.ApiClient.Dto
 {
     public class FloatValueTimestampDto : TimestampDto
     {

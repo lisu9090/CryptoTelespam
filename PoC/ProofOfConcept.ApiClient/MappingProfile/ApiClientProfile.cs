@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
-using ProofOfConcept.Abstract.ApiClient.Dto;
+using ProofOfConcept.ApiClient.Dto;
 using ProofOfConcept.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.ApiClientDomain
+namespace ProofOfConcept.ApiClient.MappingProfile
 {
-    public class ApiClientToDomainProfile : Profile
+    public class ApiClientProfile : Profile
     {
-        public ApiClientToDomainProfile()
+        public ApiClientProfile()
         {
             CreateMap<IEnumerable<IntValueTimestampDto>, ScopedIndicatorBase<int>>()
                 .BeforeMap((s, d) =>

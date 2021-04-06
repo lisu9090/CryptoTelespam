@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj" />
   </ItemGroup>
 
 </Project>
