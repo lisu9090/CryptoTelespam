@@ -3,28 +3,27 @@ using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Helper;
 using ProofOfConcept.Domain;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.DataLoad
+namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class ActiveAddressesLoaderService : IDataLoaderService<ActiveAddresses>
+    public class NewAddressesLoaderService : IDataLoaderService<NewAddresses>
     {
         private readonly IRestApiService _apiService;
 
-        public ActiveAddressesLoaderService(IRestApiService apiService)
+        public NewAddressesLoaderService(IRestApiService apiService)
         {
             _apiService = apiService;
         }
 
-        public async Task<ActiveAddresses> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<NewAddresses> LoadDataAsync(string cryptocurrencySymbol)
         {
             DateTimeOffset since = DateTimeBuilder.UtcNow()
                 .AddDays(-2)
                 .Truncate()
                 .Build();
 
-            ActiveAddresses entity = await _apiService.GetActiveAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            NewAddresses entity = await _apiService.GetNewAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

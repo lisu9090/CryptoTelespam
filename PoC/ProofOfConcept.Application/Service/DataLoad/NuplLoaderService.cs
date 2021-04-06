@@ -6,28 +6,30 @@ using ProofOfConcept.Domain;
 using System;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.DataLoad
+namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class TotalAddressesLoaderService : IDataLoaderService<TotalAddresses>
+    public class NuplLoaderService : IDataLoaderService<Nupl>
     {
         private readonly IRestApiService _apiService;
 
-        public TotalAddressesLoaderService(IRestApiService apiService)
+        public NuplLoaderService(IRestApiService apiService)
         {
             _apiService = apiService;
         }
 
-        public async Task<TotalAddresses> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<Nupl> LoadDataAsync(string cryptocurrencySymbol)
         {
+            if (!(cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC) || cryptocurrencySymbol.Equals(CryptocurrencySymbol.ETH)))
+            {
+                cryptocurrencySymbol = CryptocurrencySymbol.BTC;
+            }
+
             DateTimeOffset since = DateTimeBuilder.UtcNow()
                 .AddDays(-2)
                 .Truncate()
                 .Build();
 
-            TotalAddresses entity = await _apiService.GetTotalAddressesAsync(
-                cryptocurrencySymbol,
-                Convert.ToInt32(since.ToUnixTimeSeconds()),
-                interval: Interval.HOUR);
+            Nupl entity = await _apiService.GetNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

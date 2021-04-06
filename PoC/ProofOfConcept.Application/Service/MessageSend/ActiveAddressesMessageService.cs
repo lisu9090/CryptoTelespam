@@ -2,39 +2,37 @@
 using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Const.Message;
 using ProofOfConcept.Domain;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.MessageSend
+namespace ProofOfConcept.Application.Service.MessageSend
 {
-    public class NuplMessageService : IMessageSenderService<Nupl>
+    public class ActiveAddressesMessageService : IMessageSenderService<ActiveAddresses>
     {
         private readonly IMessageApiService _messageApiService;
 
-        public NuplMessageService(IMessageApiService messageApiService)
+        public ActiveAddressesMessageService(IMessageApiService messageApiService)
         {
             _messageApiService = messageApiService;
         }
 
-        public async Task SendEventMessageAsync(StockEvent<Nupl> data)
+        public async Task SendEventMessageAsync(StockEvent<ActiveAddresses> data)
         {
             if (data == null)
             {
                 return;
             }
 
-            var msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED,
-                data.Indicator.CryptocurrencySymbol,
+            string msg = string.Format("TODO", //TODO fix
                 data.Code,
-                data.AdditionalData.FirstOrDefault(),
-                data.Indicator.Value);
+                data.Indicator.Value,
+                data.Indicator.CryptocurrencySymbol);
 
             await _messageApiService.SendAsync(msg);
         }
 
-        public async Task SendNotificationAsync(Nupl notification)
+        public async Task SendNotificationAsync(ActiveAddresses notification)
         {
-            string msg = string.Format(NuplEventMessage.NUPL_NOTIFICATION,
+            string msg = string.Format(AddressesEventMessage.ACTIVE_ADDRESSES_NOTIFICATION,
                 notification.CryptocurrencySymbol,
                 notification.Value);
 

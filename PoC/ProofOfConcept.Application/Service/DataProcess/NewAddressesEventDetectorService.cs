@@ -1,7 +1,7 @@
 ﻿using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Domain;
 
-namespace ProofOfConcept.Application.Domain.DataProcess
+namespace ProofOfConcept.Application.Service.DataProcess
 {
     public class NewAddressesEventDetectorService : IDataProcessorService<NewAddresses>
     {

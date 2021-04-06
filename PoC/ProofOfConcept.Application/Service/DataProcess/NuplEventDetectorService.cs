@@ -5,9 +5,9 @@ using ProofOfConcept.Domain;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Application.Domain.DataProcess
+namespace ProofOfConcept.Application.Service.DataProcess
 {
-    public class LthNuplEventDetectorService : IDataProcessorService<LthNupl>
+    public class NuplEventDetectorService : IDataProcessorService<Nupl>
     {
         private const float LEVEL_0 = 0;
         private const float LEVEL_1 = 0.25f;
@@ -15,7 +15,7 @@ namespace ProofOfConcept.Application.Domain.DataProcess
         private const float LEVEL_3 = 0.75f;
         private readonly Dictionary<string, Range> _eventLevels = new Dictionary<string, Range>();
 
-        public LthNuplEventDetectorService()
+        public NuplEventDetectorService()
         {
             _eventLevels.Add(NuplEventCode.CAPITULATION, Range.And(x => x >= double.MinValue, y => y < LEVEL_0));
             _eventLevels.Add(NuplEventCode.BELIEFE, Range.And(x => x >= LEVEL_0, y => y < LEVEL_1));
@@ -24,12 +24,12 @@ namespace ProofOfConcept.Application.Domain.DataProcess
             _eventLevels.Add(NuplEventCode.EUPHORIA, Range.And(x => x >= LEVEL_3, y => y <= double.MaxValue));
         }
 
-        public StockEvent<LthNupl> DetectEvent(LthNupl data)
+        public StockEvent<Nupl> DetectEvent(Nupl data)
         {
             string currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
             string previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
 
-            return !currentLevel.Equals(previousLevel) ? new StockEvent<LthNupl>(data, currentLevel, previousLevel) : null;
+            return !currentLevel.Equals(previousLevel) ? new StockEvent<Nupl>(data, currentLevel, previousLevel) : null;
         }
     }
 }

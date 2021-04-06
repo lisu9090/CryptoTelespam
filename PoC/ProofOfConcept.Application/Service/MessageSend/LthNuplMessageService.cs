@@ -5,25 +5,25 @@ using ProofOfConcept.Domain;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.MessageSend
+namespace ProofOfConcept.Application.Service.MessageSend
 {
-    public class MarketCapThermocapRatioMessageService : IMessageSenderService<MarketCapThermocapRatio>
+    public class LthNuplMessageService : IMessageSenderService<LthNupl>
     {
         private readonly IMessageApiService _messageApiService;
 
-        public MarketCapThermocapRatioMessageService(IMessageApiService messageApiService)
+        public LthNuplMessageService(IMessageApiService messageApiService)
         {
             _messageApiService = messageApiService;
         }
 
-        public async Task SendEventMessageAsync(StockEvent<MarketCapThermocapRatio> data)
+        public async Task SendEventMessageAsync(StockEvent<LthNupl> data)
         {
             if (data == null)
             {
                 return;
             }
 
-            var msg = string.Format(MarketCapEventMessage.MARKET_CAP_STATE_CHANGED,
+            var msg = string.Format(NuplEventMessage.LTH_NUPL_STATE_CHANGED,
                 data.Indicator.CryptocurrencySymbol,
                 data.Code,
                 data.AdditionalData.FirstOrDefault(),
@@ -32,9 +32,9 @@ namespace ProofOfConcept.Application.Domain.MessageSend
             await _messageApiService.SendAsync(msg);
         }
 
-        public async Task SendNotificationAsync(MarketCapThermocapRatio notification)
+        public async Task SendNotificationAsync(LthNupl notification)
         {
-            string msg = string.Format(MarketCapEventMessage.MARKET_CAP_NOTIFICATION,
+            string msg = string.Format(NuplEventMessage.LTH_NUPL_NOTIFICATION,
                 notification.CryptocurrencySymbol,
                 notification.Value);
 

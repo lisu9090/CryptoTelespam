@@ -6,7 +6,7 @@ using ProofOfConcept.Domain;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.MessageSend
+namespace ProofOfConcept.Application.Service.MessageSend
 {
     public class PuellMessageService : IMessageSenderService<Puell>
     {

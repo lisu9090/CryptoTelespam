@@ -6,18 +6,18 @@ using ProofOfConcept.Domain;
 using System;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.DataLoad
+namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class PuellLoaderService : IDataLoaderService<Puell>
+    public class StfDeflectionLoaderService : IDataLoaderService<StfDeflection>
     {
         private readonly IRestApiService _apiService;
 
-        public PuellLoaderService(IRestApiService apiService)
+        public StfDeflectionLoaderService(IRestApiService apiService)
         {
             _apiService = apiService;
         }
 
-        public async Task<Puell> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<StfDeflection> LoadDataAsync(string cryptocurrencySymbol)
         {
             if (!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
             {
@@ -29,7 +29,7 @@ namespace ProofOfConcept.Application.Domain.DataLoad
                 .Truncate()
                 .Build();
 
-            Puell entity = await _apiService.GetPuellMultipleAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            StfDeflection entity = await _apiService.GetStfDefectionAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

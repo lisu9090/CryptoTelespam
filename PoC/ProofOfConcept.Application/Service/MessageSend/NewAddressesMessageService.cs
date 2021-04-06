@@ -2,39 +2,37 @@
 using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Const.Message;
 using ProofOfConcept.Domain;
-using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.MessageSend
+namespace ProofOfConcept.Application.Service.MessageSend
 {
-    public class LthNuplMessageService : IMessageSenderService<LthNupl>
+    public class NewAddressesMessageService : IMessageSenderService<NewAddresses>
     {
         private readonly IMessageApiService _messageApiService;
 
-        public LthNuplMessageService(IMessageApiService messageApiService)
+        public NewAddressesMessageService(IMessageApiService messageApiService)
         {
             _messageApiService = messageApiService;
         }
 
-        public async Task SendEventMessageAsync(StockEvent<LthNupl> data)
+        public async Task SendEventMessageAsync(StockEvent<NewAddresses> data)
         {
             if (data == null)
             {
                 return;
             }
 
-            var msg = string.Format(NuplEventMessage.LTH_NUPL_STATE_CHANGED,
-                data.Indicator.CryptocurrencySymbol,
+            var msg = string.Format("TODO", //TODO fix
                 data.Code,
-                data.AdditionalData.FirstOrDefault(),
-                data.Indicator.Value);
+                data.Indicator.Value,
+                data.Indicator.CryptocurrencySymbol);
 
             await _messageApiService.SendAsync(msg);
         }
 
-        public async Task SendNotificationAsync(LthNupl notification)
+        public async Task SendNotificationAsync(NewAddresses notification)
         {
-            string msg = string.Format(NuplEventMessage.LTH_NUPL_NOTIFICATION,
+            string msg = string.Format(AddressesEventMessage.NEW_ADDRESSES_NOTIFICATION,
                 notification.CryptocurrencySymbol,
                 notification.Value);
 

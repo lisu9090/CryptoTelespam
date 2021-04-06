@@ -4,18 +4,18 @@ using ProofOfConcept.Application.Const.Message;
 using ProofOfConcept.Domain;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.MessageSend
+namespace ProofOfConcept.Application.Service.MessageSend
 {
-    public class NewAddressesMessageService : IMessageSenderService<NewAddresses>
+    public class TotalAddressesMessageService : IMessageSenderService<TotalAddresses>
     {
         private readonly IMessageApiService _messageApiService;
 
-        public NewAddressesMessageService(IMessageApiService messageApiService)
+        public TotalAddressesMessageService(IMessageApiService messageApiService)
         {
             _messageApiService = messageApiService;
         }
 
-        public async Task SendEventMessageAsync(StockEvent<NewAddresses> data)
+        public async Task SendEventMessageAsync(StockEvent<TotalAddresses> data)
         {
             if (data == null)
             {
@@ -30,9 +30,9 @@ namespace ProofOfConcept.Application.Domain.MessageSend
             await _messageApiService.SendAsync(msg);
         }
 
-        public async Task SendNotificationAsync(NewAddresses notification)
+        public async Task SendNotificationAsync(TotalAddresses notification)
         {
-            string msg = string.Format(AddressesEventMessage.NEW_ADDRESSES_NOTIFICATION,
+            string msg = string.Format(AddressesEventMessage.TOTAL_ADDRESSES_NOTIFICATION,
                 notification.CryptocurrencySymbol,
                 notification.Value);
 

@@ -3,7 +3,7 @@ using ProofOfConcept.Application.Const.Code;
 using ProofOfConcept.Application.Helper;
 using ProofOfConcept.Domain;
 
-namespace ProofOfConcept.Application.Domain.DataProcess
+namespace ProofOfConcept.Application.Service.DataProcess
 {
     public class PuellEventDetectorService : IDataProcessorService<Puell>
     {

@@ -6,18 +6,18 @@ using ProofOfConcept.Domain;
 using System;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.DataLoad
+namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class StfDeflectionLoaderService : IDataLoaderService<StfDeflection>
+    public class LthNuplLoaderService : IDataLoaderService<LthNupl>
     {
         private readonly IRestApiService _apiService;
 
-        public StfDeflectionLoaderService(IRestApiService apiService)
+        public LthNuplLoaderService(IRestApiService apiService)
         {
             _apiService = apiService;
         }
 
-        public async Task<StfDeflection> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<LthNupl> LoadDataAsync(string cryptocurrencySymbol)
         {
             if (!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
             {
@@ -29,7 +29,7 @@ namespace ProofOfConcept.Application.Domain.DataLoad
                 .Truncate()
                 .Build();
 
-            StfDeflection entity = await _apiService.GetStfDefectionAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            LthNupl entity = await _apiService.GetLthNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

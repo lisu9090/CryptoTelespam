@@ -5,7 +5,7 @@ using ProofOfConcept.Domain;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Application.Domain.DataProcess
+namespace ProofOfConcept.Application.Service.DataProcess
 {
     public class MarketCapThermocapRatioEventDetectorService : IDataProcessorService<MarketCapThermocapRatio>
     {

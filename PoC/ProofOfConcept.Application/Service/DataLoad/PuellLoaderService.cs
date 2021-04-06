@@ -6,20 +6,20 @@ using ProofOfConcept.Domain;
 using System;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.DataLoad
+namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class MarketCapThermocapRatioLoaderService : IDataLoaderService<MarketCapThermocapRatio>
+    public class PuellLoaderService : IDataLoaderService<Puell>
     {
         private readonly IRestApiService _apiService;
 
-        public MarketCapThermocapRatioLoaderService(IRestApiService apiService)
+        public PuellLoaderService(IRestApiService apiService)
         {
             _apiService = apiService;
         }
 
-        public async Task<MarketCapThermocapRatio> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<Puell> LoadDataAsync(string cryptocurrencySymbol)
         {
-            if (!(cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC) || cryptocurrencySymbol.Equals(CryptocurrencySymbol.ETH)))
+            if (!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
             {
                 cryptocurrencySymbol = CryptocurrencySymbol.BTC;
             }
@@ -29,7 +29,7 @@ namespace ProofOfConcept.Application.Domain.DataLoad
                 .Truncate()
                 .Build();
 
-            MarketCapThermocapRatio entity = await _apiService.GetMarketCapThermocapRatioAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            Puell entity = await _apiService.GetPuellMultipleAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
 

@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Application.Domain.DataLoad;
-using ProofOfConcept.Application.Domain.DataProcess;
-using ProofOfConcept.Application.Domain.MessageSend;
+using ProofOfConcept.Application.Service.DataLoad;
+using ProofOfConcept.Application.Service.DataProcess;
+using ProofOfConcept.Application.Service.MessageSend;
 using ProofOfConcept.Domain;
 
 namespace ProofOfConcept.DomainWorker

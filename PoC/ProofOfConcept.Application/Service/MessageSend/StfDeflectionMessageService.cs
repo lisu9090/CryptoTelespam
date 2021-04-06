@@ -4,35 +4,35 @@ using ProofOfConcept.Application.Const.Message;
 using ProofOfConcept.Domain;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Application.Domain.MessageSend
+namespace ProofOfConcept.Application.Service.MessageSend
 {
-    public class ActiveAddressesMessageService : IMessageSenderService<ActiveAddresses>
+    public class StfDeflectionMessageService : IMessageSenderService<StfDeflection>
     {
         private readonly IMessageApiService _messageApiService;
 
-        public ActiveAddressesMessageService(IMessageApiService messageApiService)
+        public StfDeflectionMessageService(IMessageApiService messageApiService)
         {
             _messageApiService = messageApiService;
         }
 
-        public async Task SendEventMessageAsync(StockEvent<ActiveAddresses> data)
+        public async Task SendEventMessageAsync(StockEvent<StfDeflection> data)
         {
             if (data == null)
             {
                 return;
             }
 
-            string msg = string.Format("TODO", //TODO fix
+            var msg = string.Format(StfDefectionEventMessage.STF_STATE_CHANGED,
+                data.Indicator.CryptocurrencySymbol,
                 data.Code,
-                data.Indicator.Value,
-                data.Indicator.CryptocurrencySymbol);
+                data.Indicator.Value);
 
             await _messageApiService.SendAsync(msg);
         }
 
-        public async Task SendNotificationAsync(ActiveAddresses notification)
+        public async Task SendNotificationAsync(StfDeflection notification)
         {
-            string msg = string.Format(AddressesEventMessage.ACTIVE_ADDRESSES_NOTIFICATION,
+            string msg = string.Format(StfDefectionEventMessage.STF_NOTIFICATION,
                 notification.CryptocurrencySymbol,
                 notification.Value);
 
