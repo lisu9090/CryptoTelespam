@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
-using ProofOfConcept.Abstract.Domain;
-using ProofOfConcept.Abstract.Domain.Model;
+using ProofOfConcept.Abstract.Application;
+using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.ApiClientDomain;
-using ProofOfConcept.Domain.Domain.DataLoad;
-using ProofOfConcept.Domain.Domain.DataProcess;
-using ProofOfConcept.Domain.Domain.MessageSend;
+using ProofOfConcept.Application.Domain.DataLoad;
+using ProofOfConcept.Application.Domain.DataProcess;
+using ProofOfConcept.Application.Domain.MessageSend;
 
 namespace ProofOfConcept.DomainWorker
 {

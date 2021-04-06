@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProofOfConcept.Domain.Const.Code
+namespace ProofOfConcept.Application.Const.Code
 {
     internal class PuellEventCode
     {

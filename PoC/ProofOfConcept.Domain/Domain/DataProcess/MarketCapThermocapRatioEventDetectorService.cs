@@ -1,12 +1,12 @@
-﻿using ProofOfConcept.Abstract.Domain.Model;
-using ProofOfConcept.Abstract.Domain;
+﻿using ProofOfConcept.Abstract.Application.Model;
+using ProofOfConcept.Abstract.Application;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using ProofOfConcept.Domain.Helper;
+using ProofOfConcept.Application.Helper;
 using System.Linq;
-using ProofOfConcept.Domain.Const.Code;
+using ProofOfConcept.Application.Const.Code;
 
-namespace ProofOfConcept.Domain.Domain.DataProcess
+namespace ProofOfConcept.Application.Domain.DataProcess
 {
     public class MarketCapThermocapRatioEventDetectorService : IDataProcessorService<MarketCapThermocapRatio>
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProofOfConcept.Abstract.Domain.Model
+namespace ProofOfConcept.Abstract.Application.Model
 {
     public class Puell : ScopedIndicatorBase<float>
     {

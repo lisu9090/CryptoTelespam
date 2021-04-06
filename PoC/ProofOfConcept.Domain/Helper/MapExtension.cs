@@ -3,7 +3,7 @@ using ProofOfConcept.Abstract.ApiClient.Dto;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Domain.Helper
+namespace ProofOfConcept.Application.Helper
 {
     internal static class MapExtension
     {

@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
 using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.ApiClient.Dto;
-using ProofOfConcept.Abstract.Domain;
-using ProofOfConcept.Abstract.Domain.Model;
+using ProofOfConcept.Abstract.Application;
+using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.Common.Const;
-using ProofOfConcept.Domain.Helper;
+using ProofOfConcept.Application.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Domain.Domain.DataLoad
+namespace ProofOfConcept.Application.Domain.DataLoad
 {
     public class LthNuplLoaderService : IDataLoaderService<LthNupl>
     {

@@ -1,8 +1,8 @@
-﻿using ProofOfConcept.Abstract.Domain.Model;
-using ProofOfConcept.Abstract.Domain;
+﻿using ProofOfConcept.Abstract.Application.Model;
+using ProofOfConcept.Abstract.Application;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Domain.Domain.DataProcess
+namespace ProofOfConcept.Application.Domain.DataProcess
 {
     public class NewAddressesEventDetectorService : IDataProcessorService<NewAddresses>
     {

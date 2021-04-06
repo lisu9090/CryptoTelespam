@@ -10,8 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProofOfConcept.Abstract.Domain\ProofOfConcept.Abstract.Domain.csproj" />
-    <ProjectReference Include="..\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Abstract.Domain\ProofOfConcept.Abstract.Application.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Domain\ProofOfConcept.Application.csproj" />
   </ItemGroup>
 
 </Project>

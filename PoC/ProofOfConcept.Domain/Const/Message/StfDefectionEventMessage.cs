@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProofOfConcept.Domain.Const.Message
+namespace ProofOfConcept.Application.Const.Message
 {
     internal class StfDefectionEventMessage
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProofOfConcept.Domain.Helper
+namespace ProofOfConcept.Application.Helper
 {
     internal class Range
     {

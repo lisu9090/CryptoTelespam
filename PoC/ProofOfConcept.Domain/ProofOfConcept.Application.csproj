@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProofOfConcept.Abstract.ApiClient\ProofOfConcept.Abstract.ApiClient.csproj" />
-    <ProjectReference Include="..\ProofOfConcept.Abstract.Domain\ProofOfConcept.Abstract.Domain.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Abstract.Domain\ProofOfConcept.Abstract.Application.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
   </ItemGroup>
 

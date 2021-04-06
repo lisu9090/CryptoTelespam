@@ -1,13 +1,13 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
-using ProofOfConcept.Abstract.Domain;
-using ProofOfConcept.Abstract.Domain.Model;
-using ProofOfConcept.Domain.Const.Code;
-using ProofOfConcept.Domain.Const.Message;
+using ProofOfConcept.Abstract.Application;
+using ProofOfConcept.Abstract.Application.Model;
+using ProofOfConcept.Application.Const.Code;
+using ProofOfConcept.Application.Const.Message;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Domain.Domain.MessageSend
+namespace ProofOfConcept.Application.Domain.MessageSend
 {
     public class PuellMessageService : IMessageSenderService<Puell>
     {

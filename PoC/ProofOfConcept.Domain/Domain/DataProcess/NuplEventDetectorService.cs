@@ -1,13 +1,13 @@
-﻿using ProofOfConcept.Abstract.Domain;
-using ProofOfConcept.Abstract.Domain.Model;
-using ProofOfConcept.Domain.Const.Code;
+﻿using ProofOfConcept.Abstract.Application;
+using ProofOfConcept.Abstract.Application.Model;
+using ProofOfConcept.Application.Const.Code;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System;
-using ProofOfConcept.Domain.Helper;
+using ProofOfConcept.Application.Helper;
 
-namespace ProofOfConcept.Domain.Domain.DataProcess
+namespace ProofOfConcept.Application.Domain.DataProcess
 {
     public class NuplEventDetectorService : IDataProcessorService<Nupl>
     {

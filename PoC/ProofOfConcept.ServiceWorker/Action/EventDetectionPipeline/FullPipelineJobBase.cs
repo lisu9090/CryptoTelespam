@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
-using ProofOfConcept.Abstract.Domain;
-using ProofOfConcept.Abstract.Domain.Model;
+using ProofOfConcept.Abstract.Application;
+using ProofOfConcept.Abstract.Application.Model;
 using Quartz;
 using System;
 using System.Collections.Generic;

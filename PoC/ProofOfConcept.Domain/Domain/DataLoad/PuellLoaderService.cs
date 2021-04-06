@@ -1,16 +1,16 @@
 ﻿using AutoMapper;
 using ProofOfConcept.Abstract.ApiClient;
-using ProofOfConcept.Abstract.Domain.Model;
-using ProofOfConcept.Abstract.Domain;
+using ProofOfConcept.Abstract.Application.Model;
+using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Common.Const;
-using ProofOfConcept.Domain.Helper;
+using ProofOfConcept.Application.Helper;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
 using ProofOfConcept.Abstract.ApiClient.Dto;
 using System.Collections.Generic;
 
-namespace ProofOfConcept.Domain.Domain.DataLoad
+namespace ProofOfConcept.Application.Domain.DataLoad
 {
     public class PuellLoaderService : IDataLoaderService<Puell>
     {

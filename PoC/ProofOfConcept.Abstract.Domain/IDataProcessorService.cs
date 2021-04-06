@@ -1,7 +1,7 @@
-﻿using ProofOfConcept.Abstract.Domain.Model;
+﻿using ProofOfConcept.Abstract.Application.Model;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Abstract.Domain
+namespace ProofOfConcept.Abstract.Application
 {
     public interface IDataProcessorService<T> where T : CryptocurrencyIndicator
     {

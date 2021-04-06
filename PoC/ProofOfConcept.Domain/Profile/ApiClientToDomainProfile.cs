@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using ProofOfConcept.Abstract.ApiClient.Dto;
-using ProofOfConcept.Abstract.Domain.Model;
+using ProofOfConcept.Abstract.Application.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

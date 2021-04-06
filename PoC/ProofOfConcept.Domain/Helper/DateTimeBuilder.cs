@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProofOfConcept.Domain.Helper
+namespace ProofOfConcept.Application.Helper
 {
     internal class DateTimeBuilder
     {

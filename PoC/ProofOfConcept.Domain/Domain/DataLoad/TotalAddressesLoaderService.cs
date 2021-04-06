@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using ProofOfConcept.Abstract.Domain.Model;
+using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.Abstract.ApiClient;
-using ProofOfConcept.Abstract.Domain;
-using ProofOfConcept.Domain.Helper;
+using ProofOfConcept.Abstract.Application;
+using ProofOfConcept.Application.Helper;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,7 +10,7 @@ using ProofOfConcept.Abstract.ApiClient.Dto;
 using ProofOfConcept.Common.Const;
 using System.Collections.Generic;
 
-namespace ProofOfConcept.Domain.Domain.DataLoad
+namespace ProofOfConcept.Application.Domain.DataLoad
 {
     public class TotalAddressesLoaderService : IDataLoaderService<TotalAddresses>
     {

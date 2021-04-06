@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ProofOfConcept.Abstract.Domain.Model
+namespace ProofOfConcept.Abstract.Application.Model
 {
     public class StfDeflection : ScopedIndicatorBase<float>
     {
