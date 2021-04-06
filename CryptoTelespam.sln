@@ -33,7 +33,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{5A9D43
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{E8855605-DB38-4F1B-BBAB-459500043A85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.Domain", "PoC\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj", "{B0B22837-F53C-4B89-ABF4-6C4018E913F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProofOfConcept.Domain", "PoC\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj", "{B0B22837-F53C-4B89-ABF4-6C4018E913F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProofOfConcept.Database", "ProofOfConcept.Database\ProofOfConcept.Database.csproj", "{04DCEC3C-413C-4D71-BCD9-B0222879C47B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{B0B22837-F53C-4B89-ABF4-6C4018E913F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0B22837-F53C-4B89-ABF4-6C4018E913F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0B22837-F53C-4B89-ABF4-6C4018E913F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04DCEC3C-413C-4D71-BCD9-B0222879C47B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04DCEC3C-413C-4D71-BCD9-B0222879C47B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04DCEC3C-413C-4D71-BCD9-B0222879C47B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04DCEC3C-413C-4D71-BCD9-B0222879C47B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -95,6 +101,7 @@ Global
 		{5BF656B2-80C1-4956-B910-DF9E1655448F} = {C850F96E-8695-47BA-814C-AC4CB04D1B1A}
 		{A7949F47-70B8-4DCA-856D-2D6D4088BD6E} = {2EF780F4-D629-4DA5-A8A7-A989EC2A0D87}
 		{B0B22837-F53C-4B89-ABF4-6C4018E913F6} = {5A9D4333-F656-4C9B-8C7B-530AC242AC7F}
+		{04DCEC3C-413C-4D71-BCD9-B0222879C47B} = {8BA100FE-DA82-44F7-A322-E5C384530F14}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F0678632-2E4E-4D6F-B0F8-2C2ACD1AE352}
