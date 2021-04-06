@@ -1,7 +1,7 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.Application.Const.Message;
+using ProofOfConcept.Domain;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -22,7 +22,7 @@ namespace ProofOfConcept.Application.Domain.MessageSend
             {
                 return;
             }
-            
+
             var msg = string.Format(NuplEventMessage.NUPL_STATE_CHANGED,
                 data.Indicator.CryptocurrencySymbol,
                 data.Code,

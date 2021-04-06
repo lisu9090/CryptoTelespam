@@ -1,23 +1,19 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.Common.Const;
-using System;
+using ProofOfConcept.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
 {
-    class TotalAddressesJob : FullPipelineJobBase<TotalAddresses>
+    internal class TotalAddressesJob : FullPipelineJobBase<TotalAddresses>
     {
-        public TotalAddressesJob(IDataLoaderService<TotalAddresses> dataLoaderService, 
+        public TotalAddressesJob(IDataLoaderService<TotalAddresses> dataLoaderService,
             IDataProcessorService<TotalAddresses> dataProcessorService,
-            IMessageSenderService<TotalAddresses> messageSenderService, 
-            ILogger<TotalAddressesJob> logger) : base(dataLoaderService, 
+            IMessageSenderService<TotalAddresses> messageSenderService,
+            ILogger<TotalAddressesJob> logger) : base(dataLoaderService,
                 dataProcessorService,
-                messageSenderService, 
+                messageSenderService,
                 logger)
         {
             _cryptocurrencySymbols = new List<string> { CryptocurrencySymbol.BTC, CryptocurrencySymbol.ETH };

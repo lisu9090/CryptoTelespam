@@ -1,4 +1,4 @@
-﻿using ProofOfConcept.Abstract.Application.Model;
+﻿using ProofOfConcept.Domain;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Abstract.Application

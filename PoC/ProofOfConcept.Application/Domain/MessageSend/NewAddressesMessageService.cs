@@ -1,7 +1,7 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.Application.Const.Message;
+using ProofOfConcept.Domain;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Domain.MessageSend
@@ -21,7 +21,7 @@ namespace ProofOfConcept.Application.Domain.MessageSend
             {
                 return;
             }
-            
+
             var msg = string.Format("TODO", //TODO fix
                 data.Code,
                 data.Indicator.Value,

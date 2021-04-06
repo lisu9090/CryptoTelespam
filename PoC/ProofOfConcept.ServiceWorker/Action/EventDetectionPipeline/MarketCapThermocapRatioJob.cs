@@ -1,23 +1,19 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.Common.Const;
-using System;
+using ProofOfConcept.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
 {
-    class MarketCapThermocapRatioJob : FullPipelineJobBase<MarketCapThermocapRatio>
+    internal class MarketCapThermocapRatioJob : FullPipelineJobBase<MarketCapThermocapRatio>
     {
-        public MarketCapThermocapRatioJob(IDataLoaderService<MarketCapThermocapRatio> dataLoaderService, 
-            IDataProcessorService<MarketCapThermocapRatio> dataProcessorService, 
+        public MarketCapThermocapRatioJob(IDataLoaderService<MarketCapThermocapRatio> dataLoaderService,
+            IDataProcessorService<MarketCapThermocapRatio> dataProcessorService,
             IMessageSenderService<MarketCapThermocapRatio> messageSenderService,
-            ILogger<MarketCapThermocapRatioJob> logger) 
-            : base(dataLoaderService, 
-                  dataProcessorService, 
+            ILogger<MarketCapThermocapRatioJob> logger)
+            : base(dataLoaderService,
+                  dataProcessorService,
                   messageSenderService,
                   logger)
         {

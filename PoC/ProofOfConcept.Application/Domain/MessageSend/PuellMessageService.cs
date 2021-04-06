@@ -1,10 +1,9 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.Application.Const.Code;
 using ProofOfConcept.Application.Const.Message;
+using ProofOfConcept.Domain;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Domain.MessageSend

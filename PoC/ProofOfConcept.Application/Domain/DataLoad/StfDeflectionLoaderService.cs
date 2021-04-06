@@ -1,14 +1,13 @@
 ﻿using AutoMapper;
 using ProofOfConcept.Abstract.ApiClient;
-using ProofOfConcept.Abstract.Application.Model;
-using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Common.Const;
-using ProofOfConcept.Application.Helper;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using ProofOfConcept.Abstract.ApiClient.Dto;
+using ProofOfConcept.Abstract.Application;
+using ProofOfConcept.Application.Helper;
+using ProofOfConcept.Common.Const;
+using ProofOfConcept.Domain;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Domain.DataLoad
 {
@@ -25,7 +24,7 @@ namespace ProofOfConcept.Application.Domain.DataLoad
 
         public async Task<StfDeflection> LoadDataAsync(string cryptocurrencySymbol)
         {
-            if(!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
+            if (!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
             {
                 cryptocurrencySymbol = CryptocurrencySymbol.BTC;
             }
@@ -36,7 +35,7 @@ namespace ProofOfConcept.Application.Domain.DataLoad
                 .Build();
 
             IEnumerable<FloatValueTimestampDto> dtos = await _apiService.GetStfDefectionAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
-           
+
             StfDeflection entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, StfDeflection>(dtos);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;

@@ -1,9 +1,6 @@
-﻿using System;
-
-namespace ProofOfConcept.Domain
+﻿namespace ProofOfConcept.Domain
 {
     public class Nupl : ScopedIndicatorBase<float>
     {
-
     }
 }

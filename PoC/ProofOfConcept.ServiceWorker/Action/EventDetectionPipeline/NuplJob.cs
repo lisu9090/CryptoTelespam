@@ -1,23 +1,19 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.Common.Const;
-using System;
+using ProofOfConcept.Domain;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
 {
-    class NuplJob : FullPipelineJobBase<Nupl>
+    internal class NuplJob : FullPipelineJobBase<Nupl>
     {
-        public NuplJob(IDataLoaderService<Nupl> dataLoaderService, 
-            IDataProcessorService<Nupl> dataProcessorService, 
+        public NuplJob(IDataLoaderService<Nupl> dataLoaderService,
+            IDataProcessorService<Nupl> dataProcessorService,
             IMessageSenderService<Nupl> messageSenderService,
-            ILogger<NuplJob> logger) 
-            : base(dataLoaderService, 
-                  dataProcessorService, 
+            ILogger<NuplJob> logger)
+            : base(dataLoaderService,
+                  dataProcessorService,
                   messageSenderService,
                   logger)
         {

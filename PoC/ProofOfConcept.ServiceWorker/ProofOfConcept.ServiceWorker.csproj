@@ -27,7 +27,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProofOfConcept.ApiClient.DI\ProofOfConcept.ApiClient.DI.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Application.DI\ProofOfConcept.Application.DI.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
-    <ProjectReference Include="..\ProofOfConcept.Domain.DI\ProofOfConcept.Domain.DI.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj" />
   </ItemGroup>
 </Project>

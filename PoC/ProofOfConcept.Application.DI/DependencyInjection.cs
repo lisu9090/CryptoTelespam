@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.ApiClientDomain;
 using ProofOfConcept.Application.Domain.DataLoad;
 using ProofOfConcept.Application.Domain.DataProcess;
 using ProofOfConcept.Application.Domain.MessageSend;
+using ProofOfConcept.Domain;
 
 namespace ProofOfConcept.DomainWorker
 {
@@ -54,7 +54,6 @@ namespace ProofOfConcept.DomainWorker
             services.AddTransient<IMessageSenderService<LthNupl>, LthNuplMessageService>();
             services.AddTransient<IMessageSenderService<MarketCapThermocapRatio>, MarketCapThermocapRatioMessageService>();
             services.AddTransient<IMessageSenderService<StfDeflection>, StfDeflectionMessageService>();
-
         }
     }
 }

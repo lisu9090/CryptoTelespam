@@ -1,6 +1,5 @@
-﻿using ProofOfConcept.Abstract.Application.Model;
-using ProofOfConcept.Abstract.Application;
-using System.Threading.Tasks;
+﻿using ProofOfConcept.Abstract.Application;
+using ProofOfConcept.Domain;
 
 namespace ProofOfConcept.Application.Domain.DataProcess
 {
@@ -12,7 +11,7 @@ namespace ProofOfConcept.Application.Domain.DataProcess
 
             //val is greater than 160k
             //algorytm normalizujacy dane
-            //wykrywanie najwiekszych peakow 
+            //wykrywanie najwiekszych peakow
         }
     }
 }

@@ -1,6 +1,5 @@
-﻿using ProofOfConcept.Abstract.Application.Model;
-using ProofOfConcept.Abstract.Application;
-using System.Threading.Tasks;
+﻿using ProofOfConcept.Abstract.Application;
+using ProofOfConcept.Domain;
 
 namespace ProofOfConcept.Application.Domain.DataProcess
 {

@@ -1,7 +1,7 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.Application.Const.Message;
+using ProofOfConcept.Domain;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Domain.MessageSend
@@ -21,7 +21,7 @@ namespace ProofOfConcept.Application.Domain.MessageSend
             {
                 return;
             }
-            
+
             string msg = string.Format("TODO", //TODO fix
                 data.Code,
                 data.Indicator.Value,
@@ -33,7 +33,7 @@ namespace ProofOfConcept.Application.Domain.MessageSend
         public async Task SendNotificationAsync(ActiveAddresses notification)
         {
             string msg = string.Format(AddressesEventMessage.ACTIVE_ADDRESSES_NOTIFICATION,
-                notification.CryptocurrencySymbol, 
+                notification.CryptocurrencySymbol,
                 notification.Value);
 
             await _messageApiService.SendAsync(msg);

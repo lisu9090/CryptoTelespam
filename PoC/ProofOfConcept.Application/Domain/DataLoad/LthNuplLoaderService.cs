@@ -2,12 +2,11 @@
 using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.ApiClient.Dto;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
-using ProofOfConcept.Common.Const;
 using ProofOfConcept.Application.Helper;
+using ProofOfConcept.Common.Const;
+using ProofOfConcept.Domain;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Domain.DataLoad
@@ -25,7 +24,7 @@ namespace ProofOfConcept.Application.Domain.DataLoad
 
         public async Task<LthNupl> LoadDataAsync(string cryptocurrencySymbol)
         {
-            if(!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
+            if (!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
             {
                 cryptocurrencySymbol = CryptocurrencySymbol.BTC;
             }
@@ -37,7 +36,7 @@ namespace ProofOfConcept.Application.Domain.DataLoad
 
             IEnumerable<FloatValueTimestampDto> dtos = await _apiService
                 .GetLthNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
-            
+
             LthNupl entity = _mapper.DtoOrderedMap<FloatValueTimestampDto, LthNupl>(dtos);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;

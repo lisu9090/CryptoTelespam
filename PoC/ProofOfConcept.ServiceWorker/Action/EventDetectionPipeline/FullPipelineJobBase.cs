@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
+using ProofOfConcept.Domain;
 using Quartz;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
 {
-    abstract class FullPipelineJobBase<T> : IJob where T : CryptocurrencyIndicator
+    internal abstract class FullPipelineJobBase<T> : IJob where T : CryptocurrencyIndicator
     {
         protected const int RETRY_MAX_COUNT = 1;
         protected readonly IDataLoaderService<T> _dataLoaderService;

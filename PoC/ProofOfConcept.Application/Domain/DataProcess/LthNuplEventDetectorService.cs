@@ -1,9 +1,8 @@
-﻿using ProofOfConcept.Abstract.Application.Model;
-using ProofOfConcept.Abstract.Application;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using ProofOfConcept.Application.Helper;
+﻿using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Const.Code;
+using ProofOfConcept.Application.Helper;
+using ProofOfConcept.Domain;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ProofOfConcept.Application.Domain.DataProcess

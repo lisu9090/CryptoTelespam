@@ -2,8 +2,8 @@
 using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.ApiClient.Dto;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Abstract.Application.Model;
 using ProofOfConcept.Application.Helper;
+using ProofOfConcept.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +30,7 @@ namespace ProofOfConcept.Application.Domain.DataLoad
                 .Build();
 
             IEnumerable<IntValueTimestampDto> dtos = await _apiService.GetNewAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
-            
+
             NewAddresses entity = _mapper.DtoOrderedMap<IntValueTimestampDto, NewAddresses>(dtos);
 
             entity.CryptocurrencySymbol = cryptocurrencySymbol;
