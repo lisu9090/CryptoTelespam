@@ -14,8 +14,8 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 {
     public class PuellLoaderService : IDataLoaderService<Puell>
     {
-        private IRestApiService _apiService;
-        private IMapper _mapper;
+        private readonly IRestApiService _apiService;
+        private readonly IMapper _mapper;
 
         public PuellLoaderService(IRestApiService apiService, IMapper mapper)
         {

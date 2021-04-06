@@ -11,7 +11,7 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
 {
     public class PuellMessageService : IMessageSenderService<Puell>
     {
-        private IMessageApiService _messageApiService;
+        private readonly IMessageApiService _messageApiService;
         private Dictionary<string, string> _codeMessageDictionary = new Dictionary<string, string>();
 
         public PuellMessageService(IMessageApiService messageApiService)

@@ -8,7 +8,7 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
 {
     public class ActiveAddressesMessageService : IMessageSenderService<ActiveAddresses>
     {
-        private IMessageApiService _messageApiService;
+        private readonly IMessageApiService _messageApiService;
 
         public ActiveAddressesMessageService(IMessageApiService messageApiService)
         {

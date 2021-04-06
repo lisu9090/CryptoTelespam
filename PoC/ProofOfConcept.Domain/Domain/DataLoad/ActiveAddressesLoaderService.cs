@@ -12,8 +12,8 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 {
     public class ActiveAddressesLoaderService : IDataLoaderService<ActiveAddresses>
     {
-        private IRestApiService _apiService;
-        private IMapper _mapper;
+        private readonly IRestApiService _apiService;
+        private readonly IMapper _mapper;
 
         public ActiveAddressesLoaderService(IRestApiService apiService, IMapper mapper)
         {

@@ -18,7 +18,7 @@ namespace ProofOfConcept.ApiClient.Service
         private readonly string _key;
         private readonly JsonSerializerOptions _jsonDefaults;
         private readonly ILogger<GlassNodeApiService> _logger;
-        private HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
 
         public GlassNodeApiService(int timeout, 
             string apiBase, 

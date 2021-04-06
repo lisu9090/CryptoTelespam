@@ -14,8 +14,8 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 {
     public class TotalAddressesLoaderService : IDataLoaderService<TotalAddresses>
     {
-        private IRestApiService _apiService;
-        private IMapper _mapper;
+        private readonly IRestApiService _apiService;
+        private readonly IMapper _mapper;
 
         public TotalAddressesLoaderService(IRestApiService apiService, IMapper mapper)
         {

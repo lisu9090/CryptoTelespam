@@ -13,7 +13,7 @@ namespace ProofOfConcept.ApiClient.Service
         private readonly string _messageTargetParamName;
         private readonly string _messageTarget;
         private readonly ILogger<TelegramMessageApiService> _logger;
-        private HttpClient _httpClient;
+        private readonly HttpClient _httpClient;
 
         public TelegramMessageApiService(int timeout, 
             string apiBase, 

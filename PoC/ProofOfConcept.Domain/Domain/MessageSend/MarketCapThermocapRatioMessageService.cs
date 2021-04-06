@@ -9,7 +9,7 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
 {
     public class MarketCapThermocapRatioMessageService : IMessageSenderService<MarketCapThermocapRatio>
     {
-        private IMessageApiService _messageApiService;
+        private readonly IMessageApiService _messageApiService;
 
         public MarketCapThermocapRatioMessageService(IMessageApiService messageApiService)
         {

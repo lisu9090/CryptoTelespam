@@ -9,7 +9,7 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
 {
     public class LthNuplMessageService : IMessageSenderService<LthNupl>
     {
-        private IMessageApiService _messageApiService;
+        private readonly IMessageApiService _messageApiService;
 
         public LthNuplMessageService(IMessageApiService messageApiService)
         {

@@ -14,8 +14,8 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 {
     public class StfDeflectionLoaderService : IDataLoaderService<StfDeflection>
     {
-        private IRestApiService _apiService;
-        private IMapper _mapper;
+        private readonly IRestApiService _apiService;
+        private readonly IMapper _mapper;
 
         public StfDeflectionLoaderService(IRestApiService apiService, IMapper mapper)
         {

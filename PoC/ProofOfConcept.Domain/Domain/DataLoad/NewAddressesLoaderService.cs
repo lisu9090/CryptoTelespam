@@ -13,8 +13,8 @@ namespace ProofOfConcept.Domain.Domain.DataLoad
 {
     public class NewAddressesLoaderService : IDataLoaderService<NewAddresses>
     {
-        private IRestApiService _apiService;
-        private IMapper _mapper;
+        private readonly IRestApiService _apiService;
+        private readonly IMapper _mapper;
 
         public NewAddressesLoaderService(IRestApiService apiService, IMapper mapper)
         {

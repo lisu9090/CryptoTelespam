@@ -9,7 +9,7 @@ namespace ProofOfConcept.Domain.Domain.MessageSend
 {
     public class StfDeflectionMessageService : IMessageSenderService<StfDeflection>
     {
-        private IMessageApiService _messageApiService;
+        private readonly IMessageApiService _messageApiService;
 
         public StfDeflectionMessageService(IMessageApiService messageApiService)
         {
