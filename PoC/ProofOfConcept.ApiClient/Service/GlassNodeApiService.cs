@@ -3,7 +3,6 @@ using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.ApiClient.Dto;
 using ProofOfConcept.ApiClient.Helper;
-using ProofOfConcept.ApiClient.Helpers;
 using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain;
 using System.Collections.Generic;

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace ProofOfConcept.ApiClient.Helpers
+namespace ProofOfConcept.ApiClient.Helper
 {
     internal class UriBuilder
     {

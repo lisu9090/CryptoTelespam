@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.ApiClient;
-using ProofOfConcept.ApiClient.Helpers;
+using ProofOfConcept.ApiClient.Helper;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -15,11 +15,11 @@ namespace ProofOfConcept.ApiClient.Service
         private readonly ILogger<TelegramMessageApiService> _logger;
         private readonly HttpClient _httpClient;
 
-        public TelegramMessageApiService(int timeout, 
-            string apiBase, 
-            string messageTargetParamName, 
-            string messageTarget, 
-            HttpClient httpClient, 
+        public TelegramMessageApiService(int timeout,
+            string apiBase,
+            string messageTargetParamName,
+            string messageTarget,
+            HttpClient httpClient,
             ILogger<TelegramMessageApiService> logger)
         {
             _timeout = timeout;
