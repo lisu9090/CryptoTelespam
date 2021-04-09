@@ -27,6 +27,8 @@ namespace ProofOfConcept.DomainWorker
             services.AddTransient<IDataLoaderService<LthNupl>, LthNuplLoaderService>();
             services.AddTransient<IDataLoaderService<MarketCapThermocapRatio>, MarketCapThermocapRatioLoaderService>();
             services.AddTransient<IDataLoaderService<StfDeflection>, StfDeflectionLoaderService>();
+            services.AddTransient<IDataLoaderService<MvrvRatio>, MvrvRatioLoaderService>();
+            services.AddTransient<IDataLoaderService<MvrvZScore>, MvrvZScoreLoaderService>();
         }
 
         private static void RegisterDataProcessServices(this IServiceCollection services)
@@ -39,6 +41,8 @@ namespace ProofOfConcept.DomainWorker
             services.AddTransient<IDataProcessorService<LthNupl>, LthNuplEventDetectorService>();
             services.AddTransient<IDataProcessorService<MarketCapThermocapRatio>, MarketCapThermocapRatioEventDetectorService>();
             services.AddTransient<IDataProcessorService<StfDeflection>, StfDeflectionEventDetectorService>();
+            services.AddTransient<IDataProcessorService<MvrvRatio>, MvrvRatioEventDetectorService>();
+            services.AddTransient<IDataProcessorService<MvrvZScore>, MvrvZScoreEventDetectorService>();
         }
 
         private static void RegisterMessageSendServices(this IServiceCollection services)
@@ -51,6 +55,8 @@ namespace ProofOfConcept.DomainWorker
             services.AddTransient<IMessageSenderService<LthNupl>, LthNuplMessageService>();
             services.AddTransient<IMessageSenderService<MarketCapThermocapRatio>, MarketCapThermocapRatioMessageService>();
             services.AddTransient<IMessageSenderService<StfDeflection>, StfDeflectionMessageService>();
+            services.AddTransient<IMessageSenderService<MvrvRatio>, MvrvRatioMessageService>();
+            services.AddTransient<IMessageSenderService<MvrvZScore>, MvrvZScoreMessageService>();
         }
     }
 }
