@@ -4,7 +4,7 @@ using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain;
 using System.Collections.Generic;
 
-namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
+namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
 {
     internal class StfDeflectionJob : FullPipelineJobBase<StfDeflection>
     {

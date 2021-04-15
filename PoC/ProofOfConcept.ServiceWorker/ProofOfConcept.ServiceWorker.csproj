@@ -31,4 +31,8 @@
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Job\MarketThermometr\" />
+  </ItemGroup>
 </Project>

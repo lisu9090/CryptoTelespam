@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline
+namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
 {
     internal abstract class FullPipelineJobBase<T> : IJob where T : CryptocurrencyIndicator
     {

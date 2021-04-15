@@ -1,4 +1,4 @@
-﻿using ProofOfConcept.ServiceWorker.Action.EventDetectionPipeline;
+﻿using ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline;
 using Quartz;
 
 namespace ProofOfConcept.ServiceWorker.Configuration
