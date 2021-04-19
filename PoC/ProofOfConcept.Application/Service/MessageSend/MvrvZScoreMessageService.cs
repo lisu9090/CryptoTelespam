@@ -23,7 +23,7 @@ namespace ProofOfConcept.Application.Service.MessageSend
             _codeMessageDictionary.Add(PuellEventCode.ESCAPE_SELL_ZONE, PuellEventMessage.PUELL_SELL_ESCAPE);
         }
 
-        public async Task SendEventMessageAsync(StockEvent<Puell> data)
+        public async Task SendEventMessageAsync(ZoneChageEvent<Puell> data)
         {
             if (data == null)
             {
@@ -37,7 +37,7 @@ namespace ProofOfConcept.Application.Service.MessageSend
             await _messageApiService.SendAsync(msg);
         }
 
-        public Task SendEventMessageAsync(StockEvent<MvrvZScore> data)
+        public Task SendEventMessageAsync(ZoneChageEvent<MvrvZScore> data)
         {
             throw new System.NotImplementedException();
         }

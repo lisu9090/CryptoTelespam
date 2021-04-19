@@ -20,12 +20,12 @@ namespace ProofOfConcept.Application.Service.DataProcess
             _eventLevels.Add(MarketCapEventCode.OVERHEATED, Range.And(x => x > LEVEL_1, y => y <= double.MaxValue));
         }
 
-        public StockEvent<MarketCapThermocapRatio> DetectEvent(MarketCapThermocapRatio data)
+        public ZoneChageEvent<MarketCapThermocapRatio> DetectEvent(MarketCapThermocapRatio data)
         {
             string currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
             string previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
 
-            return !currentLevel.Equals(previousLevel) ? new StockEvent<MarketCapThermocapRatio>(data, currentLevel, previousLevel) : null;
+            return !currentLevel.Equals(previousLevel) ? new ZoneChageEvent<MarketCapThermocapRatio>(data, currentLevel, previousLevel) : null;
         }
     }
 }

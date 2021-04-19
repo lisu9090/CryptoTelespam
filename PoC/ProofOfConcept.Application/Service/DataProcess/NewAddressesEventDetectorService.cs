@@ -5,7 +5,7 @@ namespace ProofOfConcept.Application.Service.DataProcess
 {
     public class NewAddressesEventDetectorService : IDataProcessorService<NewAddresses>
     {
-        public StockEvent<NewAddresses> DetectEvent(NewAddresses data)
+        public ZoneChageEvent<NewAddresses> DetectEvent(NewAddresses data)
         {
             return null; //todo
 

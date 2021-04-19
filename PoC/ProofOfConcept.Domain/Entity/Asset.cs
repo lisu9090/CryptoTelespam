@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ProofOfConcept.Domain
+﻿namespace ProofOfConcept.Domain.Entity
 {
-    public class Asset : Entity
+    public class Asset : CryptoEntity
     {
         public string Symbol { get; set; }
 

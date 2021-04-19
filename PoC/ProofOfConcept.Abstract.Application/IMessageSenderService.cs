@@ -5,7 +5,7 @@ namespace ProofOfConcept.Abstract.Application
 {
     public interface IMessageSenderService<T> where T : CryptocurrencyIndicator
     {
-        Task SendEventMessageAsync(StockEvent<T> data);
+        Task SendEventMessageAsync(ZoneChageEvent<T> data);
 
         Task SendNotificationAsync(T notification);
     }

@@ -18,12 +18,12 @@ namespace ProofOfConcept.Application.Service.DataProcess
             _eventLevels.Add(StfDeflectionEventCode.UNACCEPTABLE, Range.And(x => x > LEVEL_0, y => y <= double.MaxValue));
         }
 
-        public StockEvent<StfDeflection> DetectEvent(StfDeflection data)
+        public ZoneChageEvent<StfDeflection> DetectEvent(StfDeflection data)
         {
             string currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
             string previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
 
-            return !currentLevel.Equals(previousLevel) ? new StockEvent<StfDeflection>(data, currentLevel, previousLevel) : null;
+            return !currentLevel.Equals(previousLevel) ? new ZoneChageEvent<StfDeflection>(data, currentLevel, previousLevel) : null;
         }
     }
 }

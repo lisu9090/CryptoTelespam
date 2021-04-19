@@ -56,7 +56,7 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
             foreach (var cryptocurrencySymbol in _cryptocurrencySymbols)
             {
                 T data = await _dataLoaderService.LoadDataAsync(cryptocurrencySymbol);
-                StockEvent<T> stockEvent = _dataProcessorService.DetectEvent(data);
+                ZoneChageEvent<T> stockEvent = _dataProcessorService.DetectEvent(data);
 
                 if (stockEvent != null)
                 {

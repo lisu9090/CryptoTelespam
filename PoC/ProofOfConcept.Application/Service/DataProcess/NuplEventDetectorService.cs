@@ -24,12 +24,12 @@ namespace ProofOfConcept.Application.Service.DataProcess
             _eventLevels.Add(NuplEventCode.EUPHORIA, Range.And(x => x >= LEVEL_3, y => y <= double.MaxValue));
         }
 
-        public StockEvent<Nupl> DetectEvent(Nupl data)
+        public ZoneChageEvent<Nupl> DetectEvent(Nupl data)
         {
             string currentLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.Value)).Key;
             string previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
 
-            return !currentLevel.Equals(previousLevel) ? new StockEvent<Nupl>(data, currentLevel, previousLevel) : null;
+            return !currentLevel.Equals(previousLevel) ? new ZoneChageEvent<Nupl>(data, currentLevel, previousLevel) : null;
         }
     }
 }

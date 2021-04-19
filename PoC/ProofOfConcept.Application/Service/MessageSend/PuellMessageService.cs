@@ -23,7 +23,7 @@ namespace ProofOfConcept.Application.Service.MessageSend
             _codeMessageDictionary.Add(PuellEventCode.ESCAPE_SELL_ZONE, PuellEventMessage.PUELL_SELL_ESCAPE);
         }
 
-        public async Task SendEventMessageAsync(StockEvent<Puell> data)
+        public async Task SendEventMessageAsync(ZoneChageEvent<Puell> data)
         {
             if (data == null)
             {

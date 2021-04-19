@@ -16,7 +16,7 @@ namespace ProofOfConcept.Application.Service.MessageSend
             _messageApiService = messageApiService;
         }
 
-        public async Task SendEventMessageAsync(StockEvent<MarketCapThermocapRatio> data)
+        public async Task SendEventMessageAsync(ZoneChageEvent<MarketCapThermocapRatio> data)
         {
             if (data == null)
             {

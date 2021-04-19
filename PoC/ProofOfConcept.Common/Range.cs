@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace ProofOfConcept.Application.Helper
+namespace ProofOfConcept.Common
 {
-    internal class Range
+    public class Range
     {
         public Func<double, bool> FirstBorderCondition { get; private set; }
         public Func<double, bool> SecondBorderCondition { get; private set; }
