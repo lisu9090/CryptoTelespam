@@ -1,6 +1,6 @@
 ﻿namespace ProofOfConcept.Domain.Indicator.Abstract
 {
-    public abstract class ScopedIndicator<T> : CryptocurrencyIndicator
+    public abstract class ScopedIndicator<T> : CryptocurrencyIndicator where T : struct
     {
         //TODO Add constructor or factory wchich accept IEnumerable<T>
 
