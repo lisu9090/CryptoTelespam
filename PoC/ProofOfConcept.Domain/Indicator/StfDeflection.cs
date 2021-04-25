@@ -2,7 +2,7 @@
 
 namespace ProofOfConcept.Domain.Indicator
 {
-    public class StfDeflection : ScopedIndicator<float>
+    public class StfDeflection : CryptocurrencyIndicator<float>
     {
     }
 }

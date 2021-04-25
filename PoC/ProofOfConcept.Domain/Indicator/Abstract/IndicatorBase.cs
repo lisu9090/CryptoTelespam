@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 namespace ProofOfConcept.Domain.Indicator.Abstract
 {
-    public abstract class CryptocurrencyIndicator<T> : IndicatorBase
+    public abstract class IndicatorBase
     {
-        public IEnumerable<IndicatorValue<T>> Values { get; set; }
+        public abstract int Id { get; }
+        public Asset Asset { get; set; }
     }
 }

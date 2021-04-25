@@ -2,7 +2,7 @@
 
 namespace ProofOfConcept.Domain.Indicator
 {
-    public class MvrvZScore : ScopedIndicator<float>
+    public class MvrvZScore : CryptocurrencyIndicator<float>
     {
     }
 }
