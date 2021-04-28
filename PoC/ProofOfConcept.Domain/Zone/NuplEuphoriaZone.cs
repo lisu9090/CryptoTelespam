@@ -4,16 +4,11 @@ using ProofOfConcept.Domain.Zone.Abstract;
 using System;
 using System.Linq;
 using System.Collections.Generic;
-using ProofOfConcept.Domain.Zone.Enum;
 
 namespace ProofOfConcept.Domain.Zone
 {
     public class NuplEuphoriaZone : IndicatorZone<Nupl>
     {
-        public override int Id => (int)IndicatorZoneId.NuplEuphoria;
-
-        public override int IndicatorId => (int)Indicator.Enum.IndicatorId.Nupl;
-
         public override string Name => "Euphoria";
 
         internal interface IZoneTester<in TZone, TIndicator, TValue>
@@ -41,22 +36,27 @@ namespace ProofOfConcept.Domain.Zone
             {
                 try
                 {
-                    var zoneTesterType = typeof(IZoneTester<IndicatorZone<TIndicator>, TIndicator, TValue>);
-                    var zoneType = GetType()
+                    Type zoneBaseType = typeof(IndicatorZone<TIndicator>);
+                    Type zoneTesterType = typeof(IZoneTester<IndicatorZone<TIndicator>, TIndicator, TValue>);
+
+                    IZoneTester<IndicatorZone<TIndicator>, TIndicator, TValue> matchedZoneTester = GetType()
                         .Assembly
-                        .GetTypes()
+                        .DefinedTypes
                         .Where(type => zoneTesterType.IsAssignableFrom(type))
                         .Select(type => (IZoneTester<IndicatorZone<TIndicator>, TIndicator, TValue>)Activator.CreateInstance(type))
                         .Where(tester => tester.IsInZone(value))
-                        .FirstOrDefault() //null check
-                        .GetType()
-                        .GetInterfaces()
-                        .Where(testerInterface => testerInterface.Equals(zoneTesterType))
-                        .First()
-                        .GetGenericArguments()
-                        .First();
+                        .FirstOrDefault();
 
-                    return (IndicatorZone<TIndicator>)Activator.CreateInstance(zoneType);
+                    Type zoneType = matchedZoneTester
+                       ?.GetType()
+                       .GetInterfaces()
+                       .Where(testerInterface => zoneTesterType.IsAssignableFrom(testerInterface))
+                       .First()
+                       .GetGenericArguments()
+                       .Where(genericArgument => zoneBaseType.IsAssignableFrom(genericArgument))
+                       .FirstOrDefault();
+
+                    return zoneType != null ? (IndicatorZone<TIndicator>)Activator.CreateInstance(zoneType) : null;
                 }
                 catch (Exception e)
                 {
