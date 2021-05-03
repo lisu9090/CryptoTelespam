@@ -1,4 +1,5 @@
-﻿using ProofOfConcept.Domain.Indicator.Abstract;
+﻿using ProofOfConcept.Domain.Entity.Enum;
+using ProofOfConcept.Domain.Indicator.Abstract;
 using ProofOfConcept.Domain.Zone.Abstract;
 using System;
 using System.Linq;
@@ -8,7 +9,7 @@ namespace ProofOfConcept.Domain.Zone
     public class ZoneSelectionMediator
     {
         public IndicatorZone<TIndicator> GetZone<TIndicator, TValue>(TValue value)
-            where TIndicator : CryptocurrencyIndicator<TValue>
+            where TIndicator : CryptoIndicator<TValue>
         {
             try
             {
@@ -40,6 +41,12 @@ namespace ProofOfConcept.Domain.Zone
 
                 return null;
             }
+        }
+
+        public IndicatorZone<TIndicator> GetAssetZone<TIndicator, TValue>(TValue value, AssetId assetId)
+            where TIndicator : CryptoIndicator<TValue>
+        {
+            return null;
         }
     }
 }

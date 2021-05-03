@@ -2,9 +2,9 @@
 
 namespace ProofOfConcept.Domain.Event.Abstract
 {
-    public abstract class StockEvent<T> where T : CryptocurrencyIndicator
+    public abstract class StockEvent<TIndicator> where TIndicator : CryptoIndicatorBase
     {
-        public T Indicator { get; set; }
+        public TIndicator Indicator { get; set; }
 
         public int MessageTemplateId { get; set; }
     }

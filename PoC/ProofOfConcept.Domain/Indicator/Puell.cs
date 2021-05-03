@@ -2,7 +2,7 @@
 
 namespace ProofOfConcept.Domain.Indicator
 {
-    public class Puell : CryptocurrencyIndicator<float>
+    public class Puell : CryptoIndicator<float>
     {
     }
 }

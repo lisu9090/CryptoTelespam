@@ -2,7 +2,7 @@
 
 namespace ProofOfConcept.Domain.Indicator
 {
-    public class NewAddresses : CryptocurrencyIndicator<int>
+    public class NewAddresses : CryptoIndicator<int>
     {
     }
 }

@@ -2,7 +2,7 @@
 
 namespace ProofOfConcept.Domain.Indicator
 {
-    public class MarketCapThermocapRatio : CryptocurrencyIndicator<float>
+    public class MarketCapThermocapRatio : CryptoIndicator<float>
     {
     }
 }

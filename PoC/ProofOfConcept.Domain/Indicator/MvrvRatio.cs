@@ -2,7 +2,7 @@
 
 namespace ProofOfConcept.Domain.Indicator
 {
-    public class MvrvRatio : CryptocurrencyIndicator<float>
+    public class MvrvRatio : CryptoIndicator<float>
     {
     }
 }

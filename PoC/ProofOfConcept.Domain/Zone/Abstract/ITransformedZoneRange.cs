@@ -2,10 +2,10 @@
 
 namespace ProofOfConcept.Domain.Zone.Abstract
 {
-    internal interface IZoneRange<in TZone, TIndicator, TValue>
+    internal interface ITransformedZoneRange<in TZone, TIndicator, TValue>
         where TZone : IndicatorZone<TIndicator> //TODO consider new()
-        where TIndicator : CryptoIndicator<TValue>
+        where TIndicator : CryptoIndicatorBase
     {
-        bool IsInZone(TValue value);
+        bool IsInZone(TIndicator indicator);
     }
 }

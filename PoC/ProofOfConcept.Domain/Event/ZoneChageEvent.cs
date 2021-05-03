@@ -1,13 +1,14 @@
 ﻿using ProofOfConcept.Domain.Event.Abstract;
 using ProofOfConcept.Domain.Indicator.Abstract;
-using System.Collections.Generic;
+using ProofOfConcept.Domain.Zone.Abstract;
 
 namespace ProofOfConcept.Domain
 {
-    public class ZoneChageEvent<T> : StockEvent<T> where T : CryptocurrencyIndicator
+    public class ZoneChageEvent<TIndicator> : StockEvent<TIndicator>
+        where TIndicator : CryptoIndicatorBase
     {
-        public object CurrentZone { get; set; }
+        public IndicatorZone<TIndicator> CurrentZone { get; set; }
 
-        public object PreviousZone { get; set; }
+        public IndicatorZone<TIndicator> PreviousZone { get; set; }
     }
 }

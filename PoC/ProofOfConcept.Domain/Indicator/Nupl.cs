@@ -2,7 +2,7 @@
 
 namespace ProofOfConcept.Domain.Indicator
 {
-    public class Nupl : CryptocurrencyIndicator<float>
+    public class Nupl : CryptoIndicator<float>
     {
     }
 }
