@@ -1,13 +1,11 @@
 ﻿using ProofOfConcept.Domain.Indicator;
 using ProofOfConcept.Domain.Zone.Abstract;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace ProofOfConcept.Domain.Zone.NuplZone
 {
-    public class NuplZoneService : IZoneService<Nupl, float>
+    public class NuplZoneService
     {
         private readonly IEnumerable<IZoneRange<IndicatorZone<Nupl>, Nupl, float>> _zoneRanges;
 
