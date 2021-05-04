@@ -1,10 +1,6 @@
-﻿using ProofOfConcept.Domain.Indicator;
-using ProofOfConcept.Domain.Indicator.Abstract;
+﻿using ProofOfConcept.Common;
+using ProofOfConcept.Domain.Indicator;
 using ProofOfConcept.Domain.Zone.Abstract;
-using System;
-using System.Linq;
-using System.Collections.Generic;
-using ProofOfConcept.Common;
 
 namespace ProofOfConcept.Domain.Zone.NuplZone
 {
