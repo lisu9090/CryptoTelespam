@@ -10,7 +10,7 @@ namespace ProofOfConcept.DomainWorker
 {
     public static class DependencyInjection
     {
-        public static void RegisterDomain(this IServiceCollection services)
+        public static void RegisterApplication(this IServiceCollection services)
         {
             services.RegisterDataLoadServices();
             services.RegisterDataProcessServices();
