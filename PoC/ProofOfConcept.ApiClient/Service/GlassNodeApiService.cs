@@ -78,7 +78,7 @@ namespace ProofOfConcept.ApiClient.Service
         public async Task<Nupl> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
             //todo add error handling + retry;
-            return await GetIndicatorAsync<FloatValueTimestampDto, Nupl>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, Nupl>(
                 "/v1/metrics/indicators/net_unrealized_profit_loss",
                 asset,
                 sinceTimeStamp,
@@ -89,7 +89,7 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task<Puell> GetPuellMultipleAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, Puell>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, Puell>(
                 "v1/metrics/indicators/puell_multiple",
                 asset,
                 sinceTimeStamp,
@@ -100,7 +100,7 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task<NewAddresses> GetNewAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<IntValueTimestampDto, NewAddresses>(
+            return await GetIndicatorAsync<TimestampedIntValueDto, NewAddresses>(
                 "/v1/metrics/addresses/sending_to_exchanges_count",
                 asset,
                 sinceTimeStamp,
@@ -111,7 +111,7 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task<TotalAddresses> GetTotalAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<IntValueTimestampDto, TotalAddresses>(
+            return await GetIndicatorAsync<TimestampedIntValueDto, TotalAddresses>(
                 "/v1/metrics/addresses/count",
                 asset,
                 sinceTimeStamp,
@@ -122,7 +122,7 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task<ActiveAddresses> GetActiveAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<IntValueTimestampDto, ActiveAddresses>(
+            return await GetIndicatorAsync<TimestampedIntValueDto, ActiveAddresses>(
                 "/v1/metrics/addresses/active_count",
                 asset,
                 sinceTimeStamp,
@@ -133,7 +133,7 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task<StfDeflection> GetStfDefectionAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, StfDeflection>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, StfDeflection>(
                 "/v1/metrics/indicators/stock_to_flow_deflection",
                 asset,
                 sinceTimeStamp,
@@ -144,7 +144,7 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task<LthNupl> GetLthNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, LthNupl>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, LthNupl>(
                 "/v1/metrics/indicators/nupl_more_155",
                 asset,
                 sinceTimeStamp,
@@ -155,7 +155,7 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task<MarketCapThermocapRatio> GetMarketCapThermocapRatioAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, MarketCapThermocapRatio>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, MarketCapThermocapRatio>(
                 "/v1/metrics/mining/marketcap_thermocap_ratio",
                 asset,
                 sinceTimeStamp,
@@ -166,7 +166,7 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task<MvrvRatio> GetMvrvRatioAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, MvrvRatio>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, MvrvRatio>(
                 "/v1/metrics/market/mvrv",
                 asset,
                 sinceTimeStamp,
@@ -177,7 +177,7 @@ namespace ProofOfConcept.ApiClient.Service
 
         public async Task<MvrvZScore> GetMvrvZScoreAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, MvrvZScore>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, MvrvZScore>(
                 "/v1/metrics/market/mvrv_z_score",
                 asset,
                 sinceTimeStamp,
