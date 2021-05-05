@@ -1,9 +1,8 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Helper;
-using ProofOfConcept.Domain;
+using ProofOfConcept.Domain.Indicator;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.DataLoad

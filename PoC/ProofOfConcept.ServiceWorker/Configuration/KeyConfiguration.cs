@@ -1,16 +1,11 @@
 ﻿using Quartz;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Configuration
 {
-    static class KeyConfiguration
+    internal static class KeyConfiguration
     {
         public const string FULL_PIPELINE_GROUP = "full-pipeline-job-group";
-        
+
         public const string ACTIVE_ADDRESSES_JOB_KEY = "active-addresses-job";
         public const string LTH_NUPL_JOB_KEY = "lth-nupl-job";
         public const string MARKET_CAP_JOB_KEY = "market-cap-thermocap-ratio-job";
@@ -30,11 +25,11 @@ namespace ProofOfConcept.ServiceWorker.Configuration
         public const string TOTAL_ADDRESSES_TRIGGER_KEY = TOTAL_ADDRESSES_JOB_KEY + "-trigger";
 
         public static JobKey ActiveAddressesKey
-        { 
-            get 
+        {
+            get
             {
                 return new JobKey(ACTIVE_ADDRESSES_JOB_KEY, FULL_PIPELINE_GROUP);
-            } 
+            }
         }
 
         public static JobKey LthNuplKey
