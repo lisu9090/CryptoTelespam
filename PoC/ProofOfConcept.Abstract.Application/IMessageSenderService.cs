@@ -1,9 +1,10 @@
 ﻿using ProofOfConcept.Domain;
+using ProofOfConcept.Domain.Indicator.Abstract;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Abstract.Application
 {
-    public interface IMessageSenderService<T> where T : CryptocurrencyIndicator
+    public interface IMessageSenderService<T> where T : CryptoIndicatorBase
     {
         Task SendEventMessageAsync(ZoneChageEvent<T> data);
 

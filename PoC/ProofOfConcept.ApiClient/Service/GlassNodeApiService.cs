@@ -55,7 +55,7 @@ namespace ProofOfConcept.ApiClient.Service
             int sinceTimeStamp,
             int untilTimeStamp,
             string interval,
-            string format) where TDto : TimestampDto
+            string format)
         {
             string uri = new UriBuilder(_apiBase, _apiKeyParamName, _key)
                  .SetEndpoint(endpoint)

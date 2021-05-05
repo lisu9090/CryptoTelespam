@@ -5,12 +5,16 @@ namespace ProofOfConcept.Domain.Indicator.Abstract
 {
     public abstract class CryptoIndicator<T> : CryptoIndicatorBase, IEnumerable<IndicatorValue<T>>
     {
-        private List<IndicatorValue<T>> _values = new List<IndicatorValue<T>>();
+        private IEnumerable<IndicatorValue<T>> _values;
 
-        public IndicatorValue<T> this[int index]
+        public CryptoIndicator(int assetId, IEnumerable<IndicatorValue<T>> values) : base(assetId)
         {
-            get => _values[index];
-            set => _values.Insert(index, value);
+            _values = values;
+        }
+
+        public CryptoIndicator(int assetId) : base(assetId)
+        {
+            _values = new List<IndicatorValue<T>>();
         }
 
         public IEnumerator<IndicatorValue<T>> GetEnumerator()
