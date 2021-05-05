@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Abstract\**" />
+    <EmbeddedResource Remove="Abstract\**" />
+    <None Remove="Abstract\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Service\DataLoad\MvrvZScoreLoaderService.cs~RF380cf0.TMP" />
   </ItemGroup>
 
@@ -13,10 +19,6 @@
     <ProjectReference Include="..\ProofOfConcept.Abstract.Application\ProofOfConcept.Abstract.Application.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Abstract\" />
   </ItemGroup>
 
 </Project>

@@ -6,6 +6,6 @@ namespace ProofOfConcept.Abstract.Application
 {
     public interface IDataLoaderService<T> where T : CryptoIndicatorBase
     {
-        Task<T> LoadDataAsync(string cryptocurrencySymbol);
+        Task<T> LoadDataAsync(int assetId);
     }
 }

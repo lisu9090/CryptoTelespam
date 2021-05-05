@@ -2,7 +2,9 @@
 using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Helper;
 using ProofOfConcept.Domain;
+using ProofOfConcept.Domain.Indicator;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.DataLoad
@@ -16,18 +18,18 @@ namespace ProofOfConcept.Application.Service.DataLoad
             _apiService = apiService;
         }
 
-        public async Task<NewAddresses> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<NewAddresses> LoadDataAsync(int assetId)
         {
             DateTimeOffset since = DateTimeBuilder.UtcNow()
                 .AddDays(-2)
                 .Truncate()
                 .Build();
 
-            NewAddresses entity = await _apiService.GetNewAddressesAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            IEnumerable<IndicatorValue<int>> values = await _apiService.GetNewAddressesAsync(
+                "BTC",
+                Convert.ToInt32(since.ToUnixTimeSeconds()));
 
-            entity.CryptocurrencySymbol = cryptocurrencySymbol;
-
-            return entity;
+            return new NewAddresses(assetId, values);
         }
     }
 }

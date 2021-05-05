@@ -3,7 +3,10 @@ using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Helper;
 using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain;
+using ProofOfConcept.Domain.Entity.Enum;
+using ProofOfConcept.Domain.Indicator;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.DataLoad
@@ -17,23 +20,20 @@ namespace ProofOfConcept.Application.Service.DataLoad
             _apiService = apiService;
         }
 
-        public async Task<LthNupl> LoadDataAsync(string cryptocurrencySymbol)
+        public async Task<LthNupl> LoadDataAsync(int assetId)
         {
-            if (!cryptocurrencySymbol.Equals(CryptocurrencySymbol.BTC))
-            {
-                cryptocurrencySymbol = CryptocurrencySymbol.BTC;
-            }
+            assetId = (int)AssetId.Btc; //Restrict to BTC
 
             DateTimeOffset since = DateTimeBuilder.UtcNow()
                 .AddDays(-2)
                 .Truncate()
                 .Build();
 
-            LthNupl entity = await _apiService.GetLthNuplAsync(cryptocurrencySymbol, Convert.ToInt32(since.ToUnixTimeSeconds()));
+            IEnumerable<IndicatorValue<float>> values = await _apiService.GetLthNuplAsync(
+                "BTC", //TODO get asset from db
+                Convert.ToInt32(since.ToUnixTimeSeconds()));
 
-            entity.CryptocurrencySymbol = cryptocurrencySymbol;
-
-            return entity;
+            return new LthNupl(assetId, values);
         }
     }
 }
