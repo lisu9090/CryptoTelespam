@@ -13,8 +13,11 @@ namespace ProofOfConcept.Domain.Zone.PuellZone
         {
             _zoneRanges = new List<IZoneRange<IndicatorZone<Puell>, Puell, float>>
             {
-                new PuellBuyZone.ZoneRange(),
-                new PuellSellZone.ZoneRange()
+                new PuellBeliefZone.ZoneRange(),
+                new PuellCapitulationZone.ZoneRange(),
+                new PuellEuphoriaZone.ZoneRange(),
+                new PuellHopeZone.ZoneRange(),
+                new PuellOptimismZone.ZoneRange()
             };
         }
 
