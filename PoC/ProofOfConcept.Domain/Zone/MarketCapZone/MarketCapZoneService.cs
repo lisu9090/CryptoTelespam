@@ -13,9 +13,11 @@ namespace ProofOfConcept.Domain.Zone.MarketCapZone
         {
             _zoneRanges = new List<IZoneRange<IndicatorZone<MarketCapThermocapRatio>, MarketCapThermocapRatio, float>>
             {
-                new MarketCapAcceptableZone.ZoneRange(),
-                new MarketCapCloseToOverheatZone.ZoneRange(),
-                new MarketCapOverheatedZone.ZoneRange()
+                new MarketCapBeliefZone.ZoneRange(),
+                new MarketCapCapitulationZone.ZoneRange(),
+                new MarketCapEuphoriaZone.ZoneRange(),
+                new MarketCapHopeZone.ZoneRange(),
+                new MarketCapOptimismZone.ZoneRange()
             };
         }
 
