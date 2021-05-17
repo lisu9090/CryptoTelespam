@@ -9,6 +9,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Zone\MvrvZone\" />
+    <Folder Include="Service\Zone\MvrvZone\" />
   </ItemGroup>
 </Project>
