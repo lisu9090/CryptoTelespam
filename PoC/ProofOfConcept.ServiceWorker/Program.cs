@@ -2,6 +2,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProofOfConcept.ApiClientDomain;
+using ProofOfConcept.Domain.DI;
 using ProofOfConcept.DomainWorker;
 using ProofOfConcept.ServiceWorker.Configuration;
 using Quartz;
@@ -21,19 +22,14 @@ namespace ProofOfConcept.ServiceWorker
             .UseSerilog((hostContext, loggerConfig) => loggerConfig.ReadFrom.Configuration(hostContext.Configuration))
             .ConfigureServices((hostContext, services) =>
                 {
-                    services.RegisterService();
-
                     services.RegisterServiceWorker(hostContext.Configuration);
 
                     services.RegisterDomain();
-                    
+
+                    services.RegisterApplication();
+
                     services.RegisterApiClients(hostContext.Configuration);
                 });
-
-        private static void RegisterService(this IServiceCollection services)
-        {
-            //TODO register services if necessary 
-        }
 
         private static void RegisterServiceWorker(this IServiceCollection services, IConfiguration config)
         {

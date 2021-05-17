@@ -1,15 +1,16 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.Application;
+using ProofOfConcept.Common.Extensions;
 using ProofOfConcept.Domain;
+using ProofOfConcept.Domain.Indicator.Abstract;
 using Quartz;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
 {
-    internal abstract class FullPipelineJobBase<T> : IJob where T : CryptocurrencyIndicator
+    internal abstract class FullPipelineJobBase<T> : IJob where T : CryptoIndicatorBase
     {
         protected const int RETRY_MAX_COUNT = 1;
         protected readonly IDataLoaderService<T> _dataLoaderService;
@@ -31,7 +32,7 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
 
         public async Task Execute(IJobExecutionContext context)
         {
-            for (var i = 0; i <= RETRY_MAX_COUNT; i++)
+            for (int i = 0; i <= RETRY_MAX_COUNT; i++)
             {
                 try
                 {
@@ -47,9 +48,10 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
 
         private async Task ExecutePipeline(IJobExecutionContext context)
         {
-            if (!_cryptocurrencySymbols?.Any() ?? true)
+            if (_cryptocurrencySymbols.IsNullOrEmpty())
             {
                 _logger.LogWarning("Cryptocurrncy symbol array of job {0} is null or contains no elements.", typeof(T).Name);
+
                 return;
             }
 

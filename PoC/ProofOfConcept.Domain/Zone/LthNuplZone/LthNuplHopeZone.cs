@@ -2,11 +2,11 @@
 using ProofOfConcept.Domain.Indicator;
 using ProofOfConcept.Domain.Zone.Abstract;
 
-namespace ProofOfConcept.Domain.Zone.NuplZone
+namespace ProofOfConcept.Domain.Zone.LthNuplZone
 {
-    public class NuplHopeZone : IndicatorZone<Nupl>
+    public class LthNuplHopeZone : IndicatorZone<LthNupl>
     {
-        internal class ZoneRange : IZoneRange<NuplHopeZone, Nupl, float>
+        internal class ZoneRange : IZoneRange<LthNuplHopeZone, LthNupl, float>
         {
             private Range _range = Range.And(x => x >= 0.5f, x => x < 0.75f);
 

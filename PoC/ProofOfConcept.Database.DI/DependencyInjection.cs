@@ -1,6 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ProofOfConcept.Abstract.Database;
-using System;
 
 namespace ProofOfConcept.Database.DI
 {
@@ -8,8 +6,6 @@ namespace ProofOfConcept.Database.DI
     {
         public static IServiceCollection RegisterDatabase(this IServiceCollection services)
         {
-            services.AddTransient<IAssetRepository, TestRepo>();
-
             return services;
         }
     }

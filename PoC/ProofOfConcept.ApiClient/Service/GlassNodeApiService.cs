@@ -4,7 +4,7 @@ using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.ApiClient.Dto;
 using ProofOfConcept.ApiClient.Helper;
 using ProofOfConcept.Common.Const;
-using ProofOfConcept.Domain;
+using ProofOfConcept.Domain.Indicator;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -49,13 +49,13 @@ namespace ProofOfConcept.ApiClient.Service
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        private async Task<TResult> GetIndicatorAsync<TDto, TResult>(
+        private async Task<IEnumerable<TResult>> GetIndicatorAsync<TDto, TResult>(
             string endpoint,
             string asset,
             int sinceTimeStamp,
             int untilTimeStamp,
             string interval,
-            string format) where TDto : TimestampDto
+            string format)
         {
             string uri = new UriBuilder(_apiBase, _apiKeyParamName, _key)
                  .SetEndpoint(endpoint)
@@ -72,13 +72,18 @@ namespace ProofOfConcept.ApiClient.Service
 
             IEnumerable<TDto> dtos = JsonSerializer.Deserialize<IEnumerable<TDto>>(responseString, _jsonDefaults);
 
-            return _mapper.DtoOrderedMap<TDto, TResult>(dtos);
+            return _mapper.Map<IEnumerable<TDto>, IEnumerable<TResult>>(dtos);
         }
 
-        public async Task<Nupl> GetNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
+        public async Task<IEnumerable<IndicatorValue<float>>> GetNuplAsync(
+            string asset,
+            int sinceTimeStamp = 0,
+            int untilTimeStamp = int.MaxValue,
+            string interval = Interval.DAY,
+            string format = MediaType.JSON)
         {
-            //todo add error handling + retry;
-            return await GetIndicatorAsync<FloatValueTimestampDto, Nupl>(
+            //TODO add error handling + retry;
+            return await GetIndicatorAsync<TimestampedFloatValueDto, IndicatorValue<float>>(
                 "/v1/metrics/indicators/net_unrealized_profit_loss",
                 asset,
                 sinceTimeStamp,
@@ -87,9 +92,14 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<Puell> GetPuellMultipleAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
+        public async Task<IEnumerable<IndicatorValue<float>>> GetPuellMultipleAsync(
+            string asset,
+            int sinceTimeStamp = 0,
+            int untilTimeStamp = int.MaxValue,
+            string interval = Interval.DAY,
+            string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, Puell>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, IndicatorValue<float>>(
                 "v1/metrics/indicators/puell_multiple",
                 asset,
                 sinceTimeStamp,
@@ -98,9 +108,14 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<NewAddresses> GetNewAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
+        public async Task<IEnumerable<IndicatorValue<int>>> GetNewAddressesAsync(
+            string asset,
+            int sinceTimeStamp = 0,
+            int untilTimeStamp = int.MaxValue,
+            string interval = Interval.DAY,
+            string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<IntValueTimestampDto, NewAddresses>(
+            return await GetIndicatorAsync<TimestampedIntValueDto, IndicatorValue<int>>(
                 "/v1/metrics/addresses/sending_to_exchanges_count",
                 asset,
                 sinceTimeStamp,
@@ -109,9 +124,14 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<TotalAddresses> GetTotalAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
+        public async Task<IEnumerable<IndicatorValue<int>>> GetTotalAddressesAsync(
+            string asset,
+            int sinceTimeStamp = 0,
+            int untilTimeStamp = int.MaxValue,
+            string interval = Interval.DAY,
+            string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<IntValueTimestampDto, TotalAddresses>(
+            return await GetIndicatorAsync<TimestampedIntValueDto, IndicatorValue<int>>(
                 "/v1/metrics/addresses/count",
                 asset,
                 sinceTimeStamp,
@@ -120,9 +140,14 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<ActiveAddresses> GetActiveAddressesAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
+        public async Task<IEnumerable<IndicatorValue<int>>> GetActiveAddressesAsync(
+            string asset,
+            int sinceTimeStamp = 0,
+            int untilTimeStamp = int.MaxValue,
+            string interval = Interval.DAY,
+            string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<IntValueTimestampDto, ActiveAddresses>(
+            return await GetIndicatorAsync<TimestampedIntValueDto, IndicatorValue<int>>(
                 "/v1/metrics/addresses/active_count",
                 asset,
                 sinceTimeStamp,
@@ -131,9 +156,14 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<StfDeflection> GetStfDefectionAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
+        public async Task<IEnumerable<IndicatorValue<float>>> GetStfDefectionAsync(
+            string asset,
+            int sinceTimeStamp = 0,
+            int untilTimeStamp = int.MaxValue,
+            string interval = Interval.DAY,
+            string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, StfDeflection>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, IndicatorValue<float>>(
                 "/v1/metrics/indicators/stock_to_flow_deflection",
                 asset,
                 sinceTimeStamp,
@@ -142,9 +172,14 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<LthNupl> GetLthNuplAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
+        public async Task<IEnumerable<IndicatorValue<float>>> GetLthNuplAsync(
+            string asset,
+            int sinceTimeStamp = 0,
+            int untilTimeStamp = int.MaxValue,
+            string interval = Interval.DAY,
+            string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, LthNupl>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, IndicatorValue<float>>(
                 "/v1/metrics/indicators/nupl_more_155",
                 asset,
                 sinceTimeStamp,
@@ -153,9 +188,14 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<MarketCapThermocapRatio> GetMarketCapThermocapRatioAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = Interval.DAY, string format = MediaType.JSON)
+        public async Task<IEnumerable<IndicatorValue<float>>> GetMarketCapThermocapRatioAsync(
+            string asset,
+            int sinceTimeStamp = 0,
+            int untilTimeStamp = int.MaxValue,
+            string interval = Interval.DAY,
+            string format = MediaType.JSON)
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, MarketCapThermocapRatio>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, IndicatorValue<float>>(
                 "/v1/metrics/mining/marketcap_thermocap_ratio",
                 asset,
                 sinceTimeStamp,
@@ -164,9 +204,14 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<MvrvRatio> GetMvrvRatioAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IndicatorValue<float>>> GetMvrvRatioAsync(
+            string asset,
+            int sinceTimeStamp = 0,
+            int untilTimeStamp = int.MaxValue,
+            string interval = "24h",
+            string format = "JSON")
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, MvrvRatio>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, IndicatorValue<float>>(
                 "/v1/metrics/market/mvrv",
                 asset,
                 sinceTimeStamp,
@@ -175,9 +220,14 @@ namespace ProofOfConcept.ApiClient.Service
                 format);
         }
 
-        public async Task<MvrvZScore> GetMvrvZScoreAsync(string asset, int sinceTimeStamp = 0, int untilTimeStamp = int.MaxValue, string interval = "24h", string format = "JSON")
+        public async Task<IEnumerable<IndicatorValue<float>>> GetMvrvZScoreAsync(
+            string asset,
+            int sinceTimeStamp = 0,
+            int untilTimeStamp = int.MaxValue,
+            string interval = "24h",
+            string format = "JSON")
         {
-            return await GetIndicatorAsync<FloatValueTimestampDto, MvrvZScore>(
+            return await GetIndicatorAsync<TimestampedFloatValueDto, IndicatorValue<float>>(
                 "/v1/metrics/market/mvrv_z_score",
                 asset,
                 sinceTimeStamp,

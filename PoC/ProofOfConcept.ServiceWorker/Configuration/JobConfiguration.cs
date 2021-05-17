@@ -3,41 +3,39 @@ using Quartz;
 
 namespace ProofOfConcept.ServiceWorker.Configuration
 {
-    static class JobConfiguration
+    internal static class JobConfiguration
     {
         public static void RegisterJobs(this IServiceCollectionQuartzConfigurator quartzJobs)
         {
-            quartzJobs.AddJob<ActiveAddressesJob>(j => j
+            quartzJobs.AddJob<ActiveAddressesJob>(job => job
                 .StoreDurably()
-                .WithIdentity(KeyConfiguration.ActiveAddressesKey)
-                //.WithDescription("my awesome job")
-            );
+                .WithIdentity(KeyConfiguration.ActiveAddressesKey));
 
-            quartzJobs.AddJob<LthNuplJob>(j => j
+            quartzJobs.AddJob<LthNuplJob>(job => job
                 .StoreDurably()
                 .WithIdentity(KeyConfiguration.LthNuplKey));
 
-            quartzJobs.AddJob<MarketCapThermocapRatioJob>(j => j
+            quartzJobs.AddJob<MarketCapThermocapRatioJob>(job => job
                 .StoreDurably()
                 .WithIdentity(KeyConfiguration.MarketCapKey));
 
-            quartzJobs.AddJob<NewAddressesJob>(j => j
+            quartzJobs.AddJob<NewAddressesJob>(job => job
                 .StoreDurably()
                 .WithIdentity(KeyConfiguration.NewAddressesKey));
 
-            quartzJobs.AddJob<NuplJob>(j => j
+            quartzJobs.AddJob<NuplJob>(job => job
                 .StoreDurably()
                 .WithIdentity(KeyConfiguration.NuplKey));
 
-            quartzJobs.AddJob<PuellJob>(j => j
+            quartzJobs.AddJob<PuellJob>(job => job
                 .StoreDurably()
                 .WithIdentity(KeyConfiguration.PuellKey));
 
-            quartzJobs.AddJob<StfDeflectionJob>(j => j
+            quartzJobs.AddJob<StfDeflectionJob>(job => job
                 .StoreDurably()
                 .WithIdentity(KeyConfiguration.StfDeflectionKey));
 
-            quartzJobs.AddJob<TotalAddressesJob>(j => j
+            quartzJobs.AddJob<TotalAddressesJob>(job => job
                 .StoreDurably()
                 .WithIdentity(KeyConfiguration.TotalAddressesKey));
         }

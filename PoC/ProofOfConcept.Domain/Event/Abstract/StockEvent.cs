@@ -1,4 +1,5 @@
-﻿using ProofOfConcept.Domain.Indicator.Abstract;
+﻿using ProofOfConcept.Domain.Entity;
+using ProofOfConcept.Domain.Indicator.Abstract;
 
 namespace ProofOfConcept.Domain.Event.Abstract
 {
@@ -6,6 +7,8 @@ namespace ProofOfConcept.Domain.Event.Abstract
     {
         public TIndicator Indicator { get; set; }
 
-        public int MessageTemplateId { get; set; }
+        public int StockEventMessageTemplateId { get; set; }
+
+        public virtual StockEventMessageTemplate StockEventMessageTemplate { get; set; }
     }
 }

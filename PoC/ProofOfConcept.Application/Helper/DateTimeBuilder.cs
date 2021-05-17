@@ -74,12 +74,14 @@ namespace ProofOfConcept.Application.Helper
         {
             AddMinutes(-_dateTimeOffset.Minute);
             AddSeconds(-_dateTimeOffset.Second);
+
             return AddMilliseconds(-_dateTimeOffset.Millisecond);
         }
 
         public DateTimeBuilder Truncate()
         {
             AddHours(-_dateTimeOffset.Hour);
+
             return TruncateToHour();
         }
 
