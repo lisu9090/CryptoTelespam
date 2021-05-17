@@ -1,6 +1,6 @@
 ﻿using ProofOfConcept.Domain.Entity;
 
-namespace ProofOfConcept.Domain.Indicator.Abstract
+namespace ProofOfConcept.Domain.IndicatorTmp.Abstract
 {
     public abstract class CryptoIndicatorBase
     {

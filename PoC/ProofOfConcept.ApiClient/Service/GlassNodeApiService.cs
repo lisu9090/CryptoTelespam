@@ -4,7 +4,7 @@ using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.ApiClient.Dto;
 using ProofOfConcept.ApiClient.Helper;
 using ProofOfConcept.Common.Const;
-using ProofOfConcept.Domain.Indicator;
+using ProofOfConcept.Domain.IndicatorTmp;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;

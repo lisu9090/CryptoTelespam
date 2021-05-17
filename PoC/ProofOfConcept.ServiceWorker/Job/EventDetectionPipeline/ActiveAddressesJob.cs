@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Common.Const;
-using ProofOfConcept.Domain.Indicator;
+using ProofOfConcept.Domain.IndicatorTmp;
 using System.Collections.Generic;
 
 namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline

@@ -1,7 +1,7 @@
-﻿using ProofOfConcept.Domain.Indicator.Abstract;
+﻿using ProofOfConcept.Domain.IndicatorTmp.Abstract;
 using System.Collections.Generic;
 
-namespace ProofOfConcept.Domain.Indicator
+namespace ProofOfConcept.Domain.IndicatorTmp
 {
     public class MarketCapThermocapRatio : CryptoIndicator<float>
     {

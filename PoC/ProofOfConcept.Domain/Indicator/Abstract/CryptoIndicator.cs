@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace ProofOfConcept.Domain.Indicator.Abstract
+namespace ProofOfConcept.Domain.IndicatorTmp.Abstract
 {
     public abstract class CryptoIndicator<T> : CryptoIndicatorBase, IEnumerable<IndicatorValue<T>>
     {

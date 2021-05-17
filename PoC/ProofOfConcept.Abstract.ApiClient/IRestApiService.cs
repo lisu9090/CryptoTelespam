@@ -1,5 +1,5 @@
 ﻿using ProofOfConcept.Common.Const;
-using ProofOfConcept.Domain.Indicator;
+using ProofOfConcept.Domain.IndicatorTmp;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 

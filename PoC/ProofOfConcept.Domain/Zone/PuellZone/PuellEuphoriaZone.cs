@@ -1,5 +1,5 @@
-﻿using ProofOfConcept.Domain.Indicator;
-using ProofOfConcept.Domain.Indicator.Abstract;
+﻿using ProofOfConcept.Domain.IndicatorTmp;
+using ProofOfConcept.Domain.IndicatorTmp.Abstract;
 using ProofOfConcept.Domain.Zone.Abstract;
 using System;
 using System.Linq;

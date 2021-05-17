@@ -1,5 +1,5 @@
 ﻿using ProofOfConcept.Domain.Event.Abstract;
-using ProofOfConcept.Domain.Indicator.Abstract;
+using ProofOfConcept.Domain.IndicatorTmp.Abstract;
 using ProofOfConcept.Domain.Zone.Abstract;
 
 namespace ProofOfConcept.Domain

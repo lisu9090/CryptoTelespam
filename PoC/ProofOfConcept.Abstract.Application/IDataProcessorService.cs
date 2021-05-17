@@ -1,5 +1,5 @@
 ﻿using ProofOfConcept.Domain;
-using ProofOfConcept.Domain.Indicator.Abstract;
+using ProofOfConcept.Domain.IndicatorTmp.Abstract;
 
 namespace ProofOfConcept.Abstract.Application
 {

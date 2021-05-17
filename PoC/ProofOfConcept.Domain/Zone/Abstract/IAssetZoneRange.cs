@@ -1,5 +1,5 @@
 ﻿using ProofOfConcept.Domain.Entity.Enum;
-using ProofOfConcept.Domain.Indicator.Abstract;
+using ProofOfConcept.Domain.IndicatorTmp.Abstract;
 
 namespace ProofOfConcept.Domain.Zone.Abstract
 {

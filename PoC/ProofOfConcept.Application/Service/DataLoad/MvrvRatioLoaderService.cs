@@ -4,7 +4,7 @@ using ProofOfConcept.Application.Helper;
 using ProofOfConcept.Common.Const;
 using ProofOfConcept.Domain;
 using ProofOfConcept.Domain.Entity.Enum;
-using ProofOfConcept.Domain.Indicator;
+using ProofOfConcept.Domain.IndicatorTmp;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;

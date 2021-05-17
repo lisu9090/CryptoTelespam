@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ProofOfConcept.ApiClient.Dto;
 using ProofOfConcept.Domain;
-using ProofOfConcept.Domain.Indicator;
+using ProofOfConcept.Domain.IndicatorTmp;
 using System;
 using System.Collections.Generic;
 using System.Linq;

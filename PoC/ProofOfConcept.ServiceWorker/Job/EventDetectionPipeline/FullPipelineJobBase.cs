@@ -2,7 +2,7 @@
 using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Common.Extensions;
 using ProofOfConcept.Domain;
-using ProofOfConcept.Domain.Indicator.Abstract;
+using ProofOfConcept.Domain.IndicatorTmp.Abstract;
 using Quartz;
 using System;
 using System.Collections.Generic;

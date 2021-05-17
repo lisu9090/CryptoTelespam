@@ -1,7 +1,7 @@
 ﻿using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Common.Extensions;
 using ProofOfConcept.Domain;
-using ProofOfConcept.Domain.Indicator;
+using ProofOfConcept.Domain.IndicatorTmp;
 using ProofOfConcept.Domain.Zone.Abstract;
 using ProofOfConcept.Domain.Zone.LthNuplZone;
 using System.Collections.Generic;

@@ -1,4 +1,4 @@
-﻿using ProofOfConcept.Domain.Indicator.Abstract;
+﻿using ProofOfConcept.Domain.IndicatorTmp.Abstract;
 using ProofOfConcept.Domain.Zone.Abstract;
 using System;
 using System.Linq;

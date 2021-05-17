@@ -1,7 +1,7 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
 using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Helper;
-using ProofOfConcept.Domain.Indicator;
+using ProofOfConcept.Domain.IndicatorTmp;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
