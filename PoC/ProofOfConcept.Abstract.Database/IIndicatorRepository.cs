@@ -2,7 +2,7 @@
 
 namespace ProofOfConcept.Abstract.Database
 {
-    public interface IAssetRepository : ICryptoEntityRepository<Asset>
+    public interface IIndicatorRepository : ICryptoEntityRepository<Indicator>
     {
     }
 }

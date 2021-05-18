@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Database
 {
-    public class AssetRepository : IAssetRepository
+    public class ZoneRepository : IZoneRepository
     {
-        public Task<IEnumerable<Asset>> GetAllAsync()
+        public Task<IEnumerable<Zone>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Asset> GetByIdAsync(int id)
+        public Task<Zone> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Asset>> GetByIdsAsync(IEnumerable<int> ids)
+        public Task<IEnumerable<Zone>> GetByIdsAsync(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Abstract.Database
 {
-    internal interface ICryptoEntityRepository<T> where T : CryptoEntity
+    public interface ICryptoEntityRepository<T> where T : CryptoEntity
     {
         Task<T> GetByIdAsync(int id);
 
