@@ -4,21 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Database
+namespace ProofOfConcept.Database.Repository
 {
-    public class IndicatorRepository : IIndicatorRepository
+    public class MessageTemplateRepository : IMessageTemplateRepository
     {
-        public Task<IEnumerable<Indicator>> GetAllAsync()
+        public Task<IEnumerable<MessageTemplate>> GetAllAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<Indicator> GetByIdAsync(int id)
+        public Task<MessageTemplate> GetByIdAsync(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<Indicator>> GetByIdsAsync(IEnumerable<int> ids)
+        public Task<IEnumerable<MessageTemplate>> GetByIdsAsync(IEnumerable<int> ids)
         {
             throw new NotImplementedException();
         }
