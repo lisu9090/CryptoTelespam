@@ -2,8 +2,10 @@
 
 namespace ProofOfConcept.Abstract.Database
 {
-    public interface IDatabaseSeed
+    public interface IDatabaseInitializer
     {
         Task SeedDataAsync();
+
+        Task<bool> EsureInitialized();
     }
 }

@@ -1,5 +1,5 @@
 ﻿using LiteDB;
-using ProofOfConcept.Abstract.Database;
+using ProofOfConcept.Abstract.Database.Domain;
 using ProofOfConcept.Domain.Entity;
 using System;
 using System.Collections.Generic;

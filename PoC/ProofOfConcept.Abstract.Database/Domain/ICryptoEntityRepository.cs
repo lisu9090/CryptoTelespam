@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Abstract.Database
+namespace ProofOfConcept.Abstract.Database.Domain
 {
     public interface ICryptoEntityRepository<T> where T : CryptoEntity
     {
