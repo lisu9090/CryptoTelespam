@@ -1,4 +1,6 @@
-﻿using ProofOfConcept.Abstract.Database;
+﻿using LiteDB;
+using ProofOfConcept.Abstract.Database;
+using ProofOfConcept.Database.Abstract;
 using ProofOfConcept.Domain.Entity;
 using System;
 using System.Collections.Generic;
@@ -6,21 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Database.Repository
 {
-    public class IndicatorRepository : IIndicatorRepository
+    public class IndicatorRepository : CryptoEntityRepository<Indicator>, IIndicatorRepository
     {
-        public Task<IEnumerable<Indicator>> GetAllAsync()
+        public IndicatorRepository(LiteDatabase context) : base(context)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<Indicator> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<Indicator>> GetByIdsAsync(IEnumerable<int> ids)
-        {
-            throw new NotImplementedException();
         }
     }
 }

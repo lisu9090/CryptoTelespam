@@ -1,4 +1,6 @@
-﻿using ProofOfConcept.Abstract.Database;
+﻿using LiteDB;
+using ProofOfConcept.Abstract.Database;
+using ProofOfConcept.Database.Abstract;
 using ProofOfConcept.Domain.Entity;
 using System;
 using System.Collections.Generic;
@@ -6,21 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Database.Repository
 {
-    public class MessageTemplateRepository : IMessageTemplateRepository
+    public class MessageTemplateRepository : CryptoEntityRepository<MessageTemplate>, IMessageTemplateRepository
     {
-        public Task<IEnumerable<MessageTemplate>> GetAllAsync()
+        public MessageTemplateRepository(LiteDatabase context) : base(context)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<MessageTemplate> GetByIdAsync(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<MessageTemplate>> GetByIdsAsync(IEnumerable<int> ids)
-        {
-            throw new NotImplementedException();
         }
     }
 }
