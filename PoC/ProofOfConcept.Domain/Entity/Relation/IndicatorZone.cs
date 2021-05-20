@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProofOfConcept.Domain.Entity.Relation
 {
-    internal class IndicatorZone
+    public class IndicatorZone
     {
         public int IndicatorId { get; set; }
 
