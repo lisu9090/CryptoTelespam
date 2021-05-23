@@ -28,7 +28,9 @@ namespace ProofOfConcept.Common
 
         public bool IsInRange(double value)
         {
-            return IsAndCondition ? FirstBorderCondition(value) && SecondBorderCondition(value) : FirstBorderCondition(value) || SecondBorderCondition(value);
+            return IsAndCondition
+                ? FirstBorderCondition(value) && SecondBorderCondition(value)
+                : FirstBorderCondition(value) || SecondBorderCondition(value);
         }
     }
 }
