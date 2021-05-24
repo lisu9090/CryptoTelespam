@@ -1,22 +1,21 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Common.Const;
-using ProofOfConcept.Domain.IndicatorTmp;
+using ProofOfConcept.Domain.Enum;
 using System.Collections.Generic;
 
 namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
 {
-    internal class TotalAddressesJob : FullPipelineJobBase<TotalAddresses>
+    internal class TotalAddressesJob : FullPipelineJobBase
     {
-        public TotalAddressesJob(IDataLoaderService<TotalAddresses> dataLoaderService,
-            IDataProcessorService<TotalAddresses> dataProcessorService,
-            IMessageSenderService<TotalAddresses> messageSenderService,
-            ILogger<TotalAddressesJob> logger) : base(dataLoaderService,
-                dataProcessorService,
-                messageSenderService,
-                logger)
+        public TotalAddressesJob(
+            IStockEventPipeline pipeline,
+            ILogger<TotalAddressesJob> logger)
+            : base(pipeline, logger)
         {
-            _cryptocurrencySymbols = new List<string> { CryptocurrencySymbol.BTC, CryptocurrencySymbol.ETH };
         }
+
+        protected override IndicatorId IndicatorId => IndicatorId.TotalAddresses;
+
+        protected override IEnumerable<AssetId> Assets => new AssetId[] { AssetId.Btc, AssetId.Eth };
     }
 }

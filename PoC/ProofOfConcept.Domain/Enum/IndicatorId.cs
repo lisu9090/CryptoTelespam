@@ -5,7 +5,7 @@
         Nupl = 1,
         LthNupl,
         Puell,
-        StfDeflaction,
+        StfDeflection,
         MarketCapThermocapRatio,
         MvrvZScore,
         ActiveAddresses,

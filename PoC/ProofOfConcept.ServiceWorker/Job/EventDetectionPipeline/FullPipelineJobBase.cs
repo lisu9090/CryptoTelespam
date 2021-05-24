@@ -1,8 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Common.Extensions;
-using ProofOfConcept.Domain;
-using ProofOfConcept.Domain.IndicatorTmp.Abstract;
+using ProofOfConcept.Domain.Enum;
 using Quartz;
 using System;
 using System.Collections.Generic;
@@ -10,23 +9,21 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
 {
-    internal abstract class FullPipelineJobBase<T> : IJob where T : CryptoIndicatorBase
+    internal abstract class FullPipelineJobBase : IJob
     {
         protected const int RETRY_MAX_COUNT = 1;
-        protected readonly IDataLoaderService<T> _dataLoaderService;
-        protected readonly IDataProcessorService<T> _dataProcessorService;
-        protected readonly IMessageSenderService<T> _messageSenderService;
-        protected readonly ILogger<FullPipelineJobBase<T>> _logger;
-        protected IEnumerable<string> _cryptocurrencySymbols;
+        protected readonly IStockEventPipeline _pipeline;
+        protected readonly ILogger<FullPipelineJobBase> _logger;
 
-        public FullPipelineJobBase(IDataLoaderService<T> dataLoaderService,
-            IDataProcessorService<T> dataProcessorService,
-            IMessageSenderService<T> messageSenderService,
-            ILogger<FullPipelineJobBase<T>> logger)
+        protected abstract IndicatorId IndicatorId { get; }
+
+        protected abstract IEnumerable<AssetId> Assets { get; }
+
+        protected FullPipelineJobBase(
+            IStockEventPipeline pipeline,
+            ILogger<FullPipelineJobBase> logger)
         {
-            _dataLoaderService = dataLoaderService;
-            _dataProcessorService = dataProcessorService;
-            _messageSenderService = messageSenderService;
+            _pipeline = pipeline;
             _logger = logger;
         }
 
@@ -41,33 +38,23 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
                 }
                 catch (Exception e)
                 {
-                    _logger.LogError($"Error at attempt no. {i} - {e}");
+                    _logger.LogError($"{context.JobDetail.Key.Group}:{context.JobDetail.Key.Name} - Error at attempt no. {i} - {e}");
                 }
             }
         }
 
         private async Task ExecutePipeline(IJobExecutionContext context)
         {
-            if (_cryptocurrencySymbols.IsNullOrEmpty())
+            if (Assets.IsNullOrEmpty())
             {
-                _logger.LogWarning("Cryptocurrncy symbol array of job {0} is null or contains no elements.", typeof(T).Name);
+                _logger.LogWarning($"{context.JobDetail.Key.Group}:{context.JobDetail.Key.Name} - Job's Assets collection is null or contains no elements.");
 
                 return;
             }
 
-            foreach (var cryptocurrencySymbol in _cryptocurrencySymbols)
+            foreach (var asset in Assets)
             {
-                T data = await _dataLoaderService.LoadDataAsync(cryptocurrencySymbol);
-                ZoneChageEvent<T> stockEvent = _dataProcessorService.DetectEvent(data);
-
-                if (stockEvent != null)
-                {
-                    await _messageSenderService.SendEventMessageAsync(stockEvent);
-                }
-                else
-                {
-                    await _messageSenderService.SendNotificationAsync(data);
-                }
+                await _pipeline.ExecutePipelineAsync(IndicatorId, asset, context.CancellationToken);
             }
         }
     }

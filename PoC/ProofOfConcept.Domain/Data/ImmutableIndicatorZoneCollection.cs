@@ -22,12 +22,12 @@ namespace ProofOfConcept.Domain.Data
             {
                 new ClonableIndicatorZone
                 {
-                    IndicatorId = (int)IndicatorId.StfDeflaction,
+                    IndicatorId = (int)IndicatorId.StfDeflection,
                     ZoneId = (int)ZoneId.Accptable
                 },
                 new ClonableIndicatorZone
                 {
-                    IndicatorId = (int)IndicatorId.StfDeflaction,
+                    IndicatorId = (int)IndicatorId.StfDeflection,
                     ZoneId = (int)ZoneId.Unacceptable
                 }
             };

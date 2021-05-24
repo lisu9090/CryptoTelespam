@@ -1,4 +1,4 @@
-﻿namespace ProofOfConcept.Domain.Entity.Enum
+﻿namespace ProofOfConcept.Domain.Enum
 {
     public enum AssetId
     {

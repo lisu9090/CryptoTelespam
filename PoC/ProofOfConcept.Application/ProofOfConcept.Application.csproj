@@ -5,12 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Abstract\**" />
-    <EmbeddedResource Remove="Abstract\**" />
-    <None Remove="Abstract\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Service\DataLoad\MvrvZScoreLoaderService.cs~RF380cf0.TMP" />
   </ItemGroup>
 

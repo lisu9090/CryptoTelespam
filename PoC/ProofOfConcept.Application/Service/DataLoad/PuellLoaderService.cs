@@ -29,7 +29,7 @@ namespace ProofOfConcept.Application.Service.DataLoad
                 .Truncate()
                 .Build();
 
-            IEnumerable<IndicatorValue<float>> values = await _apiService.GetPuellMultipleAsync(
+            IEnumerable<IndicatorValue<float>> values = await _apiService.GetPuellAsync(
                 "BTC", //TODO get asset from db
                 Convert.ToInt32(since.ToUnixTimeSeconds()));
 

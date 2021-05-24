@@ -1,23 +1,21 @@
 ﻿using Microsoft.Extensions.Logging;
 using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Common.Const;
-using ProofOfConcept.Domain.IndicatorTmp;
+using ProofOfConcept.Domain.Enum;
 using System.Collections.Generic;
 
 namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
 {
-    internal class MarketCapThermocapRatioJob : FullPipelineJobBase<MarketCapThermocapRatio>
+    internal class MarketCapThermocapRatioJob : FullPipelineJobBase
     {
-        public MarketCapThermocapRatioJob(IDataLoaderService<MarketCapThermocapRatio> dataLoaderService,
-            IDataProcessorService<MarketCapThermocapRatio> dataProcessorService,
-            IMessageSenderService<MarketCapThermocapRatio> messageSenderService,
+        public MarketCapThermocapRatioJob(
+            IStockEventPipeline pipeline,
             ILogger<MarketCapThermocapRatioJob> logger)
-            : base(dataLoaderService,
-                  dataProcessorService,
-                  messageSenderService,
-                  logger)
+            : base(pipeline, logger)
         {
-            _cryptocurrencySymbols = new List<string> { CryptocurrencySymbol.BTC, CryptocurrencySymbol.ETH };
         }
+
+        protected override IndicatorId IndicatorId => IndicatorId.MarketCapThermocapRatio;
+
+        protected override IEnumerable<AssetId> Assets => new AssetId[] { AssetId.Btc, AssetId.Eth };
     }
 }
