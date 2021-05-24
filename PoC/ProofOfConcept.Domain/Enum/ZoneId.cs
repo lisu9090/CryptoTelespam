@@ -6,6 +6,8 @@
         Hope,
         Optimism,
         Beliefe,
-        Capitulation
+        Capitulation,
+        Accptable,
+        Unacceptable
     }
 }

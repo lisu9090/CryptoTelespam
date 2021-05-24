@@ -1,34 +1,29 @@
-﻿using ProofOfConcept.Domain.IndicatorTmp;
-using ProofOfConcept.Domain.Zone.Abstract;
+﻿using ProofOfConcept.Domain.Enum;
+using ProofOfConcept.Domain.Service.Zone.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Domain.Zone.PuellZone
+namespace ProofOfConcept.Domain.Service.Zone.PuellZone
 {
-    public class PuellZoneService
+    public class PuellZoneService : IZoneSelector
     {
-        private readonly IEnumerable<IZoneRange<IndicatorZone<Puell>, Puell, float>> _zoneRanges;
+        private readonly IEnumerable<IZoneSelector> _LthNuplZones;
 
         public PuellZoneService()
         {
-            _zoneRanges = new List<IZoneRange<IndicatorZone<Puell>, Puell, float>>
+            _LthNuplZones = new List<IZoneSelector>
             {
-                new PuellBeliefZone.ZoneRange(),
-                new PuellCapitulationZone.ZoneRange(),
-                new PuellEuphoriaZone.ZoneRange(),
-                new PuellHopeZone.ZoneRange(),
-                new PuellOptimismZone.ZoneRange()
+                new PuellBeliefSelector(),
+                new PuellCapitulationSelector(),
+                new PuellEuphoriaSelector(),
+                new PuellHopeSelector(),
+                new PuellOptimismSelector()
             };
         }
 
-        public IndicatorZone<Puell> GetZone(float value)
-        {
-            IZoneRange<IndicatorZone<Puell>, Puell, float> zoneRange = _zoneRanges
-                .Where(range => range.IsInZone(value))
-                .FirstOrDefault();
-
-            return new IndicatorZoneActivator()
-                .CreateZoneInstance(zoneRange);
-        }
+        public ZoneId? SelectZone(double value) => _LthNuplZones
+            .Select(zoneSelector => zoneSelector.SelectZone(value))
+            .Where(zoneId => zoneId.HasValue)
+            .FirstOrDefault();
     }
 }

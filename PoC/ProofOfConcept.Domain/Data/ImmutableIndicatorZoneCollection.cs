@@ -14,10 +14,24 @@ namespace ProofOfConcept.Domain.Data
             public object Clone() => MemberwiseClone();
         }
 
-        private IEnumerable<ClonableIndicatorZone> _indicatorZones;
+        private List<ClonableIndicatorZone> _indicatorZones;
 
         public ImmutableIndicatorZoneCollection()
         {
+            _indicatorZones = new List<ClonableIndicatorZone>
+            {
+                new ClonableIndicatorZone
+                {
+                    IndicatorId = (int)IndicatorId.StfDeflaction,
+                    ZoneId = (int)ZoneId.Accptable
+                },
+                new ClonableIndicatorZone
+                {
+                    IndicatorId = (int)IndicatorId.StfDeflaction,
+                    ZoneId = (int)ZoneId.Unacceptable
+                }
+            };
+
             var indicators = new List<IndicatorId>
             {
                 IndicatorId.LthNupl,
@@ -25,7 +39,6 @@ namespace ProofOfConcept.Domain.Data
                 IndicatorId.MvrvZScore,
                 IndicatorId.Nupl,
                 IndicatorId.Puell,
-                IndicatorId.StfDeflaction
             };
 
             var zones = new List<ZoneId>
@@ -37,13 +50,14 @@ namespace ProofOfConcept.Domain.Data
                 ZoneId.Optimism,
             };
 
-            _indicatorZones = from indicator in indicators
-                              from zone in zones
-                              select new ClonableIndicatorZone
-                              {
-                                  IndicatorId = (int)indicator,
-                                  ZoneId = (int)zone
-                              };
+            _indicatorZones.AddRange(
+                from indicator in indicators
+                from zone in zones
+                select new ClonableIndicatorZone
+                {
+                    IndicatorId = (int)indicator,
+                    ZoneId = (int)zone
+                });
         }
 
         public IEnumerator<IndicatorZone> GetEnumerator() => _indicatorZones

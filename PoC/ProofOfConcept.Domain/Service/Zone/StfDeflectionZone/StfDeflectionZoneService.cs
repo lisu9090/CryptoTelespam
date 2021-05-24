@@ -1,31 +1,26 @@
-﻿using ProofOfConcept.Domain.IndicatorTmp;
-using ProofOfConcept.Domain.Zone.Abstract;
+﻿using ProofOfConcept.Domain.Enum;
+using ProofOfConcept.Domain.Service.Zone.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Domain.Zone.StfDeflectionZone
+namespace ProofOfConcept.Domain.Service.Zone.StfDeflectionZone
 {
-    public class StfDeflectionZoneService
+    public class StfDeflectionZoneService : IZoneSelector
     {
-        private readonly IEnumerable<IZoneRange<IndicatorZone<StfDeflection>, StfDeflection, float>> _zoneRanges;
+        private readonly IEnumerable<IZoneSelector> _LthNuplZones;
 
         public StfDeflectionZoneService()
         {
-            _zoneRanges = new List<IZoneRange<IndicatorZone<StfDeflection>, StfDeflection, float>>
+            _LthNuplZones = new List<IZoneSelector>
             {
-                new StfDeflectionAcceptableZone.ZoneRange(),
-                new StfDeflectionUnacceptableZone.ZoneRange()
+                new StfDeflectionAcceptableSelector(),
+                new StfDeflectionUnacceptableSelector(),
             };
         }
 
-        public IndicatorZone<StfDeflection> GetZone(float value)
-        {
-            IZoneRange<IndicatorZone<StfDeflection>, StfDeflection, float> zoneRange = _zoneRanges
-                .Where(range => range.IsInZone(value))
-                .FirstOrDefault();
-
-            return new IndicatorZoneActivator()
-                .CreateZoneInstance(zoneRange);
-        }
+        public ZoneId? SelectZone(double value) => _LthNuplZones
+            .Select(zoneSelector => zoneSelector.SelectZone(value))
+            .Where(zoneId => zoneId.HasValue)
+            .FirstOrDefault();
     }
 }
