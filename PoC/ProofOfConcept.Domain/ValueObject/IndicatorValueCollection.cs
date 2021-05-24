@@ -15,9 +15,17 @@ namespace ProofOfConcept.Domain.ValueObject
 
         public int AssetId { get; }
 
-        public Indicator Indicator { get => _indicator; set => _indicator = value.ConsistencyCheck(IndicatorId); }
+        public Indicator Indicator
+        {
+            get => _indicator;
+            set => _indicator = value.ConsistencyCheck(IndicatorId);
+        }
 
-        public Asset Asset { get => _asset; set => _asset = value.ConsistencyCheck(AssetId); }
+        public Asset Asset
+        {
+            get => _asset;
+            set => _asset = value.ConsistencyCheck(AssetId);
+        }
 
         public IndicatorValueCollection(IEnumerable<IndicatorValue<T>> values, int indicatorId, int assetId)
         {

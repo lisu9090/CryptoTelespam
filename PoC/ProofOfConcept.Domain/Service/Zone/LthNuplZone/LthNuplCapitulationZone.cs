@@ -1,18 +1,13 @@
 ﻿using ProofOfConcept.Common;
-using ProofOfConcept.Domain.IndicatorTmp;
-using ProofOfConcept.Domain.Zone.Abstract;
+using ProofOfConcept.Domain.Enum;
+using ProofOfConcept.Domain.Service.Zone.Abstract;
 
-namespace ProofOfConcept.Domain.Zone.LthNuplZone
+namespace ProofOfConcept.Domain.Service.Zone.LthNuplZone
 {
-    public class LthNuplCapitulationZone : IndicatorZone<LthNupl>
+    internal class LthNuplCapitulationZone : ZoneSelectorBase, IZoneSelector
     {
-        internal class ZoneRange : IZoneRange<LthNuplCapitulationZone, LthNupl, float>
+        public LthNuplCapitulationZone() : base(Range.And(x => x >= double.MinValue, x => x < 0), ZoneId.Capitulation)
         {
-            private Range _range = Range.And(x => x >= double.MinValue, x => x < 0);
-
-            public bool IsInZone(float value) => _range.IsInRange(value);
         }
-
-        public override string Name => "Capitulation";
     }
 }

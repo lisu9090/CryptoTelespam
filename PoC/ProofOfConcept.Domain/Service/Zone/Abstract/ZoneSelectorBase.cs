@@ -14,7 +14,7 @@ namespace ProofOfConcept.Domain.Service.Zone.Abstract
             _zoneId = zoneId;
         }
 
-        public virtual ZoneId? GetZone(double value) => _range.IsInRange(value)
+        public virtual ZoneId? SelectZone(double value) => _range.IsInRange(value)
             ? _zoneId
             : (ZoneId?)null;
     }

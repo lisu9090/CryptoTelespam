@@ -1,34 +1,29 @@
-﻿using ProofOfConcept.Domain.IndicatorTmp;
-using ProofOfConcept.Domain.Zone.Abstract;
+﻿using ProofOfConcept.Domain.Enum;
+using ProofOfConcept.Domain.Service.Zone.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Domain.Zone.LthNuplZone
+namespace ProofOfConcept.Domain.Service.Zone.LthNuplZone
 {
-    public class LthNuplZoneService
+    public class LthNuplZoneService : IZoneSelector
     {
-        private readonly IEnumerable<IZoneRange<IndicatorZone<LthNupl>, LthNupl, float>> _zoneRanges;
+        private readonly IEnumerable<IZoneSelector> _LthNuplZones;
 
         public LthNuplZoneService()
         {
-            _zoneRanges = new List<IZoneRange<IndicatorZone<LthNupl>, LthNupl, float>>
+            _LthNuplZones = new List<IZoneSelector>
             {
-                new LthNuplBeliefeZone.ZoneRange(),
-                new LthNuplCapitulationZone.ZoneRange(),
-                new LthNuplEuphoriaZone.ZoneRange(),
-                new LthNuplHopeZone.ZoneRange(),
-                new LthNuplOptimismZone.ZoneRange()
+                new LthNuplBeliefeZone(),
+                new LthNuplCapitulationZone(),
+                new LthNuplEuphoriaZone(),
+                new LthNuplHopeZone(),
+                new LthNuplOptimismZone()
             };
         }
 
-        public IndicatorZone<LthNupl> GetZone(float value)
-        {
-            IZoneRange<IndicatorZone<LthNupl>, LthNupl, float> zoneRange = _zoneRanges
-                .Where(range => range.IsInZone(value))
-                .FirstOrDefault();
-
-            return new IndicatorZoneActivator()
-                .CreateZoneInstance(zoneRange);
-        }
+        public ZoneId? SelectZone(double value) => _LthNuplZones
+            .Select(zoneSelector => zoneSelector.SelectZone(value))
+            .Where(zoneId => zoneId.HasValue)
+            .FirstOrDefault();
     }
 }

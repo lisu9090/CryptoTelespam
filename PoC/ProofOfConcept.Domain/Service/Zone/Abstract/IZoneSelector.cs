@@ -7,6 +7,6 @@ namespace ProofOfConcept.Domain.Service.Zone.Abstract
 {
     public interface IZoneSelector
     {
-        ZoneId? GetZone(double value);
+        ZoneId? SelectZone(double value);
     }
 }

@@ -1,18 +1,13 @@
 ﻿using ProofOfConcept.Common;
-using ProofOfConcept.Domain.IndicatorTmp;
-using ProofOfConcept.Domain.Zone.Abstract;
+using ProofOfConcept.Domain.Enum;
+using ProofOfConcept.Domain.Service.Zone.Abstract;
 
-namespace ProofOfConcept.Domain.Zone.LthNuplZone
+namespace ProofOfConcept.Domain.Service.Zone.LthNuplZone
 {
-    public class LthNuplEuphoriaZone : IndicatorZone<LthNupl>
+    internal class LthNuplEuphoriaZone : ZoneSelectorBase, IZoneSelector
     {
-        internal class ZoneRange : IZoneRange<LthNuplEuphoriaZone, LthNupl, float>
+        public LthNuplEuphoriaZone() : base(Range.And(x => x >= 0.75, x => x <= double.MaxValue), ZoneId.Euphoria)
         {
-            private Range _range = Range.And(x => x >= 0.75f, x => x <= double.MaxValue);
-
-            public bool IsInZone(float value) => _range.IsInRange(value);
         }
-
-        public override string Name => "Euphoria";
     }
 }
