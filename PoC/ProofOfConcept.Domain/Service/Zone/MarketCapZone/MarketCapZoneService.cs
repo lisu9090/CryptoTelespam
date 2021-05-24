@@ -1,34 +1,29 @@
-﻿using ProofOfConcept.Domain.IndicatorTmp;
-using ProofOfConcept.Domain.Zone.Abstract;
+﻿using ProofOfConcept.Domain.Enum;
+using ProofOfConcept.Domain.Service.Zone.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Domain.Zone.MarketCapZone
+namespace ProofOfConcept.Domain.Service.Zone.MarketCapZone
 {
-    public class MarketCapZoneService
+    public class MarketCapZoneService : IZoneSelector
     {
-        private readonly IEnumerable<IZoneRange<IndicatorZone<MarketCapThermocapRatio>, MarketCapThermocapRatio, float>> _zoneRanges;
+        private readonly IEnumerable<IZoneSelector> _LthNuplZones;
 
         public MarketCapZoneService()
         {
-            _zoneRanges = new List<IZoneRange<IndicatorZone<MarketCapThermocapRatio>, MarketCapThermocapRatio, float>>
+            _LthNuplZones = new List<IZoneSelector>
             {
-                new MarketCapBeliefZone.ZoneRange(),
-                new MarketCapCapitulationZone.ZoneRange(),
-                new MarketCapEuphoriaZone.ZoneRange(),
-                new MarketCapHopeZone.ZoneRange(),
-                new MarketCapOptimismZone.ZoneRange()
+                new MarketCapBeliefSelector(),
+                new MarketCapCapitulationSelector(),
+                new MarketCapEuphoriaSelector(),
+                new MarketCapHopeSelector(),
+                new MarketCapOptimismSelector()
             };
         }
 
-        public IndicatorZone<MarketCapThermocapRatio> GetZone(float value)
-        {
-            IZoneRange<IndicatorZone<MarketCapThermocapRatio>, MarketCapThermocapRatio, float> zoneRange = _zoneRanges
-                .Where(range => range.IsInZone(value))
-                .FirstOrDefault();
-
-            return new IndicatorZoneActivator()
-                .CreateZoneInstance(zoneRange);
-        }
+        public ZoneId? SelectZone(double value) => _LthNuplZones
+            .Select(zoneSelector => zoneSelector.SelectZone(value))
+            .Where(zoneId => zoneId.HasValue)
+            .FirstOrDefault();
     }
 }

@@ -13,11 +13,11 @@ namespace ProofOfConcept.Domain.Service.Zone.LthNuplZone
         {
             _LthNuplZones = new List<IZoneSelector>
             {
-                new LthNuplBeliefeZone(),
-                new LthNuplCapitulationZone(),
-                new LthNuplEuphoriaZone(),
-                new LthNuplHopeZone(),
-                new LthNuplOptimismZone()
+                new LthNuplBeliefeSelector(),
+                new LthNuplCapitulationSelector(),
+                new LthNuplEuphoriaSelector(),
+                new LthNuplHopeSelector(),
+                new LthNuplOptimismSelector()
             };
         }
 

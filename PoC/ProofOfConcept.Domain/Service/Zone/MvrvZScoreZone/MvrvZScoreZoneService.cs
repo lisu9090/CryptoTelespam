@@ -1,34 +1,29 @@
-﻿using ProofOfConcept.Domain.IndicatorTmp;
-using ProofOfConcept.Domain.Zone.Abstract;
+﻿using ProofOfConcept.Domain.Enum;
+using ProofOfConcept.Domain.Service.Zone.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Domain.Zone.MvrvZScoreZone
+namespace ProofOfConcept.Domain.Service.Zone.MvrvZScoreZone
 {
-    public class MvrvZScoreZoneService
+    public class MvrvZScoreZoneService : IZoneSelector
     {
-        private readonly IEnumerable<IZoneRange<IndicatorZone<MvrvZScore>, MvrvZScore, float>> _zoneRanges;
+        private readonly IEnumerable<IZoneSelector> _LthNuplZones;
 
         public MvrvZScoreZoneService()
         {
-            _zoneRanges = new List<IZoneRange<IndicatorZone<MvrvZScore>, MvrvZScore, float>>
+            _LthNuplZones = new List<IZoneSelector>
             {
-                new MvrvZScoreCapitulationZone.ZoneRange(),
-                new MvrvZScoreEuphoriaZone.ZoneRange(),
-                new MvrvZScoreHopeZone.ZoneRange(),
-                new MvrvZScoreOptimismZone.ZoneRange(),
-                new MvrvZScoreBeliefZone.ZoneRange()
+                new MvrvZScoreBeliefSelector(),
+                new MvrvZScoreCapitulationSelector(),
+                new MvrvZScoreEuphoriaSelector(),
+                new MvrvZScoreHopeSelector(),
+                new MvrvZScoreOptimismSelector()
             };
         }
 
-        public IndicatorZone<MvrvZScore> GetZone(float value)
-        {
-            IZoneRange<IndicatorZone<MvrvZScore>, MvrvZScore, float> zoneRange = _zoneRanges
-                .Where(range => range.IsInZone(value))
-                .FirstOrDefault();
-
-            return new IndicatorZoneActivator()
-                .CreateZoneInstance(zoneRange);
-        }
+        public ZoneId? SelectZone(double value) => _LthNuplZones
+            .Select(zoneSelector => zoneSelector.SelectZone(value))
+            .Where(zoneId => zoneId.HasValue)
+            .FirstOrDefault();
     }
 }

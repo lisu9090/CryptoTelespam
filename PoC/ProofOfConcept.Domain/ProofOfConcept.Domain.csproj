@@ -7,8 +7,4 @@
   <ItemGroup>
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Service\Zone\MvrvZone\" />
-  </ItemGroup>
 </Project>

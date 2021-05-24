@@ -4,9 +4,9 @@ using ProofOfConcept.Domain.Service.Zone.Abstract;
 
 namespace ProofOfConcept.Domain.Service.Zone.LthNuplZone
 {
-    internal class LthNuplEuphoriaZone : ZoneSelectorBase, IZoneSelector
+    internal class LthNuplBeliefeSelector : ZoneSelectorBase, IZoneSelector
     {
-        public LthNuplEuphoriaZone() : base(Range.And(x => x >= 0.75, x => x <= double.MaxValue), ZoneId.Euphoria)
+        public LthNuplBeliefeSelector() : base(Range.And(x => x >= 0, x => x < 0.25), ZoneId.Beliefe)
         {
         }
     }
