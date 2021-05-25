@@ -1,13 +1,12 @@
-﻿using ProofOfConcept.Domain;
-using ProofOfConcept.Domain.IndicatorTmp.Abstract;
+﻿using ProofOfConcept.Domain.ValueObject;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Abstract.Application
 {
-    public interface IMessageSenderService<T> where T : CryptoIndicatorBase
+    public interface IMessageSenderService
     {
-        Task SendEventMessageAsync(ZoneChageEvent<T> data);
+        Task SendEventMessageAsync(ZoneChangeEvent<float> zoneChangeEvent);
 
-        Task SendNotificationAsync(T notification);
+        Task SendNotificationAsync(IndicatorValueCollection<float> indicatorValues);
     }
 }

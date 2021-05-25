@@ -1,10 +1,9 @@
-﻿using ProofOfConcept.Domain;
-using ProofOfConcept.Domain.IndicatorTmp.Abstract;
+﻿using ProofOfConcept.Domain.ValueObject;
 
 namespace ProofOfConcept.Abstract.Application
 {
-    public interface IDataProcessorService<T> where T : CryptoIndicatorBase
+    public interface IDataProcessorService
     {
-        ZoneChageEvent<T> DetectEvent(T data);
+        ZoneChangeEvent<float> DetectEvent(IndicatorValueCollection<float> indicatorValues);
     }
 }

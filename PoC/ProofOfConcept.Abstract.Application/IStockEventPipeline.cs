@@ -1,5 +1,4 @@
-﻿using ProofOfConcept.Domain.Entity.Enum;
-using ProofOfConcept.Domain.Enum;
+﻿using ProofOfConcept.Domain.Enum;
 using System.Threading;
 using System.Threading.Tasks;
 

@@ -1,11 +1,11 @@
-﻿using ProofOfConcept.Domain;
-using ProofOfConcept.Domain.IndicatorTmp.Abstract;
+﻿using ProofOfConcept.Domain.Enum;
+using ProofOfConcept.Domain.ValueObject;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Abstract.Application
 {
-    public interface IDataLoaderService<T> where T : CryptoIndicatorBase
+    public interface IDataLoaderService
     {
-        Task<T> LoadDataAsync(int assetId);
+        Task<IndicatorValueCollection<float>> LoadDataAsync(AssetId assetId);
     }
 }
