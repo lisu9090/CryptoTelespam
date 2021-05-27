@@ -1,6 +1,6 @@
 ﻿using ProofOfConcept.Domain.ValueObject;
 
-namespace ProofOfConcept.Abstract.Application
+namespace ProofOfConcept.Application.Service.DataProcess.Abstract
 {
     public interface IDataProcessorService
     {

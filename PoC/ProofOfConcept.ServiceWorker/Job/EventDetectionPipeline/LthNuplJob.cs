@@ -8,7 +8,7 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
     internal class LthNuplJob : FullPipelineJobBase
     {
         public LthNuplJob(
-            IStockEventPipeline pipeline,
+            IZoneChangeEventPipeline pipeline,
             ILogger<LthNuplJob> logger)
             : base(pipeline, logger)
         {

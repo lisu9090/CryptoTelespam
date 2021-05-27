@@ -19,16 +19,16 @@ namespace ProofOfConcept.DomainWorker
 
         private static void RegisterDataLoadServices(this IServiceCollection services)
         {
-            services.AddTransient<IDataLoaderService<Nupl>, NuplLoaderService>();
-            services.AddTransient<IDataLoaderService<Puell>, PuellLoaderService>();
-            services.AddTransient<IDataLoaderService<NewAddresses>, NewAddressesLoaderService>();
-            services.AddTransient<IDataLoaderService<TotalAddresses>, TotalAddressesLoaderService>();
-            services.AddTransient<IDataLoaderService<ActiveAddresses>, ActiveAddressesLoaderService>();
-            services.AddTransient<IDataLoaderService<LthNupl>, LthNuplLoaderService>();
-            services.AddTransient<IDataLoaderService<MarketCapThermocapRatio>, MarketCapThermocapRatioLoaderService>();
-            services.AddTransient<IDataLoaderService<StfDeflection>, StfDeflectionLoaderService>();
-            services.AddTransient<IDataLoaderService<MvrvRatio>, MvrvRatioLoaderService>();
-            services.AddTransient<IDataLoaderService<MvrvZScore>, MvrvZScoreLoaderService>();
+            services.AddTransient<IIndicatorValueLoarder<Nupl>, NuplLoaderService>();
+            services.AddTransient<IIndicatorValueLoarder<Puell>, PuellLoaderService>();
+            services.AddTransient<IIndicatorValueLoarder<NewAddresses>, NewAddressesLoaderService>();
+            services.AddTransient<IIndicatorValueLoarder<TotalAddresses>, TotalAddressesLoaderService>();
+            services.AddTransient<IIndicatorValueLoarder<ActiveAddresses>, ActiveAddressesLoaderService>();
+            services.AddTransient<IIndicatorValueLoarder<LthNupl>, LthNuplLoaderService>();
+            services.AddTransient<IIndicatorValueLoarder<MarketCapThermocapRatio>, MarketCapThermocapRatioLoaderService>();
+            services.AddTransient<IIndicatorValueLoarder<StfDeflection>, StfDeflectionLoaderService>();
+            services.AddTransient<IIndicatorValueLoarder<MvrvRatio>, MvrvRatioLoaderService>();
+            services.AddTransient<IIndicatorValueLoarder<MvrvZScore>, MvrvZScoreLoaderService>();
         }
 
         private static void RegisterDataProcessServices(this IServiceCollection services)

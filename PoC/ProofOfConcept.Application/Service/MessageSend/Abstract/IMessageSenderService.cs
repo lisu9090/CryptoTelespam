@@ -1,7 +1,7 @@
 ﻿using ProofOfConcept.Domain.ValueObject;
 using System.Threading.Tasks;
 
-namespace ProofOfConcept.Abstract.Application
+namespace ProofOfConcept.Application.Service.MessageSend.Abstract
 {
     public interface IMessageSenderService
     {

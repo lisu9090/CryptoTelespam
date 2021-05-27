@@ -12,7 +12,7 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
     internal abstract class FullPipelineJobBase : IJob
     {
         protected const int RETRY_MAX_COUNT = 1;
-        protected readonly IStockEventPipeline _pipeline;
+        protected readonly IZoneChangeEventPipeline _pipeline;
         protected readonly ILogger<FullPipelineJobBase> _logger;
 
         protected abstract IndicatorId IndicatorId { get; }
@@ -20,7 +20,7 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
         protected abstract IEnumerable<AssetId> Assets { get; }
 
         protected FullPipelineJobBase(
-            IStockEventPipeline pipeline,
+            IZoneChangeEventPipeline pipeline,
             ILogger<FullPipelineJobBase> logger)
         {
             _pipeline = pipeline;

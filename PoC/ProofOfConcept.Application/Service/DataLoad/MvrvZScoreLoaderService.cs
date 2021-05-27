@@ -1,17 +1,13 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
-using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Helper;
-using ProofOfConcept.Common.Const;
-using ProofOfConcept.Domain;
-using ProofOfConcept.Domain.Entity.Enum;
-using ProofOfConcept.Domain.IndicatorTmp;
+using ProofOfConcept.Application.Service.DataLoad.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class MvrvZScoreLoaderService : IDataLoaderService<MvrvZScore>
+    public class MvrvZScoreLoaderService : IIndicatorValueLoarder<MvrvZScore>
     {
         private readonly IRestApiService _apiService;
 

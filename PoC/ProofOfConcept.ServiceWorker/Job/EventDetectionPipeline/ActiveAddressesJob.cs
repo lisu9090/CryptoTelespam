@@ -8,7 +8,7 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
     internal class ActiveAddressesJob : FullPipelineJobBase
     {
         public ActiveAddressesJob(
-            IStockEventPipeline pipeline,
+            IZoneChangeEventPipeline pipeline,
             ILogger<ActiveAddressesJob> logger)
             : base(pipeline, logger)
         {

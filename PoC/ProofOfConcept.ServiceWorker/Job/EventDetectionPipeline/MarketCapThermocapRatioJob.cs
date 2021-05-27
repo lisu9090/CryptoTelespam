@@ -8,7 +8,7 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
     internal class MarketCapThermocapRatioJob : FullPipelineJobBase
     {
         public MarketCapThermocapRatioJob(
-            IStockEventPipeline pipeline,
+            IZoneChangeEventPipeline pipeline,
             ILogger<MarketCapThermocapRatioJob> logger)
             : base(pipeline, logger)
         {

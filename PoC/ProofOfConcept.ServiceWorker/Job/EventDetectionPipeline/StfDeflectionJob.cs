@@ -8,7 +8,7 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
     internal class StfDeflectionJob : FullPipelineJobBase
     {
         public StfDeflectionJob(
-            IStockEventPipeline pipeline,
+            IZoneChangeEventPipeline pipeline,
             ILogger<StfDeflectionJob> logger)
             : base(pipeline, logger)
         {

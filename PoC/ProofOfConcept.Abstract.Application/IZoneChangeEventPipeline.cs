@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Abstract.Application
 {
-    public interface IStockEventPipeline
+    public interface IZoneChangeEventPipeline
     {
         Task ExecutePipelineAsync(IndicatorId indicatorId, AssetId assetId, CancellationToken cancellationToken);
     }

@@ -8,7 +8,7 @@ namespace ProofOfConcept.ServiceWorker.Job.EventDetectionPipeline
     internal class PuellJob : FullPipelineJobBase
     {
         public PuellJob(
-            IStockEventPipeline pipeline,
+            IZoneChangeEventPipeline pipeline,
             ILogger<PuellJob> logger)
             : base(pipeline, logger)
         {
