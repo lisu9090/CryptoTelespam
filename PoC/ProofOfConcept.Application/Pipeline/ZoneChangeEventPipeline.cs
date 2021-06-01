@@ -11,30 +11,40 @@ namespace ProofOfConcept.Application.Pipeline
 {
     public class ZoneChangeEventPipeline : IZoneChangeEventPipeline
     {
-        private readonly IIndicatorValueLoader<float> _dataLoaderService;
-        private readonly IDataProcessor _dataProcessorService;
-        private readonly IMessageSender _messageSenderService;
+        private readonly IIndicatorValueLoaderFactory<float> _indicatorValueLoaderFactory;
+        private readonly IDataProcessorFactory<float> _dataProcessorFactory;
+        private readonly IMessageSenderFactory<float> _messageSenderFactory;
+        private IIndicatorValueLoader<float> _indicatorValueLoaderService;
+        private IDataProcessor<float> _dataProcessorService;
+        private IMessageSender<float> _messageSenderService;
 
         public ZoneChangeEventPipeline(
-            IIndicatorValueLoader<float> dataLoaderService,
-            IDataProcessor dataProcessorService,
-            IMessageSender messageSenderService)
+            IIndicatorValueLoaderFactory<float> indicatorValueLoaderFactory,
+            IDataProcessorFactory<float> dataProcessorFactory,
+            IMessageSenderFactory<float> messageSenderFactory)
         {
-            _dataLoaderService = dataLoaderService;
-            _dataProcessorService = dataProcessorService;
-            _messageSenderService = messageSenderService;
+            _indicatorValueLoaderFactory = indicatorValueLoaderFactory;
+            _dataProcessorFactory = dataProcessorFactory;
+            _messageSenderFactory = messageSenderFactory;
+        }
+
+        private void SetServices(IndicatorId indicatorId)
+        {
+            _indicatorValueLoaderService = _indicatorValueLoaderFactory.GetLoader(indicatorId);
+            _dataProcessorService = _dataProcessorFactory.GetDataProcessor(indicatorId);
+            _messageSenderService = _messageSenderFactory.GetMessageSender(indicatorId);
         }
 
         public async Task ExecutePipelineAsync(IndicatorId indicatorId, AssetId assetId, CancellationToken cancellationToken)
         {
-            //TODO Select service implementation based on indicatorId, pass assetId to pipeline
+            SetServices(indicatorId);
 
-            IndicatorValueCollection<float> data = await _dataLoaderService.LoadAsync(assetId);
-            ZoneChangeEvent<float> stockEvent = _dataProcessorService.DetectEvent(data);
+            IndicatorValueCollection<float> data = await _indicatorValueLoaderService.LoadAsync(assetId);
+            ZoneChangeEvent<float> zoneChangeEvent = _dataProcessorService.DetectEvent(data);
 
-            if (stockEvent != null)
+            if (zoneChangeEvent != null)
             {
-                await _messageSenderService.SendEventMessageAsync(stockEvent);
+                await _messageSenderService.SendEventMessageAsync(zoneChangeEvent);
             }
             else
             {
