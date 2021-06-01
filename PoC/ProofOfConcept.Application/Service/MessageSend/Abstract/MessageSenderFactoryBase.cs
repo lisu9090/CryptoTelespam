@@ -46,14 +46,10 @@ namespace ProofOfConcept.Application.Service.MessageSend.Abstract
         protected abstract IMessageSender<TValue> GetService<TImplementation, TValue>()
             where TImplementation : IMessageSender<TValue>;
 
-        IMessageSender<float> IMessageSenderFactory<float>.GetMessageSender(IndicatorId indicatorId)
-        {
-            throw new NotImplementedException();
-        }
+        IMessageSender<float> IMessageSenderFactory<float>.GetMessageSender(IndicatorId indicatorId) =>
+            SelectMessageSender(_floatBasedIndicators, indicatorId);
 
-        IMessageSender<int> IMessageSenderFactory<int>.GetMessageSender(IndicatorId indicatorId)
-        {
-            throw new NotImplementedException();
-        }
+        IMessageSender<int> IMessageSenderFactory<int>.GetMessageSender(IndicatorId indicatorId) =>
+            SelectMessageSender(_intBasedIndicators, indicatorId);
     }
 }

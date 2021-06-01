@@ -1,6 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ProofOfConcept.Application.Service.DataLoad;
 using ProofOfConcept.Application.Service.DataLoad.Abstract;
+using ProofOfConcept.Application.Service.DataProcess;
+using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Application.Service.MessageSend;
+using ProofOfConcept.Application.Service.MessageSend.Abstract;
 
 namespace ProofOfConcept.Application.DI
 {
@@ -30,30 +34,32 @@ namespace ProofOfConcept.Application.DI
 
         private static void RegisterDataProcessServices(this IServiceCollection services)
         {
-            services.AddTransient<IDataProcessorService<Nupl>, NuplEventDetectorService>();
-            services.AddTransient<IDataProcessorService<Puell>, PuellEventDetectorService>();
-            services.AddTransient<IDataProcessorService<NewAddresses>, NewAddressesEventDetectorService>();
-            services.AddTransient<IDataProcessorService<TotalAddresses>, TotalAddressesEventDetectorService>();
-            services.AddTransient<IDataProcessorService<ActiveAddresses>, ActiveAddressesEventDetectorService>();
-            services.AddTransient<IDataProcessorService<LthNupl>, LthNuplEventDetectorService>();
-            services.AddTransient<IDataProcessorService<MarketCapThermocapRatio>, MarketCapThermocapRatioEventDetectorService>();
-            services.AddTransient<IDataProcessorService<StfDeflection>, StfDeflectionEventDetectorService>();
-            services.AddTransient<IDataProcessorService<MvrvRatio>, MvrvRatioEventDetectorService>();
-            services.AddTransient<IDataProcessorService<MvrvZScore>, MvrvZScoreEventDetectorService>();
+            services.AddTransient<IDataProcessorFactory<float>, DataProcessorFactory>();
+            services.AddTransient<IDataProcessorFactory<int>, DataProcessorFactory>();
+            services.AddTransient<IDataProcessor<float>, NuplEventDetectorService>();
+            services.AddTransient<IDataProcessor<float>, PuellEventDetectorService>();
+            services.AddTransient<IDataProcessor<float>, LthNuplEventDetectorService>();
+            services.AddTransient<IDataProcessor<float>, MarketCapThermocapRatioEventDetectorService>();
+            services.AddTransient<IDataProcessor<float>, StfDeflectionEventDetectorService>();
+            services.AddTransient<IDataProcessor<float>, MvrvZScoreEventDetectorService>();
+            services.AddTransient<IDataProcessor<int>, NewAddressesEventDetectorService>();
+            services.AddTransient<IDataProcessor<int>, TotalAddressesEventDetectorService>();
+            services.AddTransient<IDataProcessor<int>, ActiveAddressesEventDetectorService>();
         }
 
         private static void RegisterMessageSendServices(this IServiceCollection services)
         {
-            services.AddTransient<IMessageSenderService<Nupl>, NuplMessageService>();
-            services.AddTransient<IMessageSenderService<Puell>, PuellMessageService>();
-            services.AddTransient<IMessageSenderService<NewAddresses>, NewAddressesMessageService>();
-            services.AddTransient<IMessageSenderService<TotalAddresses>, TotalAddressesMessageService>();
-            services.AddTransient<IMessageSenderService<ActiveAddresses>, ActiveAddressesMessageService>();
-            services.AddTransient<IMessageSenderService<LthNupl>, LthNuplMessageService>();
-            services.AddTransient<IMessageSenderService<MarketCapThermocapRatio>, MarketCapThermocapRatioMessageService>();
-            services.AddTransient<IMessageSenderService<StfDeflection>, StfDeflectionMessageService>();
-            services.AddTransient<IMessageSenderService<MvrvRatio>, MvrvRatioMessageService>();
-            services.AddTransient<IMessageSenderService<MvrvZScore>, MvrvZScoreMessageService>();
+            services.AddTransient<IMessageSenderFactory<float>, MessageSenderFactory>();
+            services.AddTransient<IMessageSenderFactory<int>, MessageSenderFactory>();
+            services.AddTransient<IMessageSender<float>, NuplMessageService>();
+            services.AddTransient<IMessageSender<float>, PuellMessageService>();
+            services.AddTransient<IMessageSender<float>, LthNuplMessageService>();
+            services.AddTransient<IMessageSender<float>, MarketCapThermocapRatioMessageService>();
+            services.AddTransient<IMessageSender<float>, StfDeflectionMessageService>();
+            services.AddTransient<IMessageSender<float>, MvrvZScoreMessageService>();
+            services.AddTransient<IMessageSender<int>, NewAddressesMessageService>();
+            services.AddTransient<IMessageSender<int>, TotalAddressesMessageService>();
+            services.AddTransient<IMessageSender<int>, ActiveAddressesMessageService>();
         }
     }
 }
