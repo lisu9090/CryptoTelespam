@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class LthNuplLoaderService : IIndicatorValueLoarder<float>
+    public class LthNuplLoaderService : IIndicatorValueLoader<float>
     {
         private readonly IRestApiService _apiService;
 

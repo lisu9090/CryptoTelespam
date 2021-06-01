@@ -1,15 +1,11 @@
-﻿using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Common.Extensions;
-using ProofOfConcept.Domain;
-using ProofOfConcept.Domain.IndicatorTmp;
-using ProofOfConcept.Domain.Zone.Abstract;
-using ProofOfConcept.Domain.Zone.LthNuplZone;
+﻿using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Domain.ValueObject;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ProofOfConcept.Application.Service.DataProcess
 {
-    public class LthNuplEventDetectorService : IDataProcessorService<LthNupl>
+    public class LthNuplEventDetectorService : IDataProcessor<float>
     {
         private readonly LthNuplZoneService _zoneService;
 
@@ -44,6 +40,11 @@ namespace ProofOfConcept.Application.Service.DataProcess
                 PreviousZone = previousZone,
                 StockEventMessageTemplateId = 1 //TODO add propper message template
             };
+        }
+
+        public ZoneChangeEvent<float> DetectEvent(IndicatorValueCollection<float> indicatorValues)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

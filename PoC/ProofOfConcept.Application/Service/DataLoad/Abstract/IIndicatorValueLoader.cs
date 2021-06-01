@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.DataLoad.Abstract
 {
-    public interface IIndicatorValueLoarder<T>
+    public interface IIndicatorValueLoader<T>
     {
         Task<IndicatorValueCollection<T>> LoadAsync(AssetId assetId);
     }

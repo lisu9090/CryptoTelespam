@@ -1,13 +1,12 @@
-﻿using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Application.Const.Code;
-using ProofOfConcept.Application.Helper;
-using ProofOfConcept.Domain;
+﻿using ProofOfConcept.Application.Const.Code;
+using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Domain.ValueObject;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ProofOfConcept.Application.Service.DataProcess
 {
-    public class MarketCapThermocapRatioEventDetectorService : IDataProcessorService<MarketCapThermocapRatio>
+    public class MarketCapThermocapRatioEventDetectorService : IDataProcessor<float>
     {
         private const float LEVEL_0 = 0.000003f;
         private const float LEVEL_1 = 0.000004f;
@@ -26,6 +25,11 @@ namespace ProofOfConcept.Application.Service.DataProcess
             string previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
 
             return !currentLevel.Equals(previousLevel) ? new ZoneChageEvent<MarketCapThermocapRatio>(data, currentLevel, previousLevel) : null;
+        }
+
+        public ZoneChangeEvent<float> DetectEvent(IndicatorValueCollection<float> indicatorValues)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

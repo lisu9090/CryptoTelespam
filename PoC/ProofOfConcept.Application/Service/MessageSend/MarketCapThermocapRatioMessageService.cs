@@ -1,13 +1,13 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
-using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Const.Message;
-using ProofOfConcept.Domain;
+using ProofOfConcept.Application.Service.MessageSend.Abstract;
+using ProofOfConcept.Domain.ValueObject;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.MessageSend
 {
-    public class MarketCapThermocapRatioMessageService : IMessageSenderService<MarketCapThermocapRatio>
+    public class MarketCapThermocapRatioMessageService : IMessageSender<float>
     {
         private readonly IMessageApiService _messageApiService;
 
@@ -32,6 +32,11 @@ namespace ProofOfConcept.Application.Service.MessageSend
             await _messageApiService.SendAsync(msg);
         }
 
+        public Task SendEventMessageAsync(ZoneChangeEvent<float> zoneChangeEvent)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task SendNotificationAsync(MarketCapThermocapRatio notification)
         {
             string msg = string.Format(MarketCapEventMessage.MARKET_CAP_NOTIFICATION,
@@ -39,6 +44,11 @@ namespace ProofOfConcept.Application.Service.MessageSend
                 notification.Value);
 
             await _messageApiService.SendAsync(msg);
+        }
+
+        public Task SendNotificationAsync(IndicatorValueCollection<float> indicatorValues)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

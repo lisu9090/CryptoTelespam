@@ -1,11 +1,10 @@
-﻿using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Application.Const.Code;
-using ProofOfConcept.Application.Helper;
-using ProofOfConcept.Domain;
+﻿using ProofOfConcept.Application.Const.Code;
+using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Domain.ValueObject;
 
 namespace ProofOfConcept.Application.Service.DataProcess
 {
-    public class PuellEventDetectorService : IDataProcessorService<Puell>
+    public class PuellEventDetectorService : IDataProcessor<float>
     {
         private const float LEVEL_0 = 0.3f;
         private const float LEVEL_1 = 0.5f;
@@ -35,6 +34,11 @@ namespace ProofOfConcept.Application.Service.DataProcess
             }
 
             return null;
+        }
+
+        public ZoneChangeEvent<float> DetectEvent(IndicatorValueCollection<float> indicatorValues)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -1,13 +1,13 @@
-﻿using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Domain;
+﻿using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Domain.ValueObject;
 
 namespace ProofOfConcept.Application.Service.DataProcess
 {
-    public class TotalAddressesEventDetectorService : IDataProcessorService<TotalAddresses>
+    public class TotalAddressesEventDetectorService : IDataProcessor<int>
     {
-        public ZoneChageEvent<TotalAddresses> DetectEvent(TotalAddresses data)
+        public ZoneChangeEvent<int> DetectEvent(IndicatorValueCollection<int> indicatorValues)
         {
-            return null; //todo
+            throw new System.NotImplementedException();
         }
     }
 }

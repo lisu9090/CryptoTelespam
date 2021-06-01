@@ -1,14 +1,14 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
-using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Const.Code;
 using ProofOfConcept.Application.Const.Message;
-using ProofOfConcept.Domain;
+using ProofOfConcept.Application.Service.MessageSend.Abstract;
+using ProofOfConcept.Domain.ValueObject;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.MessageSend
 {
-    public class MvrvZScoreMessageService : IMessageSenderService<MvrvZScore>
+    public class MvrvZScoreMessageService : IMessageSender<float>
     {
         private readonly IMessageApiService _messageApiService;
         private Dictionary<string, string> _codeMessageDictionary = new Dictionary<string, string>();
@@ -42,6 +42,11 @@ namespace ProofOfConcept.Application.Service.MessageSend
             throw new System.NotImplementedException();
         }
 
+        public Task SendEventMessageAsync(ZoneChangeEvent<float> zoneChangeEvent)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task SendNotificationAsync(Puell notification)
         {
             string msg = string.Format(PuellEventMessage.PUELL_NOTIFICATION,
@@ -52,6 +57,11 @@ namespace ProofOfConcept.Application.Service.MessageSend
         }
 
         public Task SendNotificationAsync(MvrvZScore notification)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task SendNotificationAsync(IndicatorValueCollection<float> indicatorValues)
         {
             throw new System.NotImplementedException();
         }

@@ -11,14 +11,14 @@ namespace ProofOfConcept.Application.Pipeline
 {
     public class ZoneChangeEventPipeline : IZoneChangeEventPipeline
     {
-        private readonly IIndicatorValueLoarder<float> _dataLoaderService;
-        private readonly IDataProcessorService _dataProcessorService;
-        private readonly IMessageSenderService _messageSenderService;
+        private readonly IIndicatorValueLoader<float> _dataLoaderService;
+        private readonly IDataProcessor _dataProcessorService;
+        private readonly IMessageSender _messageSenderService;
 
         public ZoneChangeEventPipeline(
-            IIndicatorValueLoarder<float> dataLoaderService,
-            IDataProcessorService dataProcessorService,
-            IMessageSenderService messageSenderService)
+            IIndicatorValueLoader<float> dataLoaderService,
+            IDataProcessor dataProcessorService,
+            IMessageSender messageSenderService)
         {
             _dataLoaderService = dataLoaderService;
             _dataProcessorService = dataProcessorService;

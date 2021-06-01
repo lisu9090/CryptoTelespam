@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class PuellLoaderService : IIndicatorValueLoarder<float>
+    public class PuellLoaderService : IIndicatorValueLoader<float>
     {
         private readonly IRestApiService _apiService;
 

@@ -1,13 +1,12 @@
-﻿using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Application.Const.Code;
-using ProofOfConcept.Application.Helper;
-using ProofOfConcept.Domain;
+﻿using ProofOfConcept.Application.Const.Code;
+using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Domain.ValueObject;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace ProofOfConcept.Application.Service.DataProcess
 {
-    public class NuplEventDetectorService : IDataProcessorService<Nupl>
+    public class NuplEventDetectorService : IDataProcessor<float>
     {
         private const float LEVEL_0 = 0;
         private const float LEVEL_1 = 0.25f;
@@ -30,6 +29,11 @@ namespace ProofOfConcept.Application.Service.DataProcess
             string previousLevel = _eventLevels.First(lvl => lvl.Value.IsInRange(data.PreviousValue)).Key;
 
             return !currentLevel.Equals(previousLevel) ? new ZoneChageEvent<Nupl>(data, currentLevel, previousLevel) : null;
+        }
+
+        public ZoneChangeEvent<float> DetectEvent(IndicatorValueCollection<float> indicatorValues)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

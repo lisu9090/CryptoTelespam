@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class StfDeflectionLoaderService : IIndicatorValueLoarder<float>
+    public class StfDeflectionLoaderService : IIndicatorValueLoader<float>
     {
         private readonly IRestApiService _apiService;
 

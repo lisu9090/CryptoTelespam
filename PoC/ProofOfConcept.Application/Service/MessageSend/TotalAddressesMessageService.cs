@@ -1,12 +1,12 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
-using ProofOfConcept.Abstract.Application;
 using ProofOfConcept.Application.Const.Message;
-using ProofOfConcept.Domain;
+using ProofOfConcept.Application.Service.MessageSend.Abstract;
+using ProofOfConcept.Domain.ValueObject;
 using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.MessageSend
 {
-    public class TotalAddressesMessageService : IMessageSenderService<TotalAddresses>
+    public class TotalAddressesMessageService : IMessageSender<int>
     {
         private readonly IMessageApiService _messageApiService;
 
@@ -30,6 +30,11 @@ namespace ProofOfConcept.Application.Service.MessageSend
             await _messageApiService.SendAsync(msg);
         }
 
+        public Task SendEventMessageAsync(ZoneChangeEvent<int> zoneChangeEvent)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task SendNotificationAsync(TotalAddresses notification)
         {
             string msg = string.Format(AddressesEventMessage.TOTAL_ADDRESSES_NOTIFICATION,
@@ -37,6 +42,11 @@ namespace ProofOfConcept.Application.Service.MessageSend
                 notification.Value);
 
             await _messageApiService.SendAsync(msg);
+        }
+
+        public Task SendNotificationAsync(IndicatorValueCollection<int> indicatorValues)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

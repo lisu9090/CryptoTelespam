@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class MarketCapThermocapRatioLoaderService : IIndicatorValueLoarder<float>
+    public class MarketCapThermocapRatioLoaderService : IIndicatorValueLoader<float>
     {
         private readonly IRestApiService _apiService;
 

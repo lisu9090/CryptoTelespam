@@ -7,7 +7,7 @@ using ProofOfConcept.ApiClient.MappingProfile;
 using ProofOfConcept.ApiClient.Service;
 using System.Net.Http;
 
-namespace ProofOfConcept.ApiClientDomain
+namespace ProofOfConcept.ApiClient.DI
 {
     public static class DependencyInjection
     {

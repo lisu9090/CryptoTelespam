@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace ProofOfConcept.Application.Service.DataLoad
 {
-    public class ActiveAddressesLoaderService : IIndicatorValueLoarder<int>
+    public class ActiveAddressesLoaderService : IIndicatorValueLoader<int>
     {
         private readonly IRestApiService _apiService;
 
