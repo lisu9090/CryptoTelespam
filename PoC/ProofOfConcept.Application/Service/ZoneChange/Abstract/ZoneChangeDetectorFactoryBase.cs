@@ -2,20 +2,20 @@
 using System;
 using System.Collections.Generic;
 
-namespace ProofOfConcept.Application.Service.DataProcess.Abstract
+namespace ProofOfConcept.Application.Service.ZoneChange.Abstract
 {
-    public abstract class DataProcessorFactoryBase :
-        IDataProcessorFactory<float>,
-        IDataProcessorFactory<int>
+    public abstract class ZoneChangeDetectorFactoryBase :
+        ZoneChangeDetectorFactory<float>,
+        ZoneChangeDetectorFactory<int>
     {
-        private readonly Dictionary<IndicatorId, Func<IDataProcessor<float>>> _floatBasedIndicators;
-        private readonly Dictionary<IndicatorId, Func<IDataProcessor<int>>> _intBasedIndicators;
+        private readonly Dictionary<IndicatorId, Func<IZoneChangeDetector<float>>> _floatBasedIndicators;
+        private readonly Dictionary<IndicatorId, Func<IZoneChangeDetector<int>>> _intBasedIndicators;
 
-        public DataProcessorFactoryBase()
+        public ZoneChangeDetectorFactoryBase()
         {
-            _floatBasedIndicators = new Dictionary<IndicatorId, Func<IDataProcessor<float>>>
+            _floatBasedIndicators = new Dictionary<IndicatorId, Func<IZoneChangeDetector<float>>>
             {
-                { IndicatorId.LthNupl, () => GetService<LthNuplEventDetectorService, float>() },
+                { IndicatorId.LthNupl, () => GetService<LthNuplZoneChangeDetectorService, float>() },
                 { IndicatorId.MarketCapThermocapRatio, () => GetService<MarketCapThermocapRatioEventDetectorService, float>() },
                 { IndicatorId.MvrvZScore, () => GetService<MvrvZScoreEventDetectorService, float>() },
                 { IndicatorId.Nupl, () => GetService<NuplEventDetectorService, float>() },
@@ -23,7 +23,7 @@ namespace ProofOfConcept.Application.Service.DataProcess.Abstract
                 { IndicatorId.StfDeflection, () => GetService<StfDeflectionEventDetectorService, float>() }
             };
 
-            _intBasedIndicators = new Dictionary<IndicatorId, Func<IDataProcessor<int>>>
+            _intBasedIndicators = new Dictionary<IndicatorId, Func<IZoneChangeDetector<int>>>
             {
                 { IndicatorId.ActiveAddresses, () => GetService<ActiveAddressesEventDetectorService, int>() },
                 { IndicatorId.NewAddresses, () => GetService<NewAddressesEventDetectorService, int>() },
@@ -31,8 +31,8 @@ namespace ProofOfConcept.Application.Service.DataProcess.Abstract
             };
         }
 
-        private IDataProcessor<TValue> SelectDataProcessor<TValue>(
-            Dictionary<IndicatorId, Func<IDataProcessor<TValue>>> indicatorSelectors,
+        private IZoneChangeDetector<TValue> SelectDataProcessor<TValue>(
+            Dictionary<IndicatorId, Func<IZoneChangeDetector<TValue>>> indicatorSelectors,
             IndicatorId indicatorId)
         {
             if (!indicatorSelectors.ContainsKey(indicatorId))
@@ -43,13 +43,13 @@ namespace ProofOfConcept.Application.Service.DataProcess.Abstract
             return indicatorSelectors[indicatorId]();
         }
 
-        protected abstract IDataProcessor<TValue> GetService<TImplementation, TValue>()
-            where TImplementation : IDataProcessor<TValue>;
+        protected abstract IZoneChangeDetector<TValue> GetService<TImplementation, TValue>()
+            where TImplementation : IZoneChangeDetector<TValue>;
 
-        IDataProcessor<float> IDataProcessorFactory<float>.GetDataProcessor(IndicatorId indicatorId) =>
+        IZoneChangeDetector<float> ZoneChangeDetectorFactory<float>.GetDataProcessor(IndicatorId indicatorId) =>
             SelectDataProcessor(_floatBasedIndicators, indicatorId);
 
-        IDataProcessor<int> IDataProcessorFactory<int>.GetDataProcessor(IndicatorId indicatorId) =>
+        IZoneChangeDetector<int> ZoneChangeDetectorFactory<int>.GetDataProcessor(IndicatorId indicatorId) =>
             SelectDataProcessor(_intBasedIndicators, indicatorId);
     }
 }

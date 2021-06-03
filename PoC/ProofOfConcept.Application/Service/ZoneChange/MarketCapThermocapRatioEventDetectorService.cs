@@ -1,12 +1,12 @@
 ﻿using ProofOfConcept.Application.Const.Code;
-using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Application.Service.ZoneChange.Abstract;
 using ProofOfConcept.Domain.ValueObject;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Application.Service.DataProcess
+namespace ProofOfConcept.Application.Service.ZoneChange
 {
-    public class MarketCapThermocapRatioEventDetectorService : IDataProcessor<float>
+    public class MarketCapThermocapRatioEventDetectorService : IZoneChangeDetector<float>
     {
         private const float LEVEL_0 = 0.000003f;
         private const float LEVEL_1 = 0.000004f;

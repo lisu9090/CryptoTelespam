@@ -18,7 +18,7 @@ namespace ProofOfConcept.Application.Service.DataLoad
             _apiService = apiService;
         }
 
-        public Task<IndicatorValueCollection<float>> LoadAsync(AssetId assetId)
+        public Task<IndicatorValueCollection<float>> LoadAsync(AssetId assetId, int resolution)
         {
             throw new NotImplementedException();
         }

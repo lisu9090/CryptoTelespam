@@ -1,6 +1,8 @@
 ﻿using ProofOfConcept.Abstract.ApiClient;
+using ProofOfConcept.Abstract.Database.Domain;
 using ProofOfConcept.Application.Helper;
 using ProofOfConcept.Application.Service.DataLoad.Abstract;
+using ProofOfConcept.Domain.Entity;
 using ProofOfConcept.Domain.Enum;
 using ProofOfConcept.Domain.ValueObject;
 using System;
@@ -12,29 +14,35 @@ namespace ProofOfConcept.Application.Service.DataLoad
     public class ActiveAddressesLoaderService : IIndicatorValueLoader<int>
     {
         private readonly IRestApiService _apiService;
+        private readonly IAssetRepository _assetRepository;
 
         public ActiveAddressesLoaderService(IRestApiService apiService)
         {
             _apiService = apiService;
         }
 
-        public async Task<int> LoadAsync(int assetId)
+        public async Task<IndicatorValueCollection<int>> LoadAsync(AssetId assetId, int resolution)
         {
+            if (resolution <= 0)
+            {
+                throw new ArgumentOutOfRangeException("Resolution must be greater than 0");
+            }
+
+            Asset asset = await _assetRepository.GetByIdAsync((int)assetId);
+
             DateTimeOffset since = DateTimeBuilder.UtcNow()
-                .AddDays(-2)
+                .AddDays(-resolution)
                 .Truncate()
                 .Build();
 
             IEnumerable<IndicatorValue<int>> values = await _apiService.GetActiveAddressesAsync(
-                "BTC", //TODO get asset from db
+                asset.Symbol,
                 Convert.ToInt32(since.ToUnixTimeSeconds()));
 
-            return new ActiveAddresses(assetId, values);
-        }
-
-        public Task<IndicatorValueCollection<int>> LoadAsync(AssetId assetId)
-        {
-            throw new NotImplementedException();
+            return new IndicatorValueCollection<int>(
+                values,
+                IndicatorId.ActiveAddresses,
+                assetId);
         }
     }
 }

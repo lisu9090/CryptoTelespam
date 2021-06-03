@@ -1,11 +1,11 @@
 ﻿using ProofOfConcept.Abstract.Application;
-using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Application.Service.ZoneChange.Abstract;
 using ProofOfConcept.Domain;
 using ProofOfConcept.Domain.ValueObject;
 
-namespace ProofOfConcept.Application.Service.DataProcess
+namespace ProofOfConcept.Application.Service.ZoneChange
 {
-    public class NewAddressesEventDetectorService : IDataProcessor<int>
+    public class NewAddressesEventDetectorService : IZoneChangeDetector<int>
     {
         public ZoneChangeEvent<int> DetectEvent(IndicatorValueCollection<int> indicatorValues)
         {

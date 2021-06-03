@@ -1,12 +1,12 @@
 ﻿using ProofOfConcept.Application.Const.Code;
-using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Application.Service.ZoneChange.Abstract;
 using ProofOfConcept.Domain.ValueObject;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Application.Service.DataProcess
+namespace ProofOfConcept.Application.Service.ZoneChange
 {
-    public class NuplEventDetectorService : IDataProcessor<float>
+    public class NuplEventDetectorService : IZoneChangeDetector<float>
     {
         private const float LEVEL_0 = 0;
         private const float LEVEL_1 = 0.25f;

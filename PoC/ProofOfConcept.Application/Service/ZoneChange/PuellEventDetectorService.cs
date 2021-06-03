@@ -1,10 +1,10 @@
 ﻿using ProofOfConcept.Application.Const.Code;
-using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Application.Service.ZoneChange.Abstract;
 using ProofOfConcept.Domain.ValueObject;
 
-namespace ProofOfConcept.Application.Service.DataProcess
+namespace ProofOfConcept.Application.Service.ZoneChange
 {
-    public class PuellEventDetectorService : IDataProcessor<float>
+    public class PuellEventDetectorService : IZoneChangeDetector<float>
     {
         private const float LEVEL_0 = 0.3f;
         private const float LEVEL_1 = 0.5f;

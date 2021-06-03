@@ -1,12 +1,12 @@
 ﻿using ProofOfConcept.Application.Const.Code;
-using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Application.Service.ZoneChange.Abstract;
 using ProofOfConcept.Domain.ValueObject;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProofOfConcept.Application.Service.DataProcess
+namespace ProofOfConcept.Application.Service.ZoneChange
 {
-    public class StfDeflectionEventDetectorService : IDataProcessor<float>
+    public class StfDeflectionEventDetectorService : IZoneChangeDetector<float>
     {
         private const float LEVEL_0 = 0f;
         private readonly Dictionary<string, Range> _eventLevels = new Dictionary<string, Range>();

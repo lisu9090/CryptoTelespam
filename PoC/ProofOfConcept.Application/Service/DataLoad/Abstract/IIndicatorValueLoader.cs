@@ -6,6 +6,6 @@ namespace ProofOfConcept.Application.Service.DataLoad.Abstract
 {
     public interface IIndicatorValueLoader<T>
     {
-        Task<IndicatorValueCollection<T>> LoadAsync(AssetId assetId);
+        Task<IndicatorValueCollection<T>> LoadAsync(AssetId assetId, int resolution);
     }
 }

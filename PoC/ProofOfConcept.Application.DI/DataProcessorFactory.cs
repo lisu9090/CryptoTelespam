@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Application.Service.ZoneChange.Abstract;
 using System;
 
 namespace ProofOfConcept.Application.DI
 {
-    internal class DataProcessorFactory : DataProcessorFactoryBase
+    internal class DataProcessorFactory : ZoneChangeDetectorFactoryBase
     {
         private IServiceProvider _serviceProvider;
 
@@ -13,7 +13,7 @@ namespace ProofOfConcept.Application.DI
             _serviceProvider = serviceProvider;
         }
 
-        protected override IDataProcessor<TValue> GetService<TImplementation, TValue>() =>
+        protected override IZoneChangeDetector<TValue> GetService<TImplementation, TValue>() =>
             _serviceProvider.GetService<TImplementation>();
     }
 }

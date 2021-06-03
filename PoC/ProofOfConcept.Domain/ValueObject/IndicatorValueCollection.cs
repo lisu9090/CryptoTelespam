@@ -1,4 +1,5 @@
 ﻿using ProofOfConcept.Domain.Entity;
+using ProofOfConcept.Domain.Enum;
 using ProofOfConcept.Domain.Extension;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,23 +12,23 @@ namespace ProofOfConcept.Domain.ValueObject
         private Indicator _indicator;
         private Asset _asset;
 
-        public int IndicatorId { get; }
+        public IndicatorId IndicatorId { get; }
 
-        public int AssetId { get; }
+        public AssetId AssetId { get; }
 
         public Indicator Indicator
         {
             get => _indicator;
-            set => _indicator = value.ConsistencyCheck(IndicatorId);
+            set => _indicator = value.ConsistencyCheck((int)IndicatorId);
         }
 
         public Asset Asset
         {
             get => _asset;
-            set => _asset = value.ConsistencyCheck(AssetId);
+            set => _asset = value.ConsistencyCheck((int)AssetId);
         }
 
-        public IndicatorValueCollection(IEnumerable<IndicatorValue<T>> values, int indicatorId, int assetId)
+        public IndicatorValueCollection(IEnumerable<IndicatorValue<T>> values, IndicatorId indicatorId, AssetId assetId)
         {
             _values = values;
             IndicatorId = indicatorId;

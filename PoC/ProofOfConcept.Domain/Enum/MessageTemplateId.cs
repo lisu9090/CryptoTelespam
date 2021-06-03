@@ -2,5 +2,6 @@
 {
     public enum MessageTemplateId
     {
+        Test = 1
     }
 }

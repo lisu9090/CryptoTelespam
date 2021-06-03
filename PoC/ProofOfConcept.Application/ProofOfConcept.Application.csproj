@@ -11,12 +11,9 @@
   <ItemGroup>
     <ProjectReference Include="..\ProofOfConcept.Abstract.ApiClient\ProofOfConcept.Abstract.ApiClient.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Abstract.Application\ProofOfConcept.Abstract.Application.csproj" />
+    <ProjectReference Include="..\ProofOfConcept.Abstract.Database\ProofOfConcept.Abstract.Database.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Common\ProofOfConcept.Common.csproj" />
     <ProjectReference Include="..\ProofOfConcept.Domain\ProofOfConcept.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Abstract\" />
   </ItemGroup>
 
 </Project>

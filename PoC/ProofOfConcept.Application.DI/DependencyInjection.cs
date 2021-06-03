@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using ProofOfConcept.Application.Service.DataLoad;
 using ProofOfConcept.Application.Service.DataLoad.Abstract;
-using ProofOfConcept.Application.Service.DataProcess;
-using ProofOfConcept.Application.Service.DataProcess.Abstract;
+using ProofOfConcept.Application.Service.ZoneChange;
+using ProofOfConcept.Application.Service.ZoneChange.Abstract;
 using ProofOfConcept.Application.Service.MessageSend;
 using ProofOfConcept.Application.Service.MessageSend.Abstract;
 
@@ -34,17 +34,17 @@ namespace ProofOfConcept.Application.DI
 
         private static void RegisterDataProcessServices(this IServiceCollection services)
         {
-            services.AddTransient<IDataProcessorFactory<float>, DataProcessorFactory>();
-            services.AddTransient<IDataProcessorFactory<int>, DataProcessorFactory>();
-            services.AddTransient<IDataProcessor<float>, NuplEventDetectorService>();
-            services.AddTransient<IDataProcessor<float>, PuellEventDetectorService>();
-            services.AddTransient<IDataProcessor<float>, LthNuplEventDetectorService>();
-            services.AddTransient<IDataProcessor<float>, MarketCapThermocapRatioEventDetectorService>();
-            services.AddTransient<IDataProcessor<float>, StfDeflectionEventDetectorService>();
-            services.AddTransient<IDataProcessor<float>, MvrvZScoreEventDetectorService>();
-            services.AddTransient<IDataProcessor<int>, NewAddressesEventDetectorService>();
-            services.AddTransient<IDataProcessor<int>, TotalAddressesEventDetectorService>();
-            services.AddTransient<IDataProcessor<int>, ActiveAddressesEventDetectorService>();
+            services.AddTransient<ZoneChangeDetectorFactory<float>, DataProcessorFactory>();
+            services.AddTransient<ZoneChangeDetectorFactory<int>, DataProcessorFactory>();
+            services.AddTransient<IZoneChangeDetector<float>, NuplEventDetectorService>();
+            services.AddTransient<IZoneChangeDetector<float>, PuellEventDetectorService>();
+            services.AddTransient<IZoneChangeDetector<float>, LthNuplZoneChangeDetectorService>();
+            services.AddTransient<IZoneChangeDetector<float>, MarketCapThermocapRatioEventDetectorService>();
+            services.AddTransient<IZoneChangeDetector<float>, StfDeflectionEventDetectorService>();
+            services.AddTransient<IZoneChangeDetector<float>, MvrvZScoreEventDetectorService>();
+            services.AddTransient<IZoneChangeDetector<int>, NewAddressesEventDetectorService>();
+            services.AddTransient<IZoneChangeDetector<int>, TotalAddressesEventDetectorService>();
+            services.AddTransient<IZoneChangeDetector<int>, ActiveAddressesEventDetectorService>();
         }
 
         private static void RegisterMessageSendServices(this IServiceCollection services)

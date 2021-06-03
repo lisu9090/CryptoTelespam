@@ -1,8 +1,8 @@
 ﻿using ProofOfConcept.Domain.ValueObject;
 
-namespace ProofOfConcept.Application.Service.DataProcess.Abstract
+namespace ProofOfConcept.Application.Service.ZoneChange.Abstract
 {
-    public interface IDataProcessor<TValue>
+    public interface IZoneChangeDetector<TValue>
     {
         ZoneChangeEvent<TValue> DetectEvent(IndicatorValueCollection<TValue> indicatorValues);
     }

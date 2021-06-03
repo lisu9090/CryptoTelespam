@@ -1,20 +1,27 @@
-﻿namespace ProofOfConcept.Domain.ValueObject
+﻿using ProofOfConcept.Domain.Enum;
+
+namespace ProofOfConcept.Domain.ValueObject
 {
     public class ZoneChangeEvent<T>
     {
-        public int MessageTemplateId { get; }
+        public MessageTemplateId MessageTemplateId { get; }
 
-        public int CurrentZoneId { get; }
+        public ZoneId CurrentZoneId { get; }
 
-        public int PreviousZoneId { get; }
+        public ZoneId PreviousZoneId { get; }
 
-        public int IndicatorId { get; }
+        public IndicatorId IndicatorId { get; }
 
-        public int AssetId { get; }
+        public AssetId AssetId { get; }
 
         public T Value { get; set; }
 
-        public ZoneChangeEvent(int messageTemplateId, int currentZoneId, int previousZoneId, int indicatorId, int assetId)
+        public ZoneChangeEvent(
+            MessageTemplateId messageTemplateId,
+            ZoneId currentZoneId,
+            ZoneId previousZoneId,
+            IndicatorId indicatorId,
+            AssetId assetId)
         {
             MessageTemplateId = messageTemplateId;
             CurrentZoneId = currentZoneId;
