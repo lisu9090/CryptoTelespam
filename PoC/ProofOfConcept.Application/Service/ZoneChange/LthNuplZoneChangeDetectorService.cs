@@ -38,7 +38,7 @@ namespace ProofOfConcept.Application.Service.ZoneChange
             }
 
             return new ZoneChangeEvent<float>(
-                MessageTemplateId.Test,
+                MessageTemplateId.Test, //TODO get from domain zone change service
                 recentZone.Value,
                 previousZone.Value,
                 indicatorValues.IndicatorId,

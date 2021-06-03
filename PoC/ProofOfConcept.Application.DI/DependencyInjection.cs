@@ -35,16 +35,12 @@ namespace ProofOfConcept.Application.DI
         private static void RegisterDataProcessServices(this IServiceCollection services)
         {
             services.AddTransient<ZoneChangeDetectorFactory<float>, DataProcessorFactory>();
-            services.AddTransient<ZoneChangeDetectorFactory<int>, DataProcessorFactory>();
             services.AddTransient<IZoneChangeDetector<float>, NuplEventDetectorService>();
             services.AddTransient<IZoneChangeDetector<float>, PuellEventDetectorService>();
             services.AddTransient<IZoneChangeDetector<float>, LthNuplZoneChangeDetectorService>();
             services.AddTransient<IZoneChangeDetector<float>, MarketCapThermocapRatioEventDetectorService>();
             services.AddTransient<IZoneChangeDetector<float>, StfDeflectionEventDetectorService>();
             services.AddTransient<IZoneChangeDetector<float>, MvrvZScoreEventDetectorService>();
-            services.AddTransient<IZoneChangeDetector<int>, NewAddressesEventDetectorService>();
-            services.AddTransient<IZoneChangeDetector<int>, TotalAddressesEventDetectorService>();
-            services.AddTransient<IZoneChangeDetector<int>, ActiveAddressesEventDetectorService>();
         }
 
         private static void RegisterMessageSendServices(this IServiceCollection services)
