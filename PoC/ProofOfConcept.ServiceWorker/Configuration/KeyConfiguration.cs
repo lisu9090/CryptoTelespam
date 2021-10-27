@@ -24,68 +24,20 @@ namespace ProofOfConcept.ServiceWorker.Configuration
         public const string STF_TRIGGER_KEY = STF_JOB_KEY + "-trigger";
         public const string TOTAL_ADDRESSES_TRIGGER_KEY = TOTAL_ADDRESSES_JOB_KEY + "-trigger";
 
-        public static JobKey ActiveAddressesKey
-        {
-            get
-            {
-                return new JobKey(ACTIVE_ADDRESSES_JOB_KEY, FULL_PIPELINE_GROUP);
-            }
-        }
+        public static JobKey ActiveAddressesKey => new JobKey(ACTIVE_ADDRESSES_JOB_KEY, FULL_PIPELINE_GROUP);
 
-        public static JobKey LthNuplKey
-        {
-            get
-            {
-                return new JobKey(LTH_NUPL_JOB_KEY, FULL_PIPELINE_GROUP);
-            }
-        }
+        public static JobKey LthNuplKey => new JobKey(LTH_NUPL_JOB_KEY, FULL_PIPELINE_GROUP);
 
-        public static JobKey MarketCapKey
-        {
-            get
-            {
-                return new JobKey(MARKET_CAP_JOB_KEY, FULL_PIPELINE_GROUP);
-            }
-        }
+        public static JobKey MarketCapKey => new JobKey(MARKET_CAP_JOB_KEY, FULL_PIPELINE_GROUP);
 
-        public static JobKey NewAddressesKey
-        {
-            get
-            {
-                return new JobKey(NEW_ADDRESSES_JOB_KEY, FULL_PIPELINE_GROUP);
-            }
-        }
+        public static JobKey NewAddressesKey => new JobKey(NEW_ADDRESSES_JOB_KEY, FULL_PIPELINE_GROUP);
 
-        public static JobKey NuplKey
-        {
-            get
-            {
-                return new JobKey(NUPL_JOB_KEY, FULL_PIPELINE_GROUP);
-            }
-        }
+        public static JobKey NuplKey => new JobKey(NUPL_JOB_KEY, FULL_PIPELINE_GROUP);
 
-        public static JobKey PuellKey
-        {
-            get
-            {
-                return new JobKey(PUELL_JOB_KEY, FULL_PIPELINE_GROUP);
-            }
-        }
+        public static JobKey PuellKey => new JobKey(PUELL_JOB_KEY, FULL_PIPELINE_GROUP);
 
-        public static JobKey StfDeflectionKey
-        {
-            get
-            {
-                return new JobKey(STF_JOB_KEY, FULL_PIPELINE_GROUP);
-            }
-        }
+        public static JobKey StfDeflectionKey => new JobKey(STF_JOB_KEY, FULL_PIPELINE_GROUP);
 
-        public static JobKey TotalAddressesKey
-        {
-            get
-            {
-                return new JobKey(TOTAL_ADDRESSES_JOB_KEY, FULL_PIPELINE_GROUP);
-            }
-        }
+        public static JobKey TotalAddressesKey => new JobKey(TOTAL_ADDRESSES_JOB_KEY, FULL_PIPELINE_GROUP);
     }
 }
